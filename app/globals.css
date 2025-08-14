@@ -13,11 +13,27 @@ html {
 }
 
 body {
-  background-color: #435146
-;
+  background-color: #c6d3e5;
 }
 
 @layer utilities {
+  /* Triskelion Color Scheme */
+  .bg-triskelion-gradient {
+    @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
+  }
+  .text-triskelion-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
+  }
+  .border-triskelion-gradient {
+    @apply border-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
+  }
+
+  /* Updated color utilities */
+  .text-color-1 { @apply text-gray-900; }
+  .text-color-6 { @apply text-blue-500; } /* Primary accent color */
+  .border-color-3 { @apply border-blue-400; }
+  .border-color-4 { @apply border-purple-400; }
+
   .section {
     @apply mx-auto max-w-[1400px];
   }
@@ -42,6 +58,42 @@ body {
     @apply flex justify-between items-center;
   }
 
+  /* Updated link styles with Triskelion colors */
+  .link {
+    @apply text-blue-500 font-montserrat font-medium block hover:text-purple-500 transition-colors;
+  }
+  .link-active {
+    @apply text-2xl text-triskelion-gradient px-3 py-1;
+  }
+  .mobile-nav_link-active {
+    @apply text-2xl text-triskelion-gradient px-1 py-3;
+  }
+
+  /* Updated text colors */
+  .about-title {
+    @apply text-triskelion-gradient text-5xl sm:text-6xl md:text-7xl font-montserrat tracking-wider max-w-[100%];
+  }
+  .about-subtitle {
+    @apply text-gray-800 text-xl sm:text-2xl md:text-3xl font-montserrat font-bold tracking-normal max-w-[100%];
+  }
+  .about-desc {
+    @apply text-sm sm:text-base text-gray-700 font-montserrat sm:max-w-[100%];
+  }
+
+  /* Project cards with Triskelion accents */
+  .project-detail_wrapper {
+    @apply bg-white/90 h-fit rounded-xl p-2 border border-blue-300 flex flex-col gap-5 lg:flex-1 shadow-lg;
+  }
+  .project-h3 {
+    @apply text-sm sm:text-base text-blue-500 font-montserrat font-bold text-left;
+  }
+
+  /* Buttons */
+  .btn-triskelion {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-purple-600 transition-all;
+  }
+
+  /* Rest of your utilities... */
   .flex-end {
     @apply flex justify-end items-center;
   }
@@ -55,55 +107,31 @@ body {
   }
 
   .header {
-    @apply fixed top-0 left-0 right-0 z-50 bg-white;
+    @apply fixed top-0 left-0 right-0 z-50 bg-white shadow-sm;
   }
 
   .nav-bar {
     @apply flex-between section section_px section_py relative z-50 bg-white;
   }
 
-  .link {
-    @apply text-color-6 font-montserrat font-medium block;
-  }
-
-  .link-active {
-    @apply text-2xl text-white bg-clip-text bg-gradient-to-r from-white to-color-6 text-white px-3 py-1;
-  }
-
   .mobile-nav {
     @apply hidden max-lg:flex justify-center items-center absolute top-[90px] -z-10 w-full h-[33vh] bg-white bg-opacity-70 backdrop-blur-lg py-6;
   }
 
-  .mobile-nav_link-active {
-    @apply text-2xl text-white bg-clip-text bg-gradient-to-b from-white to-color-6 text-white px-1 py-3;
-  }
-
   .border_round {
-    @apply border-[0.1px] border-black rounded-full;
+    @apply border-[0.1px] border-gray-300 rounded-full;
   }
 
   .border_b {
-    @apply border-b-[0.1px] border-color-3;
+    @apply border-b-[0.1px] border-blue-300;
   }
 
   .border_t {
-    @apply border-t-[0.1px] border-color-4;
+    @apply border-t-[0.1px] border-purple-300;
   }
 
   .about {
     @apply flex-center flex-col lg:flex-row gap-10 sm:gap-10 lg:gap-10 w-full h-full pt-14;
-  }
-
-  .about-title {
-    @apply text-white text-5xl sm:text-6xl md:text-7xl font-montserrat text-white tracking-wider max-w-[100%];
-  }
-
-  .about-subtitle {
-    @apply text-white text-xl sm:text-2xl md:text-3xl font-montserrat font-bold tracking-normal max-w-[100%];
-  }
-
-  .about-desc {
-    @apply text-sm sm:text-base text-white font-montserrat sm:max-w-[100%];
   }
 
   .img-container {
@@ -111,84 +139,75 @@ body {
   }
 
   .section-h2 {
-    @apply text-xl sm:text-2xl text-white text-center font-montserrat font-bold;
+    @apply text-xl sm:text-2xl text-blue-500 text-center font-montserrat font-bold;
   }
 
   .section-h3 {
-    @apply text-sm sm:text-base text-white text-center font-montserrat font-medium max-w-[90%] sm:max-w-[70%] lg:max-w-[50%];
+    @apply text-sm sm:text-base text-gray-700 text-center font-montserrat font-medium max-w-[90%] sm:max-w-[70%] lg:max-w-[50%];
   }
 
   .section-h3_ {
-    @apply text-lg sm:text-lg text-white text-left font-montserrat font-semibold max-w-[90%] sm:max-w-[70%] lg:max-w-[100%];
+    @apply text-lg sm:text-lg text-gray-800 text-left font-montserrat font-semibold max-w-[90%] sm:max-w-[70%] lg:max-w-[100%];
   }
 
   .section-h3__ {
-    @apply text-lg sm:text-lg text-white text-center font-montserrat font-semibold;
+    @apply text-lg sm:text-lg text-blue-500 text-center font-montserrat font-semibold;
   }
 
   .section-h4 {
-    @apply text-sm sm:text-base text-white text-left font-montserrat font-medium max-w-[90%] sm:max-w-[70%] lg:max-w-[100%];
+    @apply text-sm sm:text-base text-gray-700 text-left font-montserrat font-medium max-w-[90%] sm:max-w-[70%] lg:max-w-[100%];
   }
 
   .section-h3_resume {
-    @apply text-sm sm:text-base text-white text-center font-montserrat font-medium max-w-[90%] sm:max-w-[70%] lg:text-left lg:max-w-[50%];
+    @apply text-sm sm:text-base text-gray-700 text-center font-montserrat font-medium max-w-[90%] sm:max-w-[70%] lg:text-left lg:max-w-[50%];
   }
 
   .section-p {
-    @apply text-sm sm:text-base text-white text-center font-montserrat font-medium max-w-[90%] sm:max-w-[70%];
+    @apply text-sm sm:text-base text-gray-600 text-center font-montserrat font-medium max-w-[90%] sm:max-w-[70%];
   }
 
   .section-p_ {
-    @apply text-sm sm:text-base text-white text-left font-montserrat font-medium max-w-[90%] sm:max-w-[70%];
+    @apply text-sm sm:text-base text-gray-700 text-left font-montserrat font-medium max-w-[90%] sm:max-w-[70%];
   }
 
   .section-p__ {
-    @apply text-sm sm:text-base text-white text-center font-montserrat font-medium;
+    @apply text-sm sm:text-base text-blue-500 text-center font-montserrat font-medium;
   }
 
   .project-wrapper {
     @apply flex flex-col gap-5 lg:flex-col lg:gap-10;
   }
 
-  .project-detail_wrapper {
-    @apply bg-white bg-opacity-10 h-fit rounded-xl p-2 border border-white flex flex-col gap-5 lg:flex-1;
-  }
-
-  .project-h3 {
-    @apply text-sm sm:text-base text-color-1 font-montserrat font-bold text-left;
-  }
-
   .project-p {
-    @apply text-xs md:text-sm text-white font-montserrat font-normal text-left;
+    @apply text-xs md:text-sm text-gray-600 font-montserrat font-normal text-left;
   }
 
   .carousel-left_button {
-    @apply text-color-1 z-10 left-[0px] sm:left-[0px] md:left-[0px] lg:left-[0px] xl:left-[0px] mw:left-[0px];
+    @apply text-blue-500 z-10 left-[0px] sm:left-[0px] md:left-[0px] lg:left-[0px] xl:left-[0px] mw:left-[0px];
   }
 
   .carousel-right_button {
-    @apply text-color-1 z-10 right-[0px] sm:right-[0px] md:right-[0px] lg:right-[0px] xl:right-[0px] mw:right-[0px];
+    @apply text-blue-500 z-10 right-[0px] sm:right-[0px] md:right-[0px] lg:right-[0px] xl:right-[0px] mw:right-[0px];
   }
 
   .resume-card {
-    @apply w-full sm:w-[574px] lg:max-w-[50%] bg-transparent border border-black rounded-xl flex-center gap-2 sm:gap-4 md:gap-6 lg:gap-2 px-2 py-2.5 lg:py-3;
+    @apply w-full sm:w-[574px] lg:max-w-[50%] bg-white/90 border border-gray-200 rounded-xl flex-center gap-2 sm:gap-4 md:gap-6 lg:gap-2 px-2 py-2.5 lg:py-3 shadow-sm;
   }
 
   .resume-p {
-    @apply text-sm sm:text-base text-white font-montserrat font-medium text-left;
-    @apply text-sm sm:text-base text-white font-montserrat font-medium text-left;
+    @apply text-sm sm:text-base text-gray-700 font-montserrat font-medium text-left;
   }
 
   .form-label {
-    @apply text-color-1 text-base font-montserrat font-bold;
+    @apply text-blue-500 text-base font-montserrat font-bold;
   }
 
   .font-input {
-    @apply !bg-transparent border-0 border-b !border-white ring-0 font-montserrat font-light text-sm text-white !placeholder-white;
+    @apply !bg-transparent border-0 border-b !border-blue-400 ring-0 font-montserrat font-light text-sm text-gray-700 !placeholder-gray-400;
   }
 
   .form-textarea {
-    @apply !bg-transparent border-0 border-b !border-white ring-0 font-montserrat font-light text-sm text-white !placeholder-white resize-none;
+    @apply !bg-transparent border-0 border-b !border-blue-400 ring-0 font-montserrat font-light text-sm text-gray-700 !placeholder-gray-400 resize-none;
   }
 
   .contact-wrapper {
@@ -204,11 +223,10 @@ body {
   }
 
   .footer-p {
-    @apply text-sm text-color-6 font-montserrat font-normal;
+    @apply text-sm text-blue-500 font-montserrat font-normal;
   }
 
   .list {
     list-style-type: circle;
   }
 }
-

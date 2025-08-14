@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link href="/">
           <div className="rounded-full bg-color-6">
             <Image
-              src="/icons/logo.ico"
+              src="/icons/icont.ico"
               alt="shefcodev logo"
               width={40}
               height={40}

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Triskelion",
   description: "Marvelous Olabode's Portfolio",
   icons: {
-    icon: "/icons/logo.ico",
+    icon: "/icons/icont.ico",
   },
 };
 
