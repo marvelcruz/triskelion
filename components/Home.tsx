@@ -9,17 +9,6 @@ const TriskelionAgency = () => {
   // More realistic data for a startup
   const regions = [
     {
-      country: "Nigeria",
-      flag: "🇳🇬", 
-      audience: "200M+",
-      reach: "Nigerians",
-      platforms: "Instagram, TikTok, Facebook, LinkedIn & YouTube",
-      description: "Helping Nigerian brands tell their stories authentically. We understand the local culture, trends, and what makes content go viral in Lagos, Abuja, and beyond.",
-      accent: "from-green-500 to-green-600",
-      stats: { projects: "15+", followers: "50K+", months: "6" },
-      speciality: "Afrobeats culture & Local trends"
-    },
-    {
       country: "United States",
       flag: "🇺🇸",
       audience: "330M+",
@@ -51,7 +40,18 @@ const TriskelionAgency = () => {
       accent: "from-blue-800 to-blue-600",
       stats: { projects: "10+", followers: "35K+", months: "5" },
       speciality: "Local market expertise"
-    }
+    },
+    {
+      country: "Nigeria",
+      flag: "🇳🇬", 
+      audience: "200M+",
+      reach: "Nigerians",
+      platforms: "Instagram, TikTok, Facebook, LinkedIn & YouTube",
+      description: "Helping Nigerian brands tell their stories authentically. We understand the local culture, trends, and what makes content go viral in Lagos, Abuja, and beyond.",
+      accent: "from-green-500 to-green-600",
+      stats: { projects: "15+", followers: "50K+", months: "6" },
+      speciality: "Afrobeats culture & Local trends"
+    },
   ];
 
   useEffect(() => {
@@ -188,7 +188,9 @@ const TriskelionAgency = () => {
               Social Media Marketing Agency
             </motion.p>
             <motion.p className="text-sm text-slate-400 mt-2 max-w-md mx-auto">
-              Fresh perspectives, authentic growth, real results for modern brands
+              New platforms - New behaviours - New audiences - New trends - New technologies - New regulations.
+          
+
             </motion.p>
           </motion.div>
 
@@ -259,9 +261,9 @@ const TriskelionAgency = () => {
                 transition={{ delay: 0.3 }}
               >
                 {[
-                  { number: regions[currentRegion].stats.projects, label: "Projects Completed", icon: "🚀" },
-                  { number: regions[currentRegion].stats.followers, label: "Followers Grown", icon: "📱" },
-                  { number: regions[currentRegion].stats.months, label: "Months Experience", icon: "⏱️" }
+                  { number: regions[currentRegion].stats.projects, label: "Projects Completed", icon: "" },
+                  { number: regions[currentRegion].stats.followers, label: "Followers Grown", icon: "" },
+                  { number: regions[currentRegion].stats.months, label: "Months Experience", icon: "" }
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -290,7 +292,7 @@ const TriskelionAgency = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Let's Chat About Your Brand
+                We LOVE to work with Your Brand
               </motion.button>
               
               <motion.button
@@ -298,7 +300,6 @@ const TriskelionAgency = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                See Our Work
               </motion.button>
             </div>
             
@@ -308,7 +309,8 @@ const TriskelionAgency = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
-              Starting small, growing smart. We're building something genuine with brands who believe in authentic growth over vanity metrics.
+              Starting small, growing smart. We're building something genuine with brands who believe in authentic growth over vanity metrics. A global collective, offering round-the-clock delivery at the speed of digital.
+
             </motion.p>
           </motion.div>
         </motion.div>

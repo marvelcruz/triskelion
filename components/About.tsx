@@ -50,10 +50,10 @@ const TriskelionAbout = () => {
 
   // Realistic startup stats
   const realStats = [
-    { number: "Small", label: "Dedicated Team", icon: "👥" },
-    { number: "25+", label: "Happy Clients", icon: "😊" },
-    { number: "40+", label: "Projects Completed", icon: "✅" },
-    { number: "12", label: "Months in Business", icon: "📅" }
+    { number: "Small", label: "Dedicated Team", icon: "" },
+    { number: "8-ish+", label: "Happy Clients", icon: "" },
+    { number: "30+", label: "Projects Completed", icon: "" },
+    { number: "7", label: "Months in Business", icon: "" }
   ];
 
   // What we actually do well
@@ -61,26 +61,26 @@ const TriskelionAbout = () => {
     {
       title: "We Actually Answer Our Phone",
       description: "No phone trees, no waiting weeks for responses. When you need us, we're here.",
-      icon: "📞",
-      color: "bg-green-50 dark:bg-green-900/20"
+      icon: "",
+      color: ""
     },
     {
       title: "Small Enough to Care", 
       description: "You're not client #247. We know your name, your business, and what makes you tick.",
-      icon: "💝",
-      color: "bg-blue-50 dark:bg-blue-900/20"
+      icon: "",
+      color: ""
     },
     {
       title: "Real Results, Not Vanity Metrics",
       description: "We focus on leads, sales, and actual business growth - not just likes and follows.",
-      icon: "📈",
-      color: "bg-purple-50 dark:bg-purple-900/20"
+      icon: "",
+      color: ""
     },
     {
       title: "No Long-Term Contracts",
       description: "Month-to-month service. If we're not delivering, you can leave anytime.",
-      icon: "🤝",
-      color: "bg-orange-50 dark:bg-orange-900/20"
+      icon: "",
+      color: ""
     }
   ];
 
@@ -97,41 +97,97 @@ const TriskelionAbout = () => {
     <section 
     id="about" className="relative py-16 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
       
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
+      {/* Enhanced background elements with more Triskelion logos */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        {/* Top row */}
         <div className="absolute top-20 right-20">
-          <TriskelionLogo size={40} />
+          <TriskelionLogo size={80} glow />
         </div>
+        <div className="absolute top-32 left-20">
+          <TriskelionLogo size={60} />
+        </div>
+        
+        {/* Middle row */}
+        <div className="absolute top-1/2 right-10 transform -translate-y-1/2">
+          <TriskelionLogo size={70} />
+        </div>
+        <div className="absolute top-1/2 left-10 transform -translate-y-1/2">
+          <TriskelionLogo size={55} glow />
+        </div>
+        
+        {/* Bottom row */}
         <div className="absolute bottom-32 left-16">
-          <TriskelionLogo size={35} glow />
+          <TriskelionLogo size={90} glow />
+        </div>
+        <div className="absolute bottom-20 right-32">
+          <TriskelionLogo size={65} />
+        </div>
+        
+        {/* Additional scattered logos */}
+        <div className="absolute top-80 left-1/3">
+          <TriskelionLogo size={45} />
+        </div>
+        <div className="absolute bottom-80 right-1/4">
+          <TriskelionLogo size={50} glow />
         </div>
       </div>
 
       <div className="relative max-w-5xl mx-auto px-6 sm:px-8 z-10">
         
         {/* Simple Hero */}
-        <motion.div {...motionValues} className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800 dark:text-slate-200">
-            Hi, We're Triskelion 👋
-          </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            A small social media agency that actually cares about growing your business. 
-            No BS, no inflated promises - just real work that gets real results.
-          </p>
-        </motion.div>
+        {/* Simple Hero */}
+<motion.div {...motionValues} className="text-center mb-16 relative">
+  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8">
+    <TriskelionLogo size={120} glow />
+  </div>
+  <h1 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800 dark:text-slate-200 mt-20">
+    Hiii, We're Triskelion
+  </h1>
+  <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+    A small social media agency that actually cares about growing your business and social media engagement. 
+    No BS, no inflated promises — just real work that gets real results.
+  </p>
+  
+  <div className="space-y-6 max-w-2xl mx-auto text-left">
+    <div>
+      <h2 className="font-semibold text-slate-700 dark:text-slate-300">Foreword</h2>
+      <p className="text-slate-600 dark:text-slate-400">
+        We see business as a vehicle for delivering great user experiences. We build relationships 
+        with the community around us by reinventing the way creative services are provided.
+      </p>
+    </div>
+    
+    <div>
+      <h2 className="font-semibold text-slate-700 dark:text-slate-300">Purpose</h2>
+      <p className="text-slate-600 dark:text-slate-400">
+        We give local businesses the chance to share their story.
+      </p>
+    </div>
+    
+    <div>
+      <h2 className="font-semibold text-slate-700 dark:text-slate-300">Values</h2>
+      <ul className="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-400">
+        <li><strong>Clarity</strong> - Transparent strategies with no hidden fluff</li>
+        <li><strong>Communication</strong> - We listen first, then create</li>
+        <li><strong>Collaboration</strong> - Working with you to build something remarkable</li>
+      </ul>
+    </div>
+  </div>
+</motion.div>
 
         {/* Simple Navigation */}
         <motion.div {...motionValues} className="flex justify-center mb-12">
           <div className="bg-white dark:bg-slate-800 rounded-xl p-1 shadow-sm border border-slate-200 dark:border-slate-700">
             {[
               { id: 'story', label: 'Our Story' },
+              { id: 'services', label: 'Services' },
               { id: 'why', label: 'Why Us?' },
               { id: 'stats', label: 'The Numbers' }
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm ${
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm ${
                   activeTab === tab.id 
                     ? 'bg-blue-600 text-white shadow-sm' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
@@ -154,7 +210,7 @@ const TriskelionAbout = () => {
           >
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
               <div className="text-center mb-8">
-                <TriskelionLogo size={60} glow />
+                <TriskelionLogo size={100} glow />
               </div>
               
               <div className="space-y-6 text-slate-700 dark:text-slate-300">
@@ -174,6 +230,96 @@ const TriskelionAbout = () => {
                   <strong className="text-slate-800 dark:text-slate-200">Our promise:</strong> Work with us for 3 months. If you don't see real improvement in your social media results, we'll refund your last month. That's how confident we are.
                 </p>
               </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Services Tab */}
+        {activeTab === 'services' && (
+          <motion.div
+            key="services"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="text-center mb-8 relative">
+              <div className="absolute -top-4 -right-4">
+                <TriskelionLogo size={40} />
+              </div>
+              <div className="absolute -top-2 -left-6">
+                <TriskelionLogo size={35} glow />
+              </div>
+              <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200">
+                What Launch Kit Provides
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                A comprehensive suite of digital marketing services designed specifically for small businesses
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Branding & Design",
+                  description: "The weight ♎ that tech companies give to branding and design is inconsistent, to say the least. At one end of the spectrum you have the Apples of the world. At the other, you have countless startups that only start to consider these things a few months before going public, if at all.",
+                  icon: "",
+                  color: ""
+                },
+                {
+                  title: "Website + SEO",
+                  description: "Mobile friendly, search engine optimized business websites.",
+                  icon: "",
+                  color: ""
+                },
+                {
+                  title: "Social Media",
+                  description: "Consistent photos, videos, and account management to promote your business.",
+                  icon: "",
+                  color: ""
+                },
+                {
+                  title: "Graphic Design",
+                  description: "On-demand graphic design for all your marketing collateral and customer touchpoints.",
+                  icon: "",
+                  color: ""
+                },
+                {
+                  title: "Photo/Video",
+                  description: "Photo and video content to showcase your unique product, team and branding.",
+                  icon: "",
+                  color: ""
+                },
+                {
+                  title: "Digital Ads",
+                  description: "Facebook and Google advertising to amplify your marketing reach.",
+                  icon: "",
+                  color: ""
+                }
+              ].map((service, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center text-xl mb-4`}>
+                    {service.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-3 text-slate-800 dark:text-slate-200">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 text-center">
+              <p className="text-slate-700 dark:text-slate-300 text-sm">
+                Launch Kit partners with local businesses through unique programs that combine these services for maximum impact and growth.
+              </p>
             </div>
           </motion.div>
         )}
@@ -279,30 +425,14 @@ const TriskelionAbout = () => {
         <motion.div {...motionValues} className="text-center mt-16">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
             <h2 className="text-2xl font-bold mb-4">
-              Ready to Try Something Different?
+           T   R   I   S   K   E  L  I   O   N
             </h2>
             <p className="mb-6 text-blue-100 max-w-xl mx-auto">
-              No 6-month contracts. No setup fees. No BS. Just good work that grows your business.
-              Start for just $700/month.
+
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Get Started - $700/month
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="border border-white/30 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
-              >
-                See Our Work First
-              </motion.button>
             </div>
             <p className="text-xs text-blue-200 mt-4">
-              30-day money-back guarantee • Cancel anytime • No setup fees
             </p>
           </div>
         </motion.div>

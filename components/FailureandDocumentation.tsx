@@ -79,7 +79,7 @@ const LearningShowcase = () => {
             Built Through Real Experience
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Our systems aren't theoretical—they're battle-tested solutions born from real challenges and refined through continuous learning.
+            Our systems aren't theoretical, they're battle-tested solutions born from real challenges and refined through continuous learning.
           </p>
         </motion.div>
 
@@ -194,9 +194,6 @@ const LearningShowcase = () => {
           <p className="text-xl mb-6 text-blue-100">
             Our learning becomes your competitive advantage from day one.
           </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
-            Start Your Success Story
-          </button>
         </motion.div>
       </div>
     </section>

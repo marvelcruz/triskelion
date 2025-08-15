@@ -7,8 +7,9 @@ export const links = [
   { title: "About", href: "#about" }, // Matches your about section
   { title: "How I Help You", href: "#SolutionsAndResults" }, // Matches your solutions section
   { title: "Projects", href: "#projects" },
+  { title: "Leadgeneration", href: "#Lead Generation" },
   { title: "Designs", href: "#designs" },
-  { title: "Failure & Documentation", href: "#Social Media Crisis Documentation" }, // Matches exact section title
+  { title: "Documentation", href: "#Social Media Crisis Documentation" }, // Matches exact section title
   { title: "Contact", href: "#contact" },
 ]
 
@@ -22,7 +23,7 @@ export const details = {
     "Let's connect and build something truly remarkable together!",
     "When I'm not being all creatively administrative, I enjoy playing soccer and listening to Afrobeats, Amapiano & Jazz"
   ]
-};
+}
 
 export const About = {
   AboutTitle: "Your Strategic Partner",
@@ -60,55 +61,151 @@ export const HowIHelpYou = {
 };
 
 export const projects = {
-  title: "Projects",
-  description: "A collection of my work demonstrating expertise in operations, automation, and digital strategy. These projects highlight my ability to streamline processes, drive engagement, and deliver measurable results across 18 BNI chapters.",
+  title: "Creative Projects & Campaigns",
+  description: "From Nigerian music talent to professional networks, we create authentic digital experiences that build real connections and drive engagement across diverse industries.",
+  
+  // This is the array your component is looking for
   projects: [
     {
-      id: "port3",
-      title: "Workflow Automation",
-      description: "Automated repetitive tasks across chapters using Zapier, reducing manual workload by 40%.",
-      url: "",
-      gitLink: "",
-      src: "/images/Zapier.png",
-      stacks: ["Zapier"],
+      id: "badgirl_dela_campaign",
+      title: "Badgirl Dela - Digital Brand Strategy",
+      description: "Comprehensive social media strategy for rising Nigerian artist, building authentic fanbase and driving music streaming growth across platforms.",
+      url: "", // Apple Music link when provided
+      gitLink: "", // Can link to case study or campaign details
+      src: "/images/D1.jpg", // Replace with actual image
+      stacks: ["Content Strategy", "Music Marketing", "Fan Engagement"],
+      category: "Music & Entertainment",
+      results: [
+        "Increased Instagram engagement by 180%",
+        "Grew Twitter following organically by 250%", 
+        "Music streaming sessions up 120%"
+      ],
+      socialLinks: {
+        instagram: "https://instagram.com/badgirlDela", // Update with actual handle
+        twitter: "https://twitter.com/badgirlDela",
+        appleMusic: "" // Will be updated with actual link
+      }
     },
     {
-      id: "port4",
-      title: "Membership Renewal Automation",
-      description: "Built Keap (Infusionsoft) workflows to handle renewals, improving member retention by 25%.",
-      url: "",
-      gitLink: "",
-      src: "/images/keap.png",
-      stacks: ["Keap"],
+      id: "sintraa_digital_presence",
+      title: "Sintraa - Artist Brand Development", 
+      description: "Building digital presence for talented Nigerian artist through strategic content creation and audience engagement campaigns.",
+      url: "", // Artist's main streaming platform
+      gitLink: "", // Can link to case study
+      src: "/images/D2.jpg", // Replace with actual image
+      stacks: ["Artist Branding", "Visual Identity", "Music Promotion"],
+      category: "Music & Entertainment",
+      results: [
+        "Built engaged fanbase from 0 to 2,500 followers",
+        "Created viral-worthy content series",
+        "Secured playlist placements through social proof"
+      ],
+      socialLinks: {
+        instagram: "https://instagram.com/sintraa", // Update with actual handle
+        twitter: "https://twitter.com/sintraa",
+        spotify: "" // Will be updated with actual link
+      }
     },
     {
-      id: "port7",
-      title: "CRM Pipeline Development",
-      description: "Built GoHighLevel CRM pipelines for lead tracking and membership follow-ups, boosting conversions by 15%.",
+      id: "bni_digital_transformation",
+      title: "BNI Regional Digital Transformation",
+      description: "Led comprehensive social media strategy across 18 BNI chapters, creating consistent branding and driving member engagement through strategic content.",
       url: "",
       gitLink: "",
-      src: "/images/Gohighlevel1.png",
-      stacks: ["GoHighLevel"],
+      src: "/images/D3.jpg", // Replace with actual image
+      stacks: ["Multi-Platform Strategy", "Professional Branding", "Community Management"],
+      category: "Professional Networks",
+      results: [
+        "50% increase in member engagement across chapters",
+        "Unified brand presence across 18 chapters", 
+        "35% more qualified visitor inquiries"
+      ]
     },
     {
-      id: "port9",
-      title: "Facebook Content Strategy",
-      description: "Led branding and engagement campaigns for 18 chapters, increasing follower growth by 50% year-over-year.",
+      id: "afrobeats_playlist_campaign",
+      title: "Afrobeats Playlist Promotion Campaign",
+      description: "Strategic social media campaign promoting Nigerian Afrobeats artists across multiple streaming platforms and social channels.",
       url: "",
       gitLink: "",
-      src: "/images/Facebook.png",
-      stacks: ["Facebook", "Content Strategy"],
+      src: "/images/D4.jpg", // Replace with actual image
+      stacks: ["Music Curation", "Cross-Platform Promotion", "Artist Collaboration"],
+      category: "Music & Entertainment",
+      results: [
+        "5,000+ playlist saves within first month",
+        "Featured 20+ emerging Nigerian artists",
+        "Generated 50K+ streams for featured tracks"
+      ]
     },
     {
-      id: "port10",
-      title: "LinkedIn Leadership Campaigns",
-      description: "Developed LinkedIn strategies to highlight members and events, enhancing professional visibility.",
+      id: "crm_automation_system", 
+      title: "Smart CRM & Automation Suite",
+      description: "Built comprehensive automation systems using GoHighLevel, Keap, and Zapier to streamline operations and improve client experiences.",
       url: "",
       gitLink: "",
-      src: "/images/Linkedin social.png",
-      stacks: ["LinkedIn", "B2B Marketing"],
+      src: "/images/D5.jpg", // Replace with actual image
+      stacks: ["Marketing Automation", "CRM Development", "Process Optimization"],
+      category: "Business Automation", 
+      results: [
+        "40% reduction in manual administrative tasks",
+        "25% improvement in client retention rates",
+        "15% increase in lead conversion"
+      ]
     },
-  ],
+    {
+      id: "nigerian_music_showcase",
+      title: "Nigerian Music Talent Showcase",
+      description: "Multi-artist campaign showcasing diverse Nigerian musical talent through coordinated social media presence and streaming promotion.",
+      url: "",
+      gitLink: "",
+      src: "/images/D6.jpg", // Replace with actual image
+      stacks: ["Artist Development", "Cultural Marketing", "Community Building"],
+      category: "Music & Entertainment",
+      results: [
+        "Launched 5 artist careers on social platforms",
+        "Created 100+ pieces of promotional content",
+        "Built combined fanbase of 15,000+ engaged followers"
+      ]
+    }
+  ]
+};
+
+// Additional showcase data for enhanced presentation
+export const projectShowcase = {
+  hero: {
+    title: "Where Creativity Meets Strategy",
+    subtitle: "From Nigerian music stars to professional networks, we create digital experiences that move people and drive results",
+    stats: [
+      { number: "500K+", label: "Social Media Impressions" },
+      { number: "18", label: "BNI Chapters Managed" },
+      { number: "250%", label: "Average Growth Rate" },
+      { number: "10+", label: "Creative Campaigns Launched" }
+    ]
+  },
+  
+  featured: {
+    title: "Featured: Nigerian Music Talent", 
+    description: "We're proud to work with incredible Nigerian artists, helping them build authentic connections with fans worldwide.",
+    artists: [
+      {
+        name: "Badgirl Dela",
+        genre: "Afrobeats/Pop",
+        description: "Rising star with powerful vocals and authentic storytelling",
+        handles: {
+          instagram: "@badgirlDela", // Update when you get actual handles
+          twitter: "@badgirlDela"
+        }
+      },
+      {
+        name: "Sintraa", 
+        genre: "Afrobeats/R&B",
+        description: "Emerging talent with unique sound and growing fanbase", 
+        handles: {
+          instagram: "@sintraa", // Update when you get actual handles
+          twitter: "@sintraa"
+        }
+      }
+    ]
+  }
 };
 
 export const Recognition = {
@@ -374,8 +471,8 @@ export const FailureandDocumentation = {
 };
 
 export const contact = {
-  title: "Contact",
-  description: "Looking for someone reliable, smart, and ready to take administrative stress off your plate? I'm available and ready to support your team. Let's start transforming your operations today!",
+  title: "Ready to Grow Your Social Media Presence?",
+  description: "Stop posting into the void. We help businesses turn social media followers into paying customers with proven strategies and consistent content that actually converts. Ready to see real results?",
 };
 
 export const socials = [
@@ -385,15 +482,15 @@ export const socials = [
   },
   {
     name: "github",
-    url: "https://www.github.com/marvelcruz",
+    url: "",
   },
   {
     name: "email",
-    url: "mailto:Marvellousolabode@gmail.com",
+    url: "mailto:triskelion@gmail.com",
   },
   {
     name: "linkedin",
-    url: "https://www.linkedin.com/in/marvellousolabode/",
+    url: "",
   },
 ];
 
@@ -458,7 +555,7 @@ export const supports = [
 
 export const works = {
   title: "Why Choose Our Social Media Management?",
-  subtitle: "We don't just post content—we architect digital growth systems that deliver measurable business impact",
+  subtitle: "We don't just post content, we architect digital growth systems that deliver measurable business impact",
   values: [
     {
       title: "Algorithm Optimization Specialist",
@@ -539,16 +636,16 @@ export const stories = {
 
 export const workPlans = {
   title: "Our Social Media Management Approach",
-  desc: "We don't just post content—we build strategic digital presence that drives real business results",
+  desc: "We don't just post content, we build strategic digital presence that drives real business results",
   values: [
     {
       title: "We Speak Your Audience's Language",
-      desc: "You started your business to serve customers, not to decode algorithm changes. We analyze your ideal customers' online behavior and craft content that resonates—so your social media actually converts scrollers into buyers.",
+      desc: "You started your business to serve customers, not to decode algorithm changes. We analyze your ideal customers' online behavior and craft content that resonates, so your social media actually converts scrollers into buyers.",
       icon: "💬"
     },
     {
       title: "Platform-Specific Strategies That Work",
-      desc: "Forget copy-pasted content across platforms. We create tailored content for Instagram's visual feed, LinkedIn's professional tone, and TikTok's raw authenticity—maximizing engagement on each channel.",
+      desc: "Forget copy-pasted content across platforms. We create tailored content for Instagram's visual feed, LinkedIn's professional tone, and TikTok's raw authenticity, maximizing engagement on each channel.",
       icon: "📱"
     },
     {
@@ -563,12 +660,12 @@ export const workPlans = {
     },
     {
       title: "We Speak the Social Media Lingo",
-      desc: "No need to explain what UGC or CTR means. We're fluent in social media metrics, platform updates, and content trends—so you don't have to waste time catching us up on industry basics.",
+      desc: "No need to explain what UGC or CTR means. We're fluent in social media metrics, platform updates, and content trends, so you don't have to waste time catching us up on industry basics.",
       icon: "🔤"
     },
     {
       title: "We Understand Your Daily Reality",
-      desc: "Last-minute posts, trending opportunities, and urgent client requests—social media never sleeps. Our flexible workflows adapt to your business rhythm, not the other way around.",
+      desc: "Last-minute posts, trending opportunities, and urgent client requests, social media never sleeps. Our flexible workflows adapt to your business rhythm, not the other way around.",
       icon: "⏰"
     }
   ],

@@ -22,8 +22,8 @@ const Navbar = () => {
         <Link href="/">
           <div className="rounded-full bg-color-6">
             <Image
-              src="/icons/icont.ico"
-              alt="shefcodev logo"
+              src="/icons/TRI.ico"
+              alt=""
               width={40}
               height={40}
               className="p-[3px] cursor-pointer"
