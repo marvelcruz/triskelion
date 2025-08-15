@@ -261,10 +261,10 @@ const Leadgeneration = () => {
           <div className="flex justify-between items-center py-4">
             <TriskelionLogo size={40} />
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Services</a>
-              <a href="#" className="text-gray-300 hover:text-purple-400 transition-colors">Portfolio</a>
-              <a href="#" className="text-gray-300 hover:text-pink-400 transition-colors">About</a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</a>
+              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors"></a>
+              <a href="#" className="text-gray-300 hover:text-purple-400 transition-colors"></a>
+              <a href="#" className="text-gray-300 hover:text-pink-400 transition-colors"></a>
+              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors"></a>
             </nav>
           </div>
         </div>
@@ -467,7 +467,7 @@ const Leadgeneration = () => {
                 </div>
                 <p className="text-gray-600 mb-4 italic">"{testimonial.quote}"</p>
                 <p className="font-semibold text-gray-900">— {testimonial.name}</p>
-              </motion.div>
+              </motion.div>ƒƒ
             ))}
           </div>
         </div>
