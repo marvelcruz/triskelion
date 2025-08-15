@@ -27,8 +27,11 @@ interface CaseStudy {
   };
 }
 
+// Define the tab keys as a type
+type TabKey = 'networking' | 'creative' | 'business';
+
 const SolutionsShowcase = () => {
-  const [activeTab, setActiveTab] = useState("networking");
+  const [activeTab, setActiveTab] = useState<TabKey>("networking");
 
   const motionValues = {
     initial: { opacity: 0, y: 20 },
@@ -39,26 +42,26 @@ const SolutionsShowcase = () => {
 
   const tabs = [
     {
-      id: "networking",
+      id: "networking" as TabKey,
       label: "Professional Networks",
       icon: <FaNetworkWired className="text-lg" />,
       description: "BNI, Chambers of Commerce & Professional Organizations"
     },
     {
-      id: "creative",
+      id: "creative" as TabKey,
       label: "Music & Arts",
       icon: <FaMusic className="text-lg" />,
       description: "Artists, Musicians, Galleries & Creative Businesses"
     },
     {
-      id: "business",
+      id: "business" as TabKey,
       label: "General Business",
       icon: <FaBriefcase className="text-lg" />,
       description: "Startups, E-commerce, Professional Services & Local Businesses"
     }
   ];
 
-  const caseStudiesByCategory = {
+  const caseStudiesByCategory: Record<TabKey, CaseStudy[]> = {
     networking: [
       {
         id: 1,
