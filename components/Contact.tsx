@@ -6,6 +6,19 @@ import { FaWhatsapp, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
 
+// Types
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 // Motion values
 const motionValues = {
   initial: { opacity: 0, y: 20 },
@@ -69,8 +82,8 @@ const TriskelionLogo = ({ size = 40, className = "", showText = true, animationD
 );
 
 // Form validation
-const validateForm = (formData) => {
-  const errors = {};
+const validateForm = (formData: FormData): FormErrors => {
+  const errors: FormErrors = {};
   
   if (!formData.name || formData.name.length < 2) {
     errors.name = 'Name must be at least 2 characters.';
@@ -88,16 +101,16 @@ const validateForm = (formData) => {
 };
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -105,7 +118,7 @@ const ContactForm = () => {
     }));
     
     // Clear error when user starts typing
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
         [name]: ''
@@ -113,7 +126,7 @@ const ContactForm = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     const validationErrors = validateForm(formData);
@@ -205,7 +218,7 @@ const ContactForm = () => {
   );
 };
 
-const SocialIcon = ({ name, className }) => {
+const SocialIcon = ({ name, className }: { name: string; className: string }) => {
   return (
     <Fragment>
       {name === 'whatsapp' ? (
