@@ -1,86 +1,211 @@
 'use client';
 
-import { Fragment } from 'react';
-import Link from 'next/link';
+import { Fragment, useState } from 'react';
 import { motion } from 'framer-motion';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { FaWhatsapp, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
-import Button from '@/components/ui/UIButton';
-import { Form } from '@/components/ui/form';
-import FormInput from './FormInput';
-import { contact } from '@/constants';
-import { socials } from '@/constants';
-import { sendMail } from '@/lib/actions/mail.actions';
-import { parseStringify, motionValues } from '@/lib/utils';
 
-export const formSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
-  }),
-  email: z.string().email({ message: 'Email is invalid.' }),
-  message: z.string().min(3, { message: "Message can't be empty." }),
-});
+// Motion values
+const motionValues = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+  viewport: { once: true }
+};
+
+// Contact constants
+const contact = {
+  title: "Let's Work Together",
+  description: "Get in touch and let's create something amazing together"
+};
+
+const socials = [
+  { name: 'whatsapp', url: 'https://wa.me/1234567890' },
+  { name: 'github', url: 'https://github.com/yourusername' },
+  { name: 'x', url: 'https://x.com/yourusername' },
+  { name: 'linkedin', url: 'https://linkedin.com/in/yourusername' },
+  { name: 'instagram', url: 'https://instagram.com/yourusername' },
+  { name: 'email', url: 'mailto:your@email.com' }
+];
+
+// Triskelion Logo Component
+const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }) => (
+  <div className="flex items-center space-x-3">
+    <motion.div 
+      className={`relative ${className}`}
+      style={{ width: size, height: size }}
+      animate={{ rotate: 360 }}
+      transition={{ duration: animationDuration, repeat: Infinity, ease: "linear" }}
+    >
+      <svg width={size} height={size} viewBox="0 0 120 120" className="drop-shadow-lg">
+        <defs>
+          <linearGradient id={`triskelion-gradient-${size}-${animationDuration}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="50%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#ec4899" />
+          </linearGradient>
+        </defs>
+        
+        <circle cx="60" cy="60" r="10" fill={`url(#triskelion-gradient-${size}-${animationDuration})`} />
+        
+        <g transform="translate(60,60)">
+          {[0, 120, 240].map((rotation, index) => (
+            <g key={index} transform={`rotate(${rotation})`}>
+              <path
+                d="M 0,0 Q -20,-30 -30,-50 Q -45,-55 -50,-40 Q -45,-30 -30,-25 Q -20,-20 -15,-30 Q -10,-40 -20,-45"
+                fill={`url(#triskelion-gradient-${size}-${animationDuration})`}
+                stroke="rgba(255,255,255,0.3)"
+                strokeWidth="0.8"
+              />
+              <circle cx="-30" cy="-40" r="10" fill={`url(#triskelion-gradient-${size}-${animationDuration})`} />
+            </g>
+          ))}
+        </g>
+      </svg>
+    </motion.div>
+    {showText && <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">TRISKELION</span>}
+  </div>
+);
+
+// Form validation
+const validateForm = (formData) => {
+  const errors = {};
+  
+  if (!formData.name || formData.name.length < 2) {
+    errors.name = 'Name must be at least 2 characters.';
+  }
+  
+  if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
+    errors.email = 'Email is invalid.';
+  }
+  
+  if (!formData.message || formData.message.length < 3) {
+    errors.message = "Message can't be empty.";
+  }
+  
+  return errors;
+};
 
 const ContactForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
   });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    await sendMail(values)
-      .then((response) => parseStringify(response))
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error.message));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
 
-    form.reset();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const validationErrors = validateForm(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitMessage('');
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log('Form submitted:', formData);
+      setSubmitMessage('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setSubmitMessage('Failed to send message. Please try again.');
+      console.error('Submit error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <Form {...form}>
-      <motion.form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full sm:w-[574px] lg:max-w-[516px] flex flex-col gap-10"
-        {...motionValues}
-      >
-        <FormInput
+    <motion.form
+      onSubmit={handleSubmit}
+      className="w-full sm:w-[574px] lg:max-w-[516px] flex flex-col gap-6"
+      {...motionValues}
+    >
+      <div className="flex flex-col gap-2">
+        <label htmlFor="name" className="text-white font-medium">Name</label>
+        <input
+          id="name"
           name="name"
-          control={form.control}
-          label="Name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
           placeholder="Marvellous Olabode"
+          className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
         />
-        <FormInput
+        {errors.name && <span className="text-red-400 text-sm">{errors.name}</span>}
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="email" className="text-white font-medium">Email</label>
+        <input
+          id="email"
           name="email"
-          control={form.control}
-          label="Email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
           placeholder="Marvellousolabode@gmail.com"
+          className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
         />
-        <FormInput
+        {errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="message" className="text-white font-medium">Message</label>
+        <textarea
+          id="message"
           name="message"
-          control={form.control}
-          label="Message"
+          value={formData.message}
+          onChange={handleChange}
           placeholder="Message here"
+          rows={4}
+          className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors resize-vertical"
         />
-        <Button
-          type="submit"
-          className="bg-transparent rounded-xl text-white border border-white py-2.5"
-        >
-          <span className="font-montserrat font-bold">Submit</span>
-        </Button>
-      </motion.form>
-    </Form>
+        {errors.message && <span className="text-red-400 text-sm">{errors.message}</span>}
+      </div>
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="bg-transparent rounded-xl text-white border border-white py-3 px-6 font-bold hover:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? 'Submitting...' : 'Submit'}
+      </button>
+
+      {submitMessage && (
+        <div className={`text-center text-sm ${submitMessage.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
+          {submitMessage}
+        </div>
+      )}
+    </motion.form>
   );
 };
 
-const SocialIcon = ({ name, className }: SocialIconProps) => {
+const SocialIcon = ({ name, className }) => {
   return (
     <Fragment>
       {name === 'whatsapp' ? (
@@ -106,31 +231,92 @@ const Contact = () => {
   const { title, description } = contact;
 
   return (
-    <section id='contact' className='section section_px section-gap'>
-      <main className='flex-center flex-col gap-8'>
-        <motion.h2 className='section-h2' {...motionValues}>
-          {title}
-        </motion.h2>
-        <motion.h3 className='section-h3' {...motionValues}>
-          {description}
-        </motion.h3>
-        <div className='contact-wrapper'>
-          <ContactForm />
-          <motion.div className='social-wrapper' {...motionValues}>
-            {socials.map(({ name, url }: Social, index: number) => {
-              return (
-                <Link key={index} href={url} className='cursor-pointer'>
-                  <SocialIcon
-                    name={name}
-                    className='text-white size-5 sm:size-6'
-                  />
-                </Link>
-              );
-            })}
-          </motion.div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
+      {/* Contact Section */}
+      <section id='contact' className='py-20 px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto flex flex-col items-center gap-12'>
+          <motion.h2 className='text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400' {...motionValues}>
+            {title}
+          </motion.h2>
+          <motion.h3 className='text-xl md:text-2xl text-center text-gray-300 max-w-2xl' {...motionValues}>
+            {description}
+          </motion.h3>
+          
+          <div className='flex flex-col lg:flex-row items-center justify-center gap-12 w-full'>
+            <ContactForm />
+            
+            <motion.div className='flex flex-row lg:flex-col gap-6 lg:gap-8' {...motionValues}>
+              {socials.map(({ name, url }, index) => {
+                return (
+                  <a 
+                    key={index} 
+                    href={url} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='cursor-pointer hover:scale-110 transition-transform duration-300 p-3 rounded-full bg-white/10 hover:bg-white/20'
+                  >
+                    <SocialIcon
+                      name={name}
+                      className='text-white text-xl sm:text-2xl'
+                    />
+                  </a>
+                );
+              })}
+            </motion.div>
+          </div>
         </div>
-      </main>
-    </section>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="mb-6">
+                <TriskelionLogo size={32} />
+              </div>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                Our mission is to give small businesses the chance to share their story. This is our way of making that happen.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4 text-blue-400">Services</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Digital Advertising</a></li>
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Social Media</a></li>
+                <li><a href="#" className="hover:text-pink-400 transition-colors">Content Creation</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Photography</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4 text-purple-400">Company</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-purple-400 transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Our Team</a></li>
+                <li><a href="#" className="hover:text-pink-400 transition-colors">Portfolio</a></li>
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4 text-pink-400">Connect</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-[#0A66C2] transition-colors">LinkedIn</a></li>
+                <li><a href="#" className="hover:text-[#E4405F] transition-colors">Instagram</a></li>
+                <li><a href="#" className="hover:text-[#1877F2] transition-colors">Facebook</a></li>
+                <li><a href="#" className="hover:text-[#1DA1F2] transition-colors">Twitter</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p className="text-gray-400">&copy; 2025 Triskelion. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 

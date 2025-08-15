@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Triskelion",
-  description: "Marvelous Olabode's Portfolio",
+  description: "Triskelion Portfolio",
   icons: {
     icon: "/icons/TRI.ico",
   },
