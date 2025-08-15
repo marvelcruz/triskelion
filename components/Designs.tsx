@@ -4,6 +4,34 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink } from 'lucide-react';
 
+// Type definitions
+type FullCaseStudy = {
+  clientName: string;
+  industry: string;
+  location: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  testimonial: string;
+  services: string[];
+  duration: string;
+  role?: string;
+  images?: string[];
+};
+
+type Project = {
+  id?: number;
+  iid?: number;
+  title: string;
+  description: string;
+  image: string;
+  categories: string[];
+  region: string;
+  results: string;
+  caseStudyLink: string;
+  fullCaseStudy: FullCaseStudy;
+};
+
 // Triskelion Logo Component
 const TriskelionLogo = ({ size = 80, className = "" }) => (
   <motion.div 
@@ -42,11 +70,11 @@ const TriskelionLogo = ({ size = 80, className = "" }) => (
 
 const Designs = () => {
   const [selectedFilter, setSelectedFilter] = useState('All');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
 
   // Sample project data - replace with your actual projects
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "Afrobeats Artist Brand Transformation",
@@ -362,9 +390,9 @@ fullCaseStudy: {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             {...motionValues}
           >
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <motion.div
-                key={project.id}
+                key={project.id || project.iid}
                 className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer border border-gray-700 hover:border-blue-500"
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
