@@ -27,13 +27,6 @@ interface FormErrors {
   message?: string;
 }
 
-// Form schema for validation (if using zod or similar)
-export const formSchema = {
-  name: { required: true, minLength: 2 },
-  email: { required: true, pattern: /\S+@\S+\.\S+/ },
-  message: { required: true, minLength: 3 }
-};
-
 // Motion values
 const motionValues = {
   initial: { opacity: 0, y: 20 },
