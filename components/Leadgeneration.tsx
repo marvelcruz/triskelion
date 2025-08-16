@@ -1,18 +1,15 @@
 "use client";
-import { useState } from "react";
 import { Users, MessageCircle, TrendingUp, Star } from "lucide-react";
 
 const Leadgeneration = () => {
-  const [openFaq, setOpenFaq] = useState(null);
+  // Removed unused state and motion values
 
-  const motionValues = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-    viewport: { once: true }
-  };
-
-  const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }) => (
+  const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }: {
+    size?: number;
+    className?: string;
+    showText?: boolean;
+    animationDuration?: number;
+  }) => (
     <div className="flex items-center space-x-3">
       <div 
         className={`relative animate-spin ${className}`}
@@ -148,8 +145,11 @@ const Leadgeneration = () => {
     { name: "Randy, DuraPro Painting", quote: "Partnering with them will 100% help elevate your business by growing your online presence." }
   ];
 
-  // Social media platform components with actual logos
-  const SocialIcon = ({ platform }) => {
+  // Define the platform type
+  type SocialPlatform = 'Facebook' | 'Instagram' | 'Google' | 'YouTube' | 'LinkedIn' | 'Amazon' | 'TikTok';
+
+  // Social media platform components with actual logos - Fixed with proper typing
+  const SocialIcon = ({ platform }: { platform: SocialPlatform }) => {
     const iconProps = { className: "w-8 h-8 text-white" };
     
     switch(platform) {
@@ -203,8 +203,8 @@ const Leadgeneration = () => {
     }
   };
 
-  // Social media platforms with their brand colors
-  const socialPlatforms = [
+  // Social media platforms with their brand colors - Updated with proper typing
+  const socialPlatforms: Array<{ name: SocialPlatform; bgColor: string }> = [
     { name: 'Facebook', bgColor: 'bg-[#1877F2]' },
     { name: 'Instagram', bgColor: 'bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737]' },
     { name: 'TikTok', bgColor: 'bg-black' },
@@ -303,26 +303,6 @@ const Leadgeneration = () => {
                 <TrendingUp className="w-8 h-8 text-blue-400" />
               </div>
               <h4 className="text-xl font-bold mb-4 text-white">Build Awareness</h4>
-              <p className="text-gray-300 leading-relaxed">
-                Boost your brand's visibility with digital ads that are tailored to your target market.
-              </p>
-            </div>
-
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-500/20">
-                <Users className="w-8 h-8 text-purple-400" />
-              </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Generate Leads</h4>
-              <p className="text-gray-300 leading-relaxed">
-                Drive qualified leads to your business via phone calls, emails, or website inquiries.
-              </p>
-            </div>
-
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/20">
-                <MessageCircle className="w-8 h-8 text-pink-400" />
-              </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Integrated Ecosystem</h4>
               <p className="text-gray-300 leading-relaxed">
                 We seamlessly integrate advertising with our photo, video, and design services for a cohesive experience.
               </p>
@@ -455,4 +435,24 @@ const Leadgeneration = () => {
   );
 };
 
-export default Leadgeneration;
+export default Leadgeneration;text-gray-300 leading-relaxed">
+                Boost your brand's visibility with digital ads that are tailored to your target market.
+              </p>
+            </div>
+
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-500/20">
+                <Users className="w-8 h-8 text-purple-400" />
+              </div>
+              <h4 className="text-xl font-bold mb-4 text-white">Generate Leads</h4>
+              <p className="text-gray-300 leading-relaxed">
+                Drive qualified leads to your business via phone calls, emails, or website inquiries.
+              </p>
+            </div>
+
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10">
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/20">
+                <MessageCircle className="w-8 h-8 text-pink-400" />
+              </div>
+              <h4 className="text-xl font-bold mb-4 text-white">Integrated Ecosystem</h4>
+              <p className="
