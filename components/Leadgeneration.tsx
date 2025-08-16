@@ -2,8 +2,6 @@
 import { Users, MessageCircle, TrendingUp, Star } from "lucide-react";
 
 const Leadgeneration = () => {
-  // Removed unused state and motion values
-
   const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }: {
     size?: number;
     className?: string;
@@ -49,94 +47,6 @@ const Leadgeneration = () => {
     </div>
   );
 
-  // Scattered logos with CSS animations
-  const ScatteredLogos = () => (
-    <>
-      {/* Background logos - very subtle */}
-      <div 
-        className="absolute top-32 left-16 opacity-5 pointer-events-none z-0"
-        style={{
-          animation: "float1 30s linear infinite, bob1 8s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={200} showText={false} animationDuration={35} />
-      </div>
-
-      <div 
-        className="absolute top-12 right-20 opacity-3 pointer-events-none z-0"
-        style={{
-          animation: "float2 25s linear infinite, sway1 12s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={150} showText={false} animationDuration={40} />
-      </div>
-
-      <div 
-        className="absolute bottom-20 left-12 opacity-4 pointer-events-none z-0"
-        style={{
-          animation: "pulse1 20s ease-in-out infinite, bob2 15s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={180} showText={false} animationDuration={28} />
-      </div>
-
-      <div 
-        className="absolute top-24 right-8 opacity-2 pointer-events-none z-0"
-        style={{
-          animation: "float3 45s linear infinite, complex1 18s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={220} showText={false} animationDuration={50} />
-      </div>
-
-      {/* Strategic foreground logos - more visible */}
-      <div 
-        className="absolute -top-10 right-32 opacity-15 pointer-events-none z-20"
-        style={{
-          animation: "float4 20s linear infinite, bob3 10s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={100} showText={false} animationDuration={25} />
-      </div>
-
-      <div 
-        className="absolute top-16 left-8 opacity-12 pointer-events-none z-20"
-        style={{
-          animation: "float5 35s linear infinite, pulse2 16s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={85} showText={false} animationDuration={32} />
-      </div>
-
-      <div 
-        className="absolute bottom-32 right-16 opacity-10 pointer-events-none z-20"
-        style={{
-          animation: "float6 30s linear infinite, bob4 14s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={95} showText={false} animationDuration={38} />
-      </div>
-
-      <div 
-        className="absolute top-1/2 left-4 opacity-8 pointer-events-none z-20"
-        style={{
-          animation: "float7 40s linear infinite, complex2 18s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={75} showText={false} animationDuration={42} />
-      </div>
-
-      <div 
-        className="absolute -bottom-8 left-1/3 opacity-12 pointer-events-none z-20"
-        style={{
-          animation: "float8 25s linear infinite, pulse3 20s ease-in-out infinite"
-        }}
-      >
-        <TriskelionLogo size={110} showText={false} animationDuration={28} />
-      </div>
-    </>
-  );
-
   const testimonials = [
     { name: "Jaimee, PLM", quote: "They bring multiple ideas to the table in a fun, energetic and creative manner." },
     { name: "Danae, Little Red", quote: "Their services have been transformative and brought so much value and insight to my business." },
@@ -145,10 +55,8 @@ const Leadgeneration = () => {
     { name: "Randy, DuraPro Painting", quote: "Partnering with them will 100% help elevate your business by growing your online presence." }
   ];
 
-  // Define the platform type
   type SocialPlatform = 'Facebook' | 'Instagram' | 'Google' | 'YouTube' | 'LinkedIn' | 'Amazon' | 'TikTok';
 
-  // Social media platform components with actual logos - Fixed with proper typing
   const SocialIcon = ({ platform }: { platform: SocialPlatform }) => {
     const iconProps = { className: "w-8 h-8 text-white" };
     
@@ -203,7 +111,6 @@ const Leadgeneration = () => {
     }
   };
 
-  // Social media platforms with their brand colors - Updated with proper typing
   const socialPlatforms: Array<{ name: SocialPlatform; bgColor: string }> = [
     { name: 'Facebook', bgColor: 'bg-[#1877F2]' },
     { name: 'Instagram', bgColor: 'bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737]' },
@@ -255,7 +162,6 @@ const Leadgeneration = () => {
 
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 relative overflow-hidden z-10">
-        {/* Background Triskelion Pattern */}
         <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
           <div className="absolute top-1/4 left-1/4">
             <TriskelionLogo size={200} showText={false} className="opacity-20" animationDuration={45} />
@@ -304,6 +210,26 @@ const Leadgeneration = () => {
               </div>
               <h4 className="text-xl font-bold mb-4 text-white">Build Awareness</h4>
               <p className="text-gray-300 leading-relaxed">
+                Boost your brand's visibility with digital ads that are tailored to your target market.
+              </p>
+            </div>
+
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-500/20">
+                <Users className="w-8 h-8 text-purple-400" />
+              </div>
+              <h4 className="text-xl font-bold mb-4 text-white">Generate Leads</h4>
+              <p className="text-gray-300 leading-relaxed">
+                Drive qualified leads to your business via phone calls, emails, or website inquiries.
+              </p>
+            </div>
+
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10">
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/20">
+                <MessageCircle className="w-8 h-8 text-pink-400" />
+              </div>
+              <h4 className="text-xl font-bold mb-4 text-white">Integrated Ecosystem</h4>
+              <p className="text-gray-300 leading-relaxed">
                 We seamlessly integrate advertising with our photo, video, and design services for a cohesive experience.
               </p>
             </div>
@@ -328,13 +254,9 @@ const Leadgeneration = () => {
       <section className="py-12 bg-white relative z-10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-gray-900">
-              Our Proven Process
-            </h3>
+            <h3 className="text-3xl font-bold mb-6 text-gray-900">Our Proven Process</h3>
             <div className="w-20 h-1 bg-blue-600 mx-auto rounded mb-8"></div>
-            <h4 className="text-xl font-semibold mb-8 text-blue-600">
-              The Monthly Routine
-            </h4>
+            <h4 className="text-xl font-semibold mb-8 text-blue-600">The Monthly Routine</h4>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               Our team has developed a collaborative, high-performance monthly routine that ensures we stay consistent with our digital advertising efforts. Resulting in increased brand awareness and lead generation for your business.
             </p>
@@ -384,9 +306,7 @@ const Leadgeneration = () => {
       <section className="py-12 bg-gray-50 relative z-10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-gray-900">
-              Advertising Platforms
-            </h3>
+            <h3 className="text-3xl font-bold mb-6 text-gray-900">Advertising Platforms</h3>
             <div className="w-20 h-1 bg-blue-600 mx-auto rounded mb-6"></div>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               TRISKELION provides professional digital advertising using Facebook, Instagram, TikTok, Google, YouTube, LinkedIn and Amazon platforms. As a team, we select which platforms are most relevant for your business to advertise on.
@@ -435,24 +355,4 @@ const Leadgeneration = () => {
   );
 };
 
-export default Leadgeneration;text-gray-300 leading-relaxed">
-                Boost your brand's visibility with digital ads that are tailored to your target market.
-              </p>
-            </div>
-
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-500/20">
-                <Users className="w-8 h-8 text-purple-400" />
-              </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Generate Leads</h4>
-              <p className="text-gray-300 leading-relaxed">
-                Drive qualified leads to your business via phone calls, emails, or website inquiries.
-              </p>
-            </div>
-
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/20">
-                <MessageCircle className="w-8 h-8 text-pink-400" />
-              </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Integrated Ecosystem</h4>
-              <p className="
+export default Leadgeneration;
