@@ -67,8 +67,8 @@ export const projects = {
   // This is the array your component is looking for
   projects: [
     {
-      id: "badgirl_dela_campaign",
-      title: "Badgirl Dela - Digital Brand Strategy",
+      id: "Jackson campaign",
+      title: "jackson - Digital Brand Strategy",
       description: "Comprehensive social media strategy for rising Nigerian artist, building authentic fanbase and driving music streaming growth across platforms.",
       url: "", // Apple Music link when provided
       gitLink: "", // Can link to case study or campaign details
@@ -81,14 +81,14 @@ export const projects = {
         "Music streaming sessions up 120%"
       ],
       socialLinks: {
-        instagram: "https://instagram.com/badgirlDela", // Update with actual handle
-        twitter: "https://twitter.com/badgirlDela",
+        instagram: "", // Update with actual handle
+        twitter: "",
         appleMusic: "" // Will be updated with actual link
       }
     },
     {
-      id: "sintraa_digital_presence",
-      title: "Sintraa - Artist Brand Development", 
+      id: "music_digital_presence",
+      title: "Artist Brand Development", 
       description: "Building digital presence for talented Nigerian artist through strategic content creation and audience engagement campaigns.",
       url: "", // Artist's main streaming platform
       gitLink: "", // Can link to case study
@@ -101,8 +101,8 @@ export const projects = {
         "Secured playlist placements through social proof"
       ],
       socialLinks: {
-        instagram: "https://instagram.com/sintraa", // Update with actual handle
-        twitter: "https://twitter.com/sintraa",
+        instagram: "", // Update with actual handle
+        twitter: "",
         spotify: "" // Will be updated with actual link
       }
     },
@@ -187,21 +187,21 @@ export const projectShowcase = {
     description: "We're proud to work with incredible Nigerian artists, helping them build authentic connections with fans worldwide.",
     artists: [
       {
-        name: "Badgirl Dela",
+        name: "micheal jackson",
         genre: "Afrobeats/Pop",
         description: "Rising star with powerful vocals and authentic storytelling",
         handles: {
-          instagram: "@badgirlDela", // Update when you get actual handles
-          twitter: "@badgirlDela"
+          instagram: "", // Update when you get actual handles
+          twitter: ""
         }
       },
       {
-        name: "Sintraa", 
+        name: "Magic", 
         genre: "Afrobeats/R&B",
         description: "Emerging talent with unique sound and growing fanbase", 
         handles: {
-          instagram: "@sintraa", // Update when you get actual handles
-          twitter: "@sintraa"
+          instagram: "@magic", // Update when you get actual handles
+          twitter: "@magic"
         }
       }
     ]
