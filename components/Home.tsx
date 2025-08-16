@@ -62,7 +62,7 @@ const TriskelionAgency = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Simplified logo without excessive animation
+  // Simplified logo without excessive animation - made bigger
   const TriskelionLogo = ({ size = 120, className = "", glow = false }) => (
     <motion.div 
       className={`relative ${className}`}
@@ -132,7 +132,7 @@ const TriskelionAgency = () => {
 
       {/* Subtle background logos */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-16 left-16 opacity-20">
+        <div className="absolute top-32 left-16 opacity-20">
           <TriskelionLogo size={40} />
         </div>
         <div className="absolute bottom-20 right-20 opacity-25">
@@ -146,8 +146,8 @@ const TriskelionAgency = () => {
       {/* Social media icons - more subtle */}
       <div className="absolute inset-0 pointer-events-none">
         {[
-          { icon: "📸", color: "from-pink-500 to-purple-600", pos: "top-24 left-20", size: "w-16 h-16" },
-          { icon: "💼", color: "from-blue-600 to-blue-700", pos: "top-32 right-24", size: "w-18 h-18" },
+          { icon: "📸", color: "from-pink-500 to-purple-600", pos: "top-40 left-20", size: "w-16 h-16" },
+          { icon: "💼", color: "from-blue-600 to-blue-700", pos: "top-48 right-24", size: "w-18 h-18" },
           { icon: "🎵", color: "from-gray-800 to-black", pos: "bottom-28 left-16", size: "w-14 h-14" },
           { icon: "▶️", color: "from-red-600 to-red-700", pos: "bottom-32 right-28", size: "w-16 h-16" },
         ].map((item, index) => (
@@ -165,18 +165,18 @@ const TriskelionAgency = () => {
         ))}
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 container mx-auto px-6 py-16">
+      {/* Main content - Added proper top padding to avoid navigation bar overlap */}
+      <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isLoaded ? "visible" : "hidden"}
           className="text-center"
         >
-          {/* Header */}
+          {/* Header - Logo made bigger and given more space */}
           <motion.div variants={itemVariants} className="mb-12">
-            <div className="flex justify-center mb-6">
-              <TriskelionLogo size={80} glow />
+            <div className="flex justify-center mb-8">
+              <TriskelionLogo size={120} glow />
             </div>
             <motion.h1 
               className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight"
@@ -189,8 +189,6 @@ const TriskelionAgency = () => {
             </motion.p>
             <motion.p className="text-sm text-slate-400 mt-2 max-w-md mx-auto">
               New platforms - New behaviours - New audiences - New trends - New technologies - New regulations.
-          
-
             </motion.p>
           </motion.div>
 
@@ -285,18 +283,17 @@ const TriskelionAgency = () => {
           <motion.div variants={itemVariants} className="mt-12">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <motion.button
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl text-base font-semibold shadow-xl hover:shadow-blue-500/25 transition-all duration-300"
+                className=""
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: '0 15px 30px rgba(59, 130, 246, 0.3)'
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                We LOVE to work with Your Brand
               </motion.button>
               
               <motion.button
-                className="bg-transparent border border-white/30 text-white px-8 py-3 rounded-xl text-base font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+                className=""
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -310,7 +307,6 @@ const TriskelionAgency = () => {
               transition={{ delay: 0.8 }}
             >
               Starting small, growing smart. We're building something genuine with brands who believe in authentic growth over vanity metrics. A global collective, offering round-the-clock delivery at the speed of digital.
-
             </motion.p>
           </motion.div>
         </motion.div>

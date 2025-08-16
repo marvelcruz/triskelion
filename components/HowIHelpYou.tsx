@@ -67,7 +67,7 @@ const SolutionsShowcase = () => {
         id: 1,
         title: "BNI Regional Social Media Transformation",
         problem: {
-          icon: "",
+          icon: "🔴", // Red circle to represent BNI branding
           header: "THE CHALLENGE",
           statement: "Inconsistent Digital Presence Across Chapters",
           description: "BNI regions with amazing networking success stories weren't reaching beyond meeting rooms. Chapters posted sporadically, branding was inconsistent, and quality member attraction was suffering."

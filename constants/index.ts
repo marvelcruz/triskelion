@@ -6,9 +6,9 @@ export const links = [
   { title: "Home", href: "#home" },
   { title: "About", href: "#about" }, // Matches your about section
   { title: "How I Help You", href: "#SolutionsAndResults" }, // Matches your solutions section
+   { title: "Designs", href: "#designs" },
   { title: "Projects", href: "#projects" },
   { title: "Leadgeneration", href: "#Lead Generation" },
-  { title: "Designs", href: "#designs" },
   { title: "Documentation", href: "#Social Media Crisis Documentation" }, // Matches exact section title
   { title: "Contact", href: "#contact" },
 ]
