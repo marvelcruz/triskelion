@@ -12,7 +12,6 @@ const navigationLinks = [
   { title: "About", href: "/about" },
   { title: "How I Help You", href: "/help-you" },
   { title: "Designs", href: "/designs" },
-  { title: "Projects", href: "/projects" },
   { title: "Lead Generation", href: "/lead-generation" },
   { title: "Documentation", href: "/failure-and-documentation" },
   { title: "Contact", href: "/contact" }
