@@ -187,8 +187,8 @@ const Leadgeneration = () => {
           <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed">
             TRISKELION helps businesses plan, create, and manage social media that converts followers into leads.
           </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-            View Packages
+          <button className="">
+            
           </button>
         </div>
       </section>

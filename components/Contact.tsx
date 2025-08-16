@@ -47,7 +47,7 @@ const socials = [
   { name: 'x', url: 'https://x.com/yourusername' },
   { name: 'linkedin', url: 'https://linkedin.com/in/yourusername' },
   { name: 'instagram', url: 'https://instagram.com/yourusername' },
-  { name: 'email', url: 'mailto:your@email.com' }
+  { name: 'email', url: 'mailto:wecare@triskelion.ink' }
 ];
 
 // Triskelion Logo Component
@@ -175,7 +175,7 @@ const ContactForm = () => {
           type="text"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Marvellous Olabode"
+          placeholder="Triskelion most amazing client"
           className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
         />
         {errors.name && <span className="text-red-400 text-sm">{errors.name}</span>}
@@ -189,7 +189,7 @@ const ContactForm = () => {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="Marvellousolabode@gmail.com"
+          placeholder="wecare@triskelion.ink"
           className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
         />
         {errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}

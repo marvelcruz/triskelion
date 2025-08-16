@@ -13,14 +13,6 @@ export default function Home() {
   return (
     <Fragment>
       <HomeComponent /> {/* Updated to use renamed import */}
-      <About />
-      <HowIHelpYou />
-      <Designs />
-      <Projects />
-      <Leadgeneration />
-      <WorkPlans />
-      <FailureandDocumentation />
-      <Contact />
     </Fragment>
   );
 }

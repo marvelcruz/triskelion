@@ -1,13 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { links } from "@/constants";
 import { useState, MouseEvent } from "react";
 import { IoMdClose } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import MobileNav from "./MobileNav";
 import Button from "./ui/UIButton";
+
+// Navigation links based on your page structure
+const navigationLinks = [
+  { title: "About", href: "/about" },
+  { title: "How I Help You", href: "/help-you" },
+  { title: "Designs", href: "/designs" },
+  { title: "Projects", href: "/projects" },
+  { title: "Lead Generation", href: "/lead-generation" },
+  { title: "Documentation", href: "/failure-and-documentation" },
+  { title: "Contact", href: "/contact" }
+];
 
 // Triskelion Logo Component
 const TriskelionLogo = ({ size = 40, className = "", glow = false }) => (
@@ -84,11 +93,11 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className="hidden lg:flex-center gap-x-40">
-          <ul className="flex-center gap-4">
-            {links.map(({ title, href }: Link, index) => (
+        <div className="hidden lg:flex-center gap-x-8">
+          <ul className="flex-center gap-6">
+            {navigationLinks.map(({ title, href }, index) => (
               <li key={index}>
-                <Link href={href} className="link focus:link-active">
+                <Link href={href} className="link focus:link-active hover:text-blue-600 transition-colors duration-300">
                   {title}
                 </Link>
               </li>
@@ -105,7 +114,7 @@ const Navbar = () => {
         </Button>
       </nav>
 
-      <MobileNav links={links} show={showNav} />
+      <MobileNav links={navigationLinks} show={showNav} />
     </header>
   );
 };
