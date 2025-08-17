@@ -2,6 +2,93 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Rotating Circle Widget Component
+const RotatingCircleWidget = ({ className = "" }) => {
+  return (
+    <div className={`fixed bottom-6 right-6 w-36 h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
+      <div className="w-full h-full relative rounded-full bg-gradient-to-r from-red-400 via-teal-400 via-blue-400 via-green-400 via-yellow-400 to-pink-400 p-1 shadow-lg shadow-red-400/30">
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-black/80 backdrop-blur-md relative overflow-hidden border border-white/10">
+          
+          {/* Rotating Text */}
+          <div className="absolute w-full h-full animate-spin" style={{ animationDuration: '40s' }}>
+            <svg viewBox="0 0 180 180" className="w-full h-full">
+              <defs>
+                <path id="circle-path" d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
+              </defs>
+              <text className="text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
+                <textPath href="#circle-path" startOffset="0%">
+                  COMMUNITY • LIFELONG LEARNING • MUSIC • ART • TECH • BUSINESS • LIFESTYLE •
+                </textPath>
+              </text>
+            </svg>
+          </div>
+          
+          {/* Stationary Center Logo */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10">
+            {/* TRISKELION label above */}
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+              TRISKELION
+            </div>
+            
+            {/* Triskelion SVG */}
+            <svg className="w-full h-full filter drop-shadow-lg animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="triskelionGradWidget" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#f0f0f0" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+                </linearGradient>
+                <filter id="glowWidget">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <g transform="translate(50,50)" filter="url(#glowWidget)">
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(0)"/>
+                
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(120)"/>
+                
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(240)"/>
+                
+                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#fff" strokeWidth="0.5" opacity="0.95"/>
+              </g>
+            </svg>
+            
+            {/* GIVERS GAIN label below */}
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+              GIVERS GAIN®
+            </div>
+          </div>
+          
+          {/* Floating particles */}
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '30%', animationDelay: '0s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '70%', animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '50%', animationDelay: '2s', animationDuration: '4s' }}></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const TriskelionAgency = () => {
   const [currentRegion, setCurrentRegion] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -123,198 +210,205 @@ const TriskelionAgency = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Cleaner gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/50 via-transparent to-pink-900/30"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
-      </div>
-
-      {/* Subtle background logos */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-32 left-16 opacity-20">
-          <TriskelionLogo size={40} />
+    <>
+      <div className="min-h-screen relative overflow-hidden">
+        {/* Cleaner gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+          <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/50 via-transparent to-pink-900/30"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
         </div>
-        <div className="absolute bottom-20 right-20 opacity-25">
-          <TriskelionLogo size={50} glow />
-        </div>
-        <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-15">
-          <TriskelionLogo size={35} />
-        </div>
-      </div>
 
-      {/* Social media icons - more subtle */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[
-          { icon: "📸", color: "from-pink-500 to-purple-600", pos: "top-40 left-20", size: "w-16 h-16" },
-          { icon: "💼", color: "from-blue-600 to-blue-700", pos: "top-48 right-24", size: "w-18 h-18" },
-          { icon: "🎵", color: "from-gray-800 to-black", pos: "bottom-28 left-16", size: "w-14 h-14" },
-          { icon: "▶️", color: "from-red-600 to-red-700", pos: "bottom-32 right-28", size: "w-16 h-16" },
-        ].map((item, index) => (
-          <motion.div
-            key={index}
-            className={`absolute ${item.pos} ${item.size} bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-lg opacity-60`}
-            animate={{
-              y: [0, -8, 0],
-              rotate: [0, 2, 0],
-            }}
-            transition={{ duration: 4 + index, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <span className="text-white text-lg">{item.icon}</span>
-          </motion.div>
-        ))}
-      </div>
+        {/* Subtle background logos */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-32 left-16 opacity-20">
+            <TriskelionLogo size={40} />
+          </div>
+          <div className="absolute bottom-20 right-20 opacity-25">
+            <TriskelionLogo size={50} glow />
+          </div>
+          <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-15">
+            <TriskelionLogo size={35} />
+          </div>
+        </div>
 
-      {/* Main content - Added proper top padding to avoid navigation bar overlap */}
-      <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isLoaded ? "visible" : "hidden"}
-          className="text-center"
-        >
-          {/* Header - Logo made bigger and given more space */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="flex justify-center mb-8">
-              <TriskelionLogo size={120} glow />
-            </div>
-            <motion.h1 
-              className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight"
+        {/* Social media icons - more subtle */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[
+            { icon: "📸", color: "from-pink-500 to-purple-600", pos: "top-40 left-20", size: "w-16 h-16" },
+            { icon: "💼", color: "from-blue-600 to-blue-700", pos: "top-48 right-24", size: "w-18 h-18" },
+            { icon: "🎵", color: "from-gray-800 to-black", pos: "bottom-28 left-16", size: "w-14 h-14" },
+            { icon: "▶️", color: "from-red-600 to-red-700", pos: "bottom-32 right-28", size: "w-16 h-16" },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className={`absolute ${item.pos} ${item.size} bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-lg opacity-60`}
+              animate={{
+                y: [0, -8, 0],
+                rotate: [0, 2, 0],
+              }}
+              transition={{ duration: 4 + index, repeat: Infinity, ease: "easeInOut" }}
             >
-              TRISKELION
-            </motion.h1>
-            <div className="w-24 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-4"></div>
-            <motion.p className="text-lg md:text-xl text-blue-200 font-medium">
-              Social Media Marketing Agency
-            </motion.p>
-            <motion.p className="text-sm text-slate-400 mt-2 max-w-md mx-auto">
-              New platforms - New behaviours - New audiences - New trends - New technologies - New regulations.
-            </motion.p>
-          </motion.div>
+              <span className="text-white text-lg">{item.icon}</span>
+            </motion.div>
+          ))}
+        </div>
 
-          {/* Region selector */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="flex flex-wrap justify-center gap-2 mb-8 bg-black/40 backdrop-blur-lg rounded-2xl p-3 max-w-fit mx-auto border border-white/10 shadow-xl">
-              {regions.map((region, index) => (
+        {/* Main content - Added proper top padding to avoid navigation bar overlap */}
+        <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isLoaded ? "visible" : "hidden"}
+            className="text-center"
+          >
+            {/* Header - Logo made bigger and given more space */}
+            <motion.div variants={itemVariants} className="mb-12">
+              <div className="flex justify-center mb-8">
+                <TriskelionLogo size={120} glow />
+              </div>
+              <motion.h1 
+                className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight"
+              >
+                TRISKELION
+              </motion.h1>
+              <div className="w-24 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-4"></div>
+              <motion.p className="text-lg md:text-xl text-blue-200 font-medium">
+                Social Media Marketing Agency
+              </motion.p>
+              <motion.p className="text-sm text-slate-400 mt-2 max-w-md mx-auto">
+                New platforms - New behaviours - New audiences - New trends - New technologies - New regulations.
+              </motion.p>
+            </motion.div>
+
+            {/* Region selector */}
+            <motion.div variants={itemVariants} className="mb-12">
+              <div className="flex flex-wrap justify-center gap-2 mb-8 bg-black/40 backdrop-blur-lg rounded-2xl p-3 max-w-fit mx-auto border border-white/10 shadow-xl">
+                {regions.map((region, index) => (
+                  <motion.button
+                    key={index}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                      currentRegion === index 
+                        ? 'bg-white text-slate-900 shadow-lg' 
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                    onClick={() => setCurrentRegion(index)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {region.flag} {region.country}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Dynamic content */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentRegion}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="max-w-4xl mx-auto"
+              >
+                <div className="mb-10">
+                  <motion.h2 
+                    className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
+                  >
+                    Reaching <span className={`bg-gradient-to-r ${regions[currentRegion].accent} bg-clip-text text-transparent font-black`}>
+                      {regions[currentRegion].audience}
+                    </span> {regions[currentRegion].reach}
+                  </motion.h2>
+                  
+                  <motion.p 
+                    className="text-base md:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {regions[currentRegion].description}
+                  </motion.p>
+                  
+                  <motion.div 
+                    className="bg-black/30 backdrop-blur-md rounded-xl p-6 border border-white/10 mb-6"
+                    whileHover={{ borderColor: "rgba(255,255,255,0.2)" }}
+                  >
+                    <p className="text-xs text-blue-300 mb-2 uppercase tracking-wider font-medium">Our Focus</p>
+                    <p className="text-lg text-white font-medium mb-2">{regions[currentRegion].platforms}</p>
+                    <p className="text-sm text-slate-400">{regions[currentRegion].speciality}</p>
+                  </motion.div>
+                </div>
+
+                {/* Honest startup stats */}
+                <motion.div 
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {[
+                    { number: regions[currentRegion].stats.projects, label: "Projects Completed", icon: "📊" },
+                    { number: regions[currentRegion].stats.followers, label: "Followers Grown", icon: "📈" },
+                    { number: regions[currentRegion].stats.months, label: "Months Experience", icon: "📅" }
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={index}
+                      className="bg-black/40 backdrop-blur-lg rounded-xl p-5 border border-white/15 hover:border-white/30 transition-all duration-300"
+                      whileHover={{ y: -2, scale: 1.02 }}
+                    >
+                      <div className="text-xl mb-2">{stat.icon}</div>
+                      <div className="text-2xl font-bold text-white mb-1">
+                        {stat.number}
+                      </div>
+                      <div className="text-slate-400 font-medium text-xs">{stat.label}</div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Honest CTA */}
+            <motion.div variants={itemVariants} className="mt-12">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
                 <motion.button
-                  key={index}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                    currentRegion === index 
-                      ? 'bg-white text-slate-900 shadow-lg' 
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
-                  }`}
-                  onClick={() => setCurrentRegion(index)}
+                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: '0 15px 30px rgba(59, 130, 246, 0.3)'
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Get Started Today
+                </motion.button>
+                
+                <motion.button
+                  className="px-8 py-3 border border-white/20 text-white font-medium rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {region.flag} {region.country}
+                  View Our Work
                 </motion.button>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Dynamic content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentRegion}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="mb-10">
-                <motion.h2 
-                  className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
-                >
-                  Reaching <span className={`bg-gradient-to-r ${regions[currentRegion].accent} bg-clip-text text-transparent font-black`}>
-                    {regions[currentRegion].audience}
-                  </span> {regions[currentRegion].reach}
-                </motion.h2>
-                
-                <motion.p 
-                  className="text-base md:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {regions[currentRegion].description}
-                </motion.p>
-                
-                <motion.div 
-                  className="bg-black/30 backdrop-blur-md rounded-xl p-6 border border-white/10 mb-6"
-                  whileHover={{ borderColor: "rgba(255,255,255,0.2)" }}
-                >
-                  <p className="text-xs text-blue-300 mb-2 uppercase tracking-wider font-medium">Our Focus</p>
-                  <p className="text-lg text-white font-medium mb-2">{regions[currentRegion].platforms}</p>
-                  <p className="text-sm text-slate-400">{regions[currentRegion].speciality}</p>
-                </motion.div>
               </div>
-
-              {/* Honest startup stats */}
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                {[
-                  { number: regions[currentRegion].stats.projects, label: "Projects Completed", icon: "" },
-                  { number: regions[currentRegion].stats.followers, label: "Followers Grown", icon: "" },
-                  { number: regions[currentRegion].stats.months, label: "Months Experience", icon: "" }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-black/40 backdrop-blur-lg rounded-xl p-5 border border-white/15 hover:border-white/30 transition-all duration-300"
-                    whileHover={{ y: -2, scale: 1.02 }}
-                  >
-                    <div className="text-xl mb-2">{stat.icon}</div>
-                    <div className="text-2xl font-bold text-white mb-1">
-                      {stat.number}
-                    </div>
-                    <div className="text-slate-400 font-medium text-xs">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Honest CTA */}
-          <motion.div variants={itemVariants} className="mt-12">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <motion.button
-                className=""
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 15px 30px rgba(59, 130, 246, 0.3)'
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-              </motion.button>
               
-              <motion.button
-                className=""
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <motion.p 
+                className="text-slate-400 text-xs max-w-md mx-auto"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
               >
-              </motion.button>
-            </div>
-            
-            <motion.p 
-              className="text-slate-400 text-xs max-w-md mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              Starting small, growing smart. We're building something genuine with brands who believe in authentic growth over vanity metrics. A global collective, offering round-the-clock delivery at the speed of digital.
-            </motion.p>
+                Starting small, growing smart. We're building something genuine with brands who believe in authentic growth over vanity metrics. A global collective, offering round-the-clock delivery at the speed of digital.
+              </motion.p>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
+        </div>
 
-      {/* Subtle bottom accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-60"></div>
-    </div>
+        {/* Subtle bottom accent */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-60"></div>
+      </div>
+      
+      {/* Rotating Circle Widget */}
+      <RotatingCircleWidget />
+    </>
   );
 };
 

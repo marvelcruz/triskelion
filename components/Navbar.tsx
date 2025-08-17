@@ -10,10 +10,10 @@ import Button from "./ui/UIButton";
 // Navigation links based on your page structure
 const navigationLinks = [
   { title: "About", href: "/about" },
-  { title: "How I Help You", href: "/help-you" },
+  { title: "How We Help You", href: "/help-you" },
   { title: "Designs", href: "/designs" },
   { title: "Lead Generation", href: "/lead-generation" },
-  { title: "Documentation", href: "/failure-and-documentation" },
+  { title: "Our Approach", href: "/failure-and-documentation" },
   { title: "Contact", href: "/contact" }
 ];
 

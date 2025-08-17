@@ -1,6 +1,93 @@
 "use client";
 import { Users, MessageCircle, TrendingUp, Star } from "lucide-react";
 
+// Rotating Circle Widget Component
+const RotatingCircleWidget = ({ className = "" }) => {
+  return (
+    <div className={`fixed bottom-6 right-6 w-36 h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
+      <div className="w-full h-full relative rounded-full bg-gradient-to-r from-red-400 via-teal-400 via-blue-400 via-green-400 via-yellow-400 to-pink-400 p-1 shadow-lg shadow-red-400/30">
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-black/80 backdrop-blur-md relative overflow-hidden border border-white/10">
+          
+          {/* Rotating Text */}
+          <div className="absolute w-full h-full animate-spin" style={{ animationDuration: '40s' }}>
+            <svg viewBox="0 0 180 180" className="w-full h-full">
+              <defs>
+                <path id="circle-path" d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
+              </defs>
+              <text className="text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
+                <textPath href="#circle-path" startOffset="0%">
+                  COMMUNITY • LIFELONG LEARNING • MUSIC • ART • TECH • BUSINESS • LIFESTYLE •
+                </textPath>
+              </text>
+            </svg>
+          </div>
+          
+          {/* Stationary Center Logo */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10">
+            {/* TRISKELION label above */}
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+              TRISKELION
+            </div>
+            
+            {/* Triskelion SVG */}
+            <svg className="w-full h-full filter drop-shadow-lg animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="triskelionGradWidget" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#f0f0f0" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+                </linearGradient>
+                <filter id="glowWidget">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <g transform="translate(50,50)" filter="url(#glowWidget)">
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(0)"/>
+                
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(120)"/>
+                
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(240)"/>
+                
+                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#fff" strokeWidth="0.5" opacity="0.95"/>
+              </g>
+            </svg>
+            
+            {/* GIVERS GAIN label below */}
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+              GIVERS GAIN®
+            </div>
+          </div>
+          
+          {/* Floating particles */}
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '30%', animationDelay: '0s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '70%', animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '50%', animationDelay: '2s', animationDuration: '4s' }}></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Leadgeneration = () => {
   const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }: {
     size?: number;
@@ -159,6 +246,9 @@ const Leadgeneration = () => {
           100% { transform: translateX(0px) translateY(0px); }
         }
       `}</style>
+
+      {/* Rotating Circle Widget */}
+      <RotatingCircleWidget />
 
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 relative overflow-hidden z-10">

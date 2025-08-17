@@ -1,7 +1,94 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaNetworkWired, FaMusic, FaBriefcase } from "react-icons/fa";
+import { Network, Music, Briefcase } from "lucide-react";
+
+// Rotating Circle Widget Component
+const RotatingCircleWidget = ({ className = "" }) => {
+  return (
+    <div className={`fixed bottom-6 right-6 w-36 h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
+      <div className="w-full h-full relative rounded-full bg-gradient-to-r from-red-400 via-teal-400 via-blue-400 via-green-400 via-yellow-400 to-pink-400 p-1 shadow-lg shadow-red-400/30">
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-black/80 backdrop-blur-md relative overflow-hidden border border-white/10">
+          
+          {/* Rotating Text */}
+          <div className="absolute w-full h-full animate-spin" style={{ animationDuration: '40s' }}>
+            <svg viewBox="0 0 180 180" className="w-full h-full">
+              <defs>
+                <path id="circle-path" d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
+              </defs>
+              <text className="text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
+                <textPath href="#circle-path" startOffset="0%">
+                  COMMUNITY • LIFELONG LEARNING • MUSIC • ART • TECH • BUSINESS • LIFESTYLE •
+                </textPath>
+              </text>
+            </svg>
+          </div>
+          
+          {/* Stationary Center Logo */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10">
+            {/* TRISKELION label above */}
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+              TRISKELION
+            </div>
+            
+            {/* Triskelion SVG */}
+            <svg className="w-full h-full filter drop-shadow-lg animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="triskelionGradWidget" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#f0f0f0" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+                </linearGradient>
+                <filter id="glowWidget">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <g transform="translate(50,50)" filter="url(#glowWidget)">
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(0)"/>
+                
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(120)"/>
+                
+                <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
+                      fill="url(#triskelionGradWidget)" 
+                      stroke="#fff" 
+                      strokeWidth="0.5"
+                      opacity="0.9"
+                      transform="rotate(240)"/>
+                
+                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#fff" strokeWidth="0.5" opacity="0.95"/>
+              </g>
+            </svg>
+            
+            {/* GIVERS GAIN label below */}
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+              GIVERS GAIN®
+            </div>
+          </div>
+          
+          {/* Floating particles */}
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '30%', animationDelay: '0s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '70%', animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '50%', animationDelay: '2s', animationDuration: '4s' }}></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 interface CaseStudy {
   id: number;
@@ -44,19 +131,19 @@ const SolutionsShowcase = () => {
     {
       id: "networking" as TabKey,
       label: "Professional Networks",
-      icon: <FaNetworkWired className="text-lg" />,
+      icon: <Network className="text-lg" />,
       description: "BNI, Chambers of Commerce & Professional Organizations"
     },
     {
       id: "creative" as TabKey,
       label: "Music & Arts",
-      icon: <FaMusic className="text-lg" />,
+      icon: <Music className="text-lg" />,
       description: "Artists, Musicians, Galleries & Creative Businesses"
     },
     {
       id: "business" as TabKey,
       label: "General Business",
-      icon: <FaBriefcase className="text-lg" />,
+      icon: <Briefcase className="text-lg" />,
       description: "Startups, E-commerce, Professional Services & Local Businesses"
     }
   ];
@@ -266,135 +353,140 @@ const SolutionsShowcase = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <motion.div {...motionValues} className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Real Solutions for Real Businesses
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Every business has unique social media challenges. Here's how we've helped businesses like yours achieve measurable growth.
-          </p>
-        </motion.div>
-
-        {/* Tab Navigation */}
-        <motion.div {...motionValues} className="mb-12">
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
-                  activeTab === tab.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-              >
-                {tab.icon}
-                <span>{tab.label}</span>
-              </button>
-            ))}
-          </div>
+    <>
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center">
-            <p className="text-gray-600 dark:text-gray-400">
-              {tabs.find(tab => tab.id === activeTab)?.description}
+          {/* Header */}
+          <motion.div {...motionValues} className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              Real Solutions for Real Businesses
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Every business has unique social media challenges. Here's how we've helped businesses like yours achieve measurable growth.
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Case Studies */}
-        <div className="space-y-16">
-          {caseStudiesByCategory[activeTab]?.map((caseStudy) => (
-            <motion.div 
-              key={caseStudy.id}
-              {...motionValues}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
-            >
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">
-                  {caseStudy.title}
-                </h3>
+          {/* Tab Navigation */}
+          <motion.div {...motionValues} className="mb-12">
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
+                    activeTab === tab.id
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {tab.icon}
+                  <span>{tab.label}</span>
+                </button>
+              ))}
+            </div>
+            
+            <div className="text-center">
+              <p className="text-gray-600 dark:text-gray-400">
+                {tabs.find(tab => tab.id === activeTab)?.description}
+              </p>
+            </div>
+          </motion.div>
 
-                <div className="grid lg:grid-cols-3 gap-8">
-                  
-                  {/* Problem */}
-                  <div className="p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500">
-                    <div className="flex items-center mb-3">
-                      <span className="text-xl mr-2">{caseStudy.problem.icon}</span>
-                      <h4 className="font-bold text-red-700 dark:text-red-300">
-                        {caseStudy.problem.header}
-                      </h4>
-                    </div>
-                    <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                      {caseStudy.problem.statement}
-                    </h5>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm">
-                      {caseStudy.problem.description}
-                    </p>
-                  </div>
+          {/* Case Studies */}
+          <div className="space-y-16">
+            {caseStudiesByCategory[activeTab]?.map((caseStudy) => (
+              <motion.div 
+                key={caseStudy.id}
+                {...motionValues}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+              >
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">
+                    {caseStudy.title}
+                  </h3>
 
-                  {/* Solution */}
-                  <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
-                    <div className="flex items-center mb-3">
-                      <span className="text-xl mr-2">{caseStudy.solution.icon}</span>
-                      <h4 className="font-bold text-blue-700 dark:text-blue-300">
-                        {caseStudy.solution.header}
-                      </h4>
-                    </div>
-                    <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                      {caseStudy.solution.approach}
-                    </h5>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
-                      {caseStudy.solution.description}
-                    </p>
+                  <div className="grid lg:grid-cols-3 gap-8">
                     
-                    <div className="space-y-2">
-                      {caseStudy.solution.services.slice(0, 3).map((service, index) => (
-                        <div key={index} className="flex items-start text-sm">
-                          <span className="mr-2 text-blue-500">•</span>
-                          <span className="text-gray-700 dark:text-gray-300">{service}</span>
-                        </div>
-                      ))}
-                      {caseStudy.solution.services.length > 3 && (
-                        <p className="text-xs text-gray-500 italic">
-                          +{caseStudy.solution.services.length - 3} more services
-                        </p>
-                      )}
+                    {/* Problem */}
+                    <div className="p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500">
+                      <div className="flex items-center mb-3">
+                        <span className="text-xl mr-2">{caseStudy.problem.icon}</span>
+                        <h4 className="font-bold text-red-700 dark:text-red-300">
+                          {caseStudy.problem.header}
+                        </h4>
+                      </div>
+                      <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                        {caseStudy.problem.statement}
+                      </h5>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">
+                        {caseStudy.problem.description}
+                      </p>
                     </div>
-                  </div>
 
-                  {/* Result */}
-                  <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
-                    <div className="flex items-center mb-3">
-                      <span className="text-xl mr-2">{caseStudy.result.icon}</span>
-                      <h4 className="font-bold text-green-700 dark:text-green-300">
-                        {caseStudy.result.header}
-                      </h4>
+                    {/* Solution */}
+                    <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+                      <div className="flex items-center mb-3">
+                        <span className="text-xl mr-2">{caseStudy.solution.icon}</span>
+                        <h4 className="font-bold text-blue-700 dark:text-blue-300">
+                          {caseStudy.solution.header}
+                        </h4>
+                      </div>
+                      <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                        {caseStudy.solution.approach}
+                      </h5>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
+                        {caseStudy.solution.description}
+                      </p>
+                      
+                      <div className="space-y-2">
+                        {caseStudy.solution.services.slice(0, 3).map((service, index) => (
+                          <div key={index} className="flex items-start text-sm">
+                            <span className="mr-2 text-blue-500">•</span>
+                            <span className="text-gray-700 dark:text-gray-300">{service}</span>
+                          </div>
+                        ))}
+                        {caseStudy.solution.services.length > 3 && (
+                          <p className="text-xs text-gray-500 italic">
+                            +{caseStudy.solution.services.length - 3} more services
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                      {caseStudy.result.outcome}
-                    </h5>
-                    <div className="space-y-2">
-                      {caseStudy.result.details.map((detail, index) => (
-                        <div key={index} className="flex items-start text-sm">
-                          <span className="mr-2 text-green-500">✓</span>
-                          <span className="text-gray-700 dark:text-gray-300">{detail}</span>
-                        </div>
-                      ))}
+
+                    {/* Result */}
+                    <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
+                      <div className="flex items-center mb-3">
+                        <span className="text-xl mr-2">{caseStudy.result.icon}</span>
+                        <h4 className="font-bold text-green-700 dark:text-green-300">
+                          {caseStudy.result.header}
+                        </h4>
+                      </div>
+                      <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                        {caseStudy.result.outcome}
+                      </h5>
+                      <div className="space-y-2">
+                        {caseStudy.result.details.map((detail, index) => (
+                          <div key={index} className="flex items-start text-sm">
+                            <span className="mr-2 text-green-500">✓</span>
+                            <span className="text-gray-700 dark:text-gray-300">{detail}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
 
-        {/* Call to Action */}
-      </div>
-    </section>
+          {/* Call to Action */}
+        </div>
+      </section>
+      
+      {/* Rotating Circle Widget */}
+      <RotatingCircleWidget />
+    </>
   );
 };
 
