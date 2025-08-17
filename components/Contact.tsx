@@ -6,7 +6,6 @@ import { z } from 'zod';
 import { FaWhatsapp, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
-import emailjs from '@emailjs/browser';
 // Zod schema for form validation
 export const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -48,13 +47,6 @@ const socials = [
   { name: 'instagram', url: 'https://www.instagram.com/triskelion.collective/' },
   { name: 'email', url: 'mailto:wecare@triskelion.ink' }
 ];
-
-// EmailJS Configuration - Replace these with your actual values
-const EMAILJS_CONFIG = {
-  SERVICE_ID: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-  TEMPLATE_ID: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-  PUBLIC_KEY: 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-};
 
 // Triskelion Logo Component
 const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }) => (
@@ -153,29 +145,32 @@ const ContactForm = () => {
     setSubmitMessage('');
     
     try {
-      // Send email using EmailJS
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        to_email: 'wecare@triskelion.ink',
-        message: formData.message,
-        reply_to: formData.email
-      };
-
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
+      // Create mailto link with pre-filled content
+      const subject = encodeURIComponent(`New Contact Form Message from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n\n` +
+        `Message:\n${formData.message}\n\n` +
+        `---\n` +
+        `This message was sent from your website contact form.`
       );
       
-      setSubmitMessage('Message sent successfully! We\'ll get back to you soon.');
-      setFormData({ name: '', email: '', message: '' });
-      setErrors({});
+      const mailtoLink = `mailto:wecare@triskelion.ink?subject=${subject}&body=${body}`;
+      
+      // Open user's email client
+      window.location.href = mailtoLink;
+      
+      // Show success message after a short delay
+      setTimeout(() => {
+        setSubmitMessage('Email client opened! Please send the email from your email app.');
+        setFormData({ name: '', email: '', message: '' });
+        setErrors({});
+        setIsSubmitting(false);
+      }, 1000);
+      
     } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSubmitMessage('Failed to send message. Please try again or contact us directly at wecare@triskelion.ink');
-    } finally {
+      console.error('Error opening email client:', error);
+      setSubmitMessage('Unable to open email client. Please email us directly at wecare@triskelion.ink');
       setIsSubmitting(false);
     }
   };
@@ -233,7 +228,7 @@ const ContactForm = () => {
         disabled={isSubmitting}
         className="bg-transparent rounded-xl text-white border border-white py-3 px-6 font-bold hover:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting ? 'Opening Email...' : 'Send via Email'}
       </button>
 
       {submitMessage && (
