@@ -234,7 +234,7 @@ const TriskelionAbout = () => {
               Hiii, We're Triskelion
             </h1>
             <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-6">
-              A small social media agency that actually cares about growing your business and social media engagement. 
+              A small agency that actually cares about growing your business and social media engagement. 
               No BS, no inflated promises, just real work that gets real results.
             </p>
             
@@ -408,7 +408,7 @@ const TriskelionAbout = () => {
 
               <div className="mt-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 text-center">
                 <p className="text-slate-700 dark:text-slate-300 text-sm">
-                  Launch Kit partners with local businesses through unique programs that combine these services for maximum impact and growth.
+                  TRISKELION partners with local businesses through unique programs that combine these services for maximum impact and growth.
                 </p>
               </div>
             </motion.div>
