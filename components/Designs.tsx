@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink } from 'lucide-react';
 
@@ -73,6 +73,26 @@ const Designs = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
 
+  // Handle modal state and prevent scroll/navigation issues
+  useEffect(() => {
+    if (selectedProject || showCaseStudy) {
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+      // Add modal-open class to body for additional styling if needed
+      document.body.classList.add('modal-open');
+    } else {
+      // Restore body scroll when modal is closed
+      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open');
+    }
+
+    // Cleanup function to ensure scroll is restored
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open');
+    };
+  }, [selectedProject, showCaseStudy]);
+
   // Sample project data - replace with your actual projects
   const projects: Project[] = [
     {
@@ -85,19 +105,19 @@ const Designs = () => {
       results: "1400% follower growth, 3M+ video views, 2 viral campaigns",
       caseStudyLink: "#",
       fullCaseStudy: {
-        clientName: "Burna Boy Jr.",
+        clientName: "Minato",
         industry: "Music & Entertainment",
         location: "Lagos, Nigeria",
-        challenge: "An emerging Afrobeats artist with incredible talent but struggling to break through the noise of social media. With only 5K Instagram followers and limited brand recognition, the artist needed a comprehensive strategy to build authentic connections with fans and establish a strong digital presence in the competitive Nigerian music scene.",
+        challenge: "An emerging Afrobeats artist with incredible talent but struggling to break through the noise of social media. With only less than 1k Instagram followers and limited brand recognition, the artist needed a comprehensive strategy to build authentic connections with fans and establish a strong digital presence in the competitive Nigerian music scene.",
         solution: "We implemented a multi-phase approach focusing on authentic storytelling, behind-the-scenes content, and strategic collaborations with other Nigerian creators. Our team developed a content calendar that showcased the artist's personality, musical journey, and cultural roots while leveraging trending sounds and challenges on TikTok and Instagram.",
         results: [
-          "1400% follower growth (5K to 75K on Instagram)",
-          "3M+ total video views across platforms",
-          "2 viral campaigns reaching 500K+ users each",
+          "1400% follower growth on Instagram",
+          "1M+ total video views across platforms",
+          "2 viral campaigns reaching 100K+ users each",
           "Featured on 3 major Nigerian music blogs",
-          "Secured collaboration with 2 established artists"
+          "Secured collaboration with 1 established artists"
         ],
-        testimonial: "Triskelion helped me find my voice online. They didn't just grow my numbers - they helped me connect with real fans who genuinely love my music.",
+        testimonial: "Triskelion helped me find my voice online. They didn't just grow my numbers, they helped me connect with real fans who genuinely love my music.",
         services: ["Social Media Strategy", "Content Creation", "Influencer Partnerships", "Brand Development"],
         duration: "6 months",
         images: [
@@ -244,7 +264,7 @@ fullCaseStudy: {
     {
       id: 6,
   title: "Revolutionary Spot: Grill Kitchen",
-  description: "Revo Spot—short for Revolutionary Spot—isn't just another grill kitchen. It's a full-blown experience built on creating an unforgettable go-to spot for shawarma, grilled meats, and bold flavors.",
+  description: "Revo Spot—short for Revolutionary Spot, isn't just another grill kitchen. It's a full-blown experience built on creating an unforgettable go-to spot for shawarma, grilled meats, and bold flavors.",
   image: "/images/Revol 3.png",
   categories: ["Branding", "Photography"],
   region: "United Kingdom",
@@ -255,7 +275,7 @@ fullCaseStudy: {
     industry: "Grill Kitchen",
     location: "United Kingdom",
     challenge: "Revo Spot had to feel fiery, fearless, and fun. The brand needed to stand out in a sea of generic grill houses while creating an unforgettable experience for shawarma, grilled meats, and bold flavors.",
-    solution: "To bring this vision to life, I crafted a high-energy visual identity centered around a bold red palette, signaling heat, passion, and flavor. The color not only evokes the flames of the grill but also captures the lively, urban vibe of a spot where people gather, eat, and vibe. At the heart of the brand is its custom mascot—a character designed to embody the rebellious spirit of Revo Spot. It adds personality, approachability, and memorability. The mascot acts as a hype man—fun, cheeky, and full of flavor, just like the menu.",
+    solution: "To bring this vision to life, I crafted a high-energy visual identity centered around a bold red palette, signaling heat, passion, and flavor. The color not only evokes the flames of the grill but also captures the lively, urban vibe of a spot where people gather, eat, and vibe. At the heart of the brand is its custom mascot,a character designed to embody the rebellious spirit of Revo Spot. It adds personality, approachability, and memorability. The mascot acts as a hype man, fun, cheeky, and full of flavor, just like the menu.",
     results: [
       "High-energy visual identity with bold red palette created",
       "Custom mascot designed to embody rebellious spirit",
@@ -450,7 +470,7 @@ fullCaseStudy: {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -539,7 +559,7 @@ fullCaseStudy: {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 z-[60] overflow-y-auto"
+            className="fixed inset-0 bg-black/95 z-[9999] overflow-y-auto"
             onClick={() => setShowCaseStudy(false)}
           >
             <div className="min-h-screen py-8 px-4">
@@ -666,16 +686,16 @@ fullCaseStudy: {
 
                   {/* CTA */}
                   <section className="text-center pt-8 border-t border-gray-700">
-                    <h3 className="text-xl font-bold text-white mb-4">Ready to achieve similar results?</h3>
+                    <h3 className="text-xl font-bold text-white mb-4">Ready to Start Your Project?</h3>
                     <div className="flex gap-4 justify-center">
                       <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl hover:shadow-lg transition-all duration-300">
-                        Start Your Project
+                        Get Started
                       </button>
                       <button 
                         className="bg-gray-700 text-white px-8 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300"
                         onClick={() => setShowCaseStudy(false)}
                       >
-                        Close Case Study
+                        Close
                       </button>
                     </div>
                   </section>

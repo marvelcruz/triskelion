@@ -135,10 +135,9 @@ const Leadgeneration = () => {
   );
 
   const testimonials = [
-    { name: "Jaimee, PLM", quote: "They bring multiple ideas to the table in a fun, energetic and creative manner." },
-    { name: "Danae, Little Red", quote: "Their services have been transformative and brought so much value and insight to my business." },
-    { name: "Rob, Outdoor Lighting Perspectives", quote: "They have nicest staff and really want to see you and your company become successful." },
-    { name: "Brendan, McKellar Construction", quote: "They provide us with exceptional video/photo content, as well as our website. Their quality and customer service is unmatched." },
+    { name: "Sarah, Greengrub", quote: "Their creative vision and design skills really elevated our brand. The team brought fresh ideas and executed them beautifully." },
+    { name: "Maya, Neat n Nailed", quote: "Professional work and great attention to detail. They delivered exactly what we needed for our rebrand." },
+    { name: "Marcus, Revolutionary Spot", quote: "Easy to work with and they really understood our vision. Quality creative work delivered on time." },
     { name: "Randy, DuraPro Painting", quote: "Partnering with them will 100% help elevate your business by growing your online presence." }
   ];
 
@@ -209,7 +208,7 @@ const Leadgeneration = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-white overflow-x-hidden relative pt-16"> {/* Added pt-16 here */}
       <style jsx>{`
         @keyframes float1 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes float2 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }

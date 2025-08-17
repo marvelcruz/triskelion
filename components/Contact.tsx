@@ -43,10 +43,9 @@ const contact = {
 
 const socials = [
   { name: 'whatsapp', url: 'https://wa.me/1234567890' },
-  { name: 'github', url: 'https://github.com/yourusername' },
-  { name: 'x', url: 'https://x.com/yourusername' },
-  { name: 'linkedin', url: 'https://linkedin.com/in/yourusername' },
-  { name: 'instagram', url: 'https://instagram.com/yourusername' },
+  { name: 'x', url: 'https://x.com/triskelionCo' },
+  { name: 'linkedin', url: 'https://www.linkedin.com/company/triskelion-collective/?viewAsMember=true' },
+  { name: 'instagram', url: 'https://www.instagram.com/triskelion.collective/' },
   { name: 'email', url: 'mailto:wecare@triskelion.ink' }
 ];
 
@@ -252,7 +251,7 @@ const Contact = () => {
   const { title, description } = contact;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 pt-16"> {/* Added pt-16 here */}
       {/* Contact Section */}
       <section id='contact' className='py-20 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-6xl mx-auto flex flex-col items-center gap-12'>
@@ -297,38 +296,43 @@ const Contact = () => {
                 <TriskelionLogo size={32} />
               </div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                Our mission is to give small businesses the chance to share their story. This is our way of making that happen.
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4 text-blue-400">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Digital Advertising</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors">Social Media</a></li>
-                <li><a href="#" className="hover:text-pink-400 transition-colors">Content Creation</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Photography</a></li>
-              </ul>
+              <h4 className="font-semibold mb-4 text-blue-400">Content & Creative</h4>
+              <div className="space-y-2">
+                <p className="text-sm text-blue-400">Content creation (posts, stories, reels, videos)</p>
+                <p className="text-sm text-purple-400">Graphic design and visual content</p>
+                <p className="text-sm text-pink-400">Video production and editing</p>
+                <p className="text-sm text-blue-400">Copy writing and caption creation</p>
+                <p className="text-sm text-purple-400">Photography and photo editing</p>
+                <p className="text-sm text-pink-400">Brand storytelling</p>
+              </div>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4 text-purple-400">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-purple-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Our Team</a></li>
-                <li><a href="#" className="hover:text-pink-400 transition-colors">Portfolio</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors">Contact</a></li>
-              </ul>
+              <h4 className="font-semibold mb-4 text-purple-400">Strategy & Planning</h4>
+              <div className="space-y-2">
+                <p className="text-sm text-purple-400">Social media strategy development</p>
+                <p className="text-sm text-blue-400">Content calendar planning</p>
+                <p className="text-sm text-pink-400">Brand voice and messaging</p>
+                <p className="text-sm text-blue-400">Competitor analysis</p>
+                <p className="text-sm text-purple-400">Platform-specific strategies</p>
+                <p className="text-sm text-pink-400">Content audits</p>
+              </div>
             </div>
-            
+
             <div>
-              <h4 className="font-semibold mb-4 text-pink-400">Connect</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-[#0A66C2] transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-[#E4405F] transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-[#1877F2] transition-colors">Facebook</a></li>
-                <li><a href="#" className="hover:text-[#1DA1F2] transition-colors">Twitter</a></li>
-              </ul>
+              <h4 className="font-semibold mb-4 text-pink-400">Management & Ads</h4>
+              <div className="space-y-2">
+                <p className="text-sm text-pink-400">Daily posting and scheduling</p>
+                <p className="text-sm text-blue-400">Community management</p>
+                <p className="text-sm text-purple-400">Account setup and optimization</p>
+                <p className="text-sm text-pink-400">Paid social advertising</p>
+                <p className="text-sm text-blue-400">Analytics and reporting</p>
+                <p className="text-sm text-purple-400">Influencer marketing</p>
+              </div>
             </div>
           </div>
           

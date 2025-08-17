@@ -17,8 +17,8 @@ const navigationLinks = [
   { title: "Contact", href: "/contact" }
 ];
 
-// Triskelion Logo Component
-const TriskelionLogo = ({ size = 40, className = "", glow = false }) => (
+// Ultra Compact Triskelion Logo Component
+const TriskelionLogo = ({ size = 18, className = "", glow = false }) => (
   <div 
     className={`relative ${className}`}
     style={{ width: size, height: size }}
@@ -27,7 +27,7 @@ const TriskelionLogo = ({ size = 40, className = "", glow = false }) => (
       width={size} 
       height={size} 
       viewBox="0 0 120 120" 
-      className={`drop-shadow-md transition-all duration-300 hover:drop-shadow-lg ${glow ? 'filter drop-shadow-[0_0_8px_rgba(99,102,241,0.4)]' : ''}`}
+      className={`transition-all duration-300 ${glow ? 'filter drop-shadow-[0_0_2px_rgba(99,102,241,0.2)]' : ''}`}
       style={{
         animation: 'spin 25s linear infinite'
       }}
@@ -40,7 +40,7 @@ const TriskelionLogo = ({ size = 40, className = "", glow = false }) => (
         </linearGradient>
       </defs>
       
-      <circle cx="60" cy="60" r="6" fill={`url(#triskelion-gradient-${size})`} />
+      <circle cx="60" cy="60" r="3" fill={`url(#triskelion-gradient-${size})`} />
       
       <g transform="translate(60,60)">
         {[0, 120, 240].map((rotation, index) => (
@@ -48,10 +48,10 @@ const TriskelionLogo = ({ size = 40, className = "", glow = false }) => (
             <path
               d="M 0,0 Q -12,-20 -20,-32 Q -28,-36 -32,-28 Q -28,-20 -20,-16 Q -12,-12 -8,-20 Q -6,-28 -12,-32"
               fill={`url(#triskelion-gradient-${size})`}
-              stroke="rgba(255,255,255,0.3)"
-              strokeWidth="0.5"
+              stroke="rgba(255,255,255,0.1)"
+              strokeWidth="0.2"
             />
-            <circle cx="-20" cy="-28" r="6" fill={`url(#triskelion-gradient-${size})`} />
+            <circle cx="-20" cy="-28" r="3" fill={`url(#triskelion-gradient-${size})`} />
           </g>
         ))}
       </g>
@@ -79,36 +79,37 @@ const Navbar = () => {
 
   return (
     <header className="header border_b">
-      <nav className="nav-bar">
+      <nav className="nav-bar py-0">
         <Link href="/">
-          <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-300">
-            {/* Triskelion Logo */}
-            <TriskelionLogo size={40} glow />
+          <div className="flex items-center gap-1 hover:scale-105 transition-transform duration-300">
+            {/* Ultra Small Triskelion Logo */}
+            <TriskelionLogo size={18} glow />
             
-            {/* TRISKELION Text */}
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent tracking-wide">
+            {/* Ultra Compact TRISKELION Text */}
+            <span className="text-base font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               TRISKELION
             </span>
           </div>
         </Link>
 
-        <div className="hidden lg:flex-center gap-x-8">
-          <ul className="flex-center gap-6">
+        <div className="hidden lg:flex-center gap-x-2">
+          <ul className="flex-center gap-1">
             {navigationLinks.map(({ title, href }, index) => (
               <li key={index}>
-                <Link href={href} className="link focus:link-active hover:text-blue-600 transition-colors duration-300">
+                <Link href={href} className="link focus:link-active hover:scale-105 transition-all duration-300 text-sm transform relative group px-1.5 py-0.5">
                   {title}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
                 </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <Button className="hidden max-lg:flex-center" onClick={toggleShowNav}>
+        <Button className="hidden max-lg:flex-center p-1" onClick={toggleShowNav}>
           {showNav ? (
-            <IoMdClose className="text-color-6" size={30} />
+            <IoMdClose className="text-color-6" size={16} />
           ) : (
-            <CiMenuFries className="text-color-6" size={30} />
+            <CiMenuFries className="text-color-6" size={16} />
           )}
         </Button>
       </nav>

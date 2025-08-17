@@ -354,7 +354,10 @@ const SolutionsShowcase = () => {
 
   return (
     <>
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section 
+        className="pt-24 pb-20 bg-gray-50 dark:bg-gray-900"
+        style={{ marginTop: '60px' }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}

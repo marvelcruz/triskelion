@@ -92,7 +92,7 @@ const RotatingCircleWidget = ({ className = "" }) => {
 // Component to show the breakdown details
 export const WidgetBreakdown = () => {
   return (
-    <div className="min-h-screen bg-slate-50 p-8">
+    <div className="min-h-screen bg-slate-50 p-8 pt-16"> {/* Added pt-16 here */}
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center text-slate-800">Rotating Circle Widget Breakdown</h1>
         
@@ -244,7 +244,7 @@ const LearningShowcase = () => {
 
   return (
     <>
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 pt-16"> {/* Added pt-16 here */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
@@ -366,8 +366,8 @@ const LearningShowcase = () => {
           </div>
 
           {/* Call to Action */}
-          <motion.div {...motionValues} className="text-center mt-16 p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl text-white">
-            <h3 className="text-2xl font-bold mb-4">Ready to Benefit from Our Experience?</h3>
+          <motion.div {...motionValues} className="text-center mt-16 p-8 bg-gradient-to-r from-blue-500 to-purple-300 rounded-2xl text-white">
+            <h3 className="text-2xl font-bold mb-4"></h3>
             <p className="text-xl mb-6 text-blue-100">
               Our learning becomes your competitive advantage from day one.
             </p>

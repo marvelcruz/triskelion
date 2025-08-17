@@ -103,7 +103,7 @@ const TriskelionAgency = () => {
       platforms: "Instagram, TikTok, Facebook, LinkedIn & YouTube",
       description: "Connecting with American audiences through data-driven strategies and creative storytelling that cuts through the noise of a competitive market.",
       accent: "from-blue-600 to-red-500",
-      stats: { projects: "12+", followers: "75K+", months: "8" },
+      stats: { projects: "3+", followers: "5K+", months: "8" },
       speciality: "B2B & E-commerce focus"
     },
     {
@@ -114,7 +114,7 @@ const TriskelionAgency = () => {
       platforms: "Instagram, TikTok, Facebook, LinkedIn & YouTube",
       description: "From Vancouver to Toronto, we help Canadian brands build genuine connections with their communities through bilingual content and cultural insights.",
       accent: "from-red-500 to-red-600",
-      stats: { projects: "8+", followers: "25K+", months: "4" },
+      stats: { projects: "4+", followers: "3K+", months: "4" },
       speciality: "Bilingual content & Community building"
     },
     {
@@ -125,7 +125,7 @@ const TriskelionAgency = () => {
       platforms: "Instagram, TikTok, Facebook, LinkedIn & YouTube",
       description: "Understanding the British market from London startups to Manchester SMEs. We create content that resonates across England, Scotland, Wales & Northern Ireland.",
       accent: "from-blue-800 to-blue-600",
-      stats: { projects: "10+", followers: "35K+", months: "5" },
+      stats: { projects: "3+", followers: "4K+", months: "5" },
       speciality: "Local market expertise"
     },
     {
@@ -136,7 +136,7 @@ const TriskelionAgency = () => {
       platforms: "Instagram, TikTok, Facebook, LinkedIn & YouTube",
       description: "Helping Nigerian brands tell their stories authentically. We understand the local culture, trends, and what makes content go viral in Lagos, Abuja, and beyond.",
       accent: "from-green-500 to-green-600",
-      stats: { projects: "15+", followers: "50K+", months: "6" },
+      stats: { projects: "15+", followers: "9K+", months: "6" },
       speciality: "Afrobeats culture & Local trends"
     },
   ];
@@ -371,22 +371,21 @@ const TriskelionAgency = () => {
             <motion.div variants={itemVariants} className="mt-12">
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
                 <motion.button
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className=""
                   whileHover={{ 
                     scale: 1.05,
-                    boxShadow: '0 15px 30px rgba(59, 130, 246, 0.3)'
+                    boxShadow: ''
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Get Started Today
                 </motion.button>
                 
                 <motion.button
-                  className="px-8 py-3 border border-white/20 text-white font-medium rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                  className=""
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  View Our Work
+                
                 </motion.button>
               </div>
               

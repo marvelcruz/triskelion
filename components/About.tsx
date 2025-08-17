@@ -183,7 +183,10 @@ const TriskelionAbout = () => {
   return (
     <>
       <section 
-        id="about" className="relative py-16 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
+        id="about" 
+        className="relative pt-20 pb-16 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden"
+        style={{ marginTop: '60px' }}
+      >
         
         {/* Enhanced background elements with more Triskelion logos */}
         <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -230,33 +233,33 @@ const TriskelionAbout = () => {
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800 dark:text-slate-200 mt-20">
               Hiii, We're Triskelion
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+            <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-6">
               A small social media agency that actually cares about growing your business and social media engagement. 
-              No BS, no inflated promises — just real work that gets real results.
+              No BS, no inflated promises, just real work that gets real results.
             </p>
             
-            <div className="space-y-6 max-w-2xl mx-auto text-left">
+            <div className="space-y-8 max-w-3xl mx-auto text-center">
               <div>
-                <h2 className="font-semibold text-slate-700 dark:text-slate-300">Foreword</h2>
-                <p className="text-slate-600 dark:text-slate-400">
-                  We see business as a vehicle for delivering great user experiences. We build relationships 
-                  with the community around us by reinventing the way creative services are provided.
+                <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-700 mb-4">Our Vision Forward</h2>
+                <p className="text-lg text-slate-700 dark:text-slate-400 leading-relaxed">
+                  We see business as a vehicle for delivering great user experiences.
+                  We build relationships with the community around us by reinventing the way creative services are provided.
                 </p>
               </div>
               
-              <div>
-                <h2 className="font-semibold text-slate-700 dark:text-slate-300">Purpose</h2>
-                <p className="text-slate-600 dark:text-slate-400">
+              <div className="border-t border-slate-200 dark:border-slate-700 pt-8">
+              <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4">Our Purpose</h2>
+              <p className="text-xl font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
                   We give local businesses the chance to share their story.
                 </p>
               </div>
               
               <div>
-                <h2 className="font-semibold text-slate-700 dark:text-slate-300">Values</h2>
-                <ul className="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-400">
-                  <li><strong>Clarity</strong> - Transparent strategies with no hidden fluff</li>
-                  <li><strong>Communication</strong> - We listen first, then create</li>
-                  <li><strong>Collaboration</strong> - Working with you to build something remarkable</li>
+                 <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4"></h2>
+                 <ul className="">
+                  <li><strong></strong> </li>
+                 <li><strong></strong>  </li>
+                 <li><strong></strong>  </li>
                 </ul>
               </div>
             </div>
@@ -302,7 +305,7 @@ const TriskelionAbout = () => {
                 
                 <div className="space-y-6 text-slate-700 dark:text-slate-300">
                   <p className="text-lg leading-relaxed">
-                    We started Triskelion because we were tired of seeing small businesses get burned by agencies that overpromise and underdeliver.
+                    We started Triskelion because we understand that small business owners are swamped with their core operations and don't have time to stay on top of constantly changing social media trends, that's where we come in, working quietly behind the scenes..
                   </p>
                   
                   <p>
@@ -510,9 +513,9 @@ const TriskelionAbout = () => {
 
           {/* Strong CTA */}
           <motion.div {...motionValues} className="text-center mt-16">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="">
               <h2 className="text-2xl font-bold mb-4">
-             T   R   I   S   K   E  L  I   O   N
+            - T   R   I   S   K   E  L  I   O   N -
               </h2>
               <p className="mb-6 text-blue-100 max-w-xl mx-auto">
 
