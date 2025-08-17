@@ -519,7 +519,7 @@ const TriskelionAbout = () => {
               </h2>
               <p className="mb-6 text-blue-100 max-w-xl mx-auto">
 
-              </p>
+              </p>     
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
               </div>
               <p className="text-xs text-blue-200 mt-4">
