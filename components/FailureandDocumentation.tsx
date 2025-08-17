@@ -5,7 +5,7 @@ import { Lightbulb, Shield, Rocket, Trophy, TrendingUp, CheckCircle } from "luci
 // Rotating Circle Widget Component
 const RotatingCircleWidget = ({ className = "" }) => {
   return (
-    <div className={`fixed bottom-6 right-6 w-36 h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
+    <div className={`fixed bottom-4 right-4 w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
       <div className="w-full h-full relative rounded-full bg-gradient-to-r from-red-400 via-teal-400 via-blue-400 via-green-400 via-yellow-400 to-pink-400 p-1 shadow-lg shadow-red-400/30">
         <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-black/80 backdrop-blur-md relative overflow-hidden border border-white/10">
           
@@ -13,10 +13,10 @@ const RotatingCircleWidget = ({ className = "" }) => {
           <div className="absolute w-full h-full animate-spin" style={{ animationDuration: '40s' }}>
             <svg viewBox="0 0 180 180" className="w-full h-full">
               <defs>
-                <path id="circle-path-learning" d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
+                <path id="circle-path" d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
               </defs>
-              <text className="text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
-                <textPath href="#circle-path-learning" startOffset="0%">
+              <text className="text-[8px] sm:text-[10px] md:text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
+                <textPath href="#circle-path" startOffset="0%">
                   COMMUNITY • LIFELONG LEARNING • MUSIC • ART • TECH • BUSINESS • LIFESTYLE •
                 </textPath>
               </text>
@@ -24,21 +24,21 @@ const RotatingCircleWidget = ({ className = "" }) => {
           </div>
           
           {/* Stationary Center Logo */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-10">
             {/* TRISKELION label above */}
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+            <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 text-[6px] sm:text-[7px] md:text-[8px] font-bold text-white text-shadow-lg tracking-wide">
               TRISKELION
             </div>
             
             {/* Triskelion SVG */}
             <svg className="w-full h-full filter drop-shadow-lg animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
               <defs>
-                <linearGradient id="triskelionGradWidgetLearning" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="triskelionGradWidget" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
                   <stop offset="50%" stopColor="#f0f0f0" stopOpacity="0.9" />
                   <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
                 </linearGradient>
-                <filter id="glowWidgetLearning">
+                <filter id="glowWidget">
                   <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                   <feMerge> 
                     <feMergeNode in="coloredBlur"/>
