@@ -106,141 +106,48 @@ const validateForm = (formData: FormData): FormErrors => {
   return errors;
 };
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+const ContactSection = () => {
+  const handleEmailClick = () => {
+    const subject = encodeURIComponent('New Business Inquiry');
+    const body = encodeURIComponent(
+      'Hi Triskelion Team,\n\n' +
+      'I\'m interested in your services. Please contact me to discuss:\n\n' +
+      '• My project details:\n' +
+      '• Timeline:\n' +
+      '• Budget range:\n\n' +
+      'Best regards'
+    );
     
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    const validationErrors = validateForm(formData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    
-    setIsSubmitting(true);
-    setSubmitMessage('');
-    
-    try {
-      // Create mailto link with pre-filled content
-      const subject = encodeURIComponent(`New Contact Form Message from ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n\n` +
-        `Message:\n${formData.message}\n\n` +
-        `---\n` +
-        `This message was sent from your website contact form.`
-      );
-      
-      const mailtoLink = `mailto:wecare@triskelion.ink?subject=${subject}&body=${body}`;
-      
-      // Open user's email client
-      window.location.href = mailtoLink;
-      
-      // Show success message after a short delay
-      setTimeout(() => {
-        setSubmitMessage('Email client opened! Please send the email from your email app.');
-        setFormData({ name: '', email: '', message: '' });
-        setErrors({});
-        setIsSubmitting(false);
-      }, 1000);
-      
-    } catch (error) {
-      console.error('Error opening email client:', error);
-      setSubmitMessage('Unable to open email client. Please email us directly at wecare@triskelion.ink');
-      setIsSubmitting(false);
-    }
+    const mailtoLink = `mailto:wecare@triskelion.ink?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
   };
 
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      className="w-full sm:w-[574px] lg:max-w-[516px] flex flex-col gap-6"
+    <motion.div
+      className="w-full sm:w-[574px] lg:max-w-[516px] flex flex-col gap-6 items-center text-center"
       {...motionValues}
     >
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="text-white font-medium">Name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Triskelion most amazing client"
-          className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
-        />
-        {errors.name && <span className="text-red-400 text-sm">{errors.name}</span>}
+      <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm border border-white/20">
+        <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
+        <p className="text-gray-300 mb-6 leading-relaxed">
+          Click the button below to send us an email directly. We'll get back to you within 24 hours!
+        </p>
+        
+        <button
+          onClick={handleEmailClick}
+          className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          📧 Send Us an Email
+        </button>
+        
+        <p className="text-sm text-gray-400 mt-4">
+          Or email us directly at{' '}
+          <a href="mailto:wecare@triskelion.ink" className="text-blue-400 hover:text-blue-300">
+            wecare@triskelion.ink
+          </a>
+        </p>
       </div>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="email" className="text-white font-medium">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="your.email@example.com"
-          className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
-        />
-        {errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="text-white font-medium">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Tell us about your project..."
-          rows={4}
-          className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors resize-vertical"
-        />
-        {errors.message && <span className="text-red-400 text-sm">{errors.message}</span>}
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="bg-transparent rounded-xl text-white border border-white py-3 px-6 font-bold hover:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isSubmitting ? 'Opening Email...' : 'Send via Email'}
-      </button>
-
-      {submitMessage && (
-        <div className={`text-center text-sm p-3 rounded-lg ${
-          submitMessage.includes('success') 
-            ? 'text-green-400 bg-green-400/10 border border-green-400/20' 
-            : 'text-red-400 bg-red-400/10 border border-red-400/20'
-        }`}>
-          {submitMessage}
-        </div>
-      )}
-    </motion.form>
+    </motion.div>
   );
 };
 
@@ -282,7 +189,7 @@ const Contact = () => {
           </motion.h3>
           
           <div className='flex flex-col lg:flex-row items-center justify-center gap-12 w-full'>
-            <ContactForm />
+            <ContactSection />
             
             <motion.div className='flex flex-row lg:flex-col gap-6 lg:gap-8' {...motionValues}>
               {socials.map(({ name, url }, index) => {
