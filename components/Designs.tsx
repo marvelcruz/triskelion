@@ -327,7 +327,147 @@ fullCaseStudy: {
       "/images/vyrux 2.png",
       "/images/vyrux 3.png",
       "/images/vyrux.png",
-        ]
+          ]
+        }
+        },
+        {
+      id: 8,
+  title: "5 Dollar ($5DOLLAR Token)",
+  description: "Revolutionary AI-powered fintech project combining artificial intelligence, community ownership, and next-generation financial tools. From zero to thriving Web3 community.",
+  image: "/images/5dollar11.jpeg",
+  categories: ["Web3 Branding", "Community Building", "Crypto Marketing", "Content Strategy"],
+  region: "Canada",
+  results: "Built engaged social media crypto community from 0 to 559+ followers and successfully launched $5DOLLAR token through strategic meme marketing and authentic community engagement",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "5 Dollar",
+    industry: "Cryptocurrency/AI Fintech",
+    location: "Canada",
+    challenge: "Launch an innovative AI-powered crypto project in an oversaturated Web3 market. 5 Dollar needed to cut through the noise, establish genuine credibility, and build a passionate community around their $5DOLLAR token while competing against established players with massive marketing budgets.",
+    solution: "We crafted a distinctive Web3 marketing strategy that leveraged crypto culture authentically. Our approach combined strategic meme marketing with educational content about AI and decentralized finance. We focused on building genuine community engagement rather than vanity metrics, creating viral-ready content that balanced humor with substance, and establishing 5 Dollar as a relatable yet innovative voice in the AI-crypto space.",
+    results: [
+      "Exploded from 0 to 559+ engaged followers in 6 months (organic growth)",
+      "Successfully launched $5DOLLAR token with strong community backing",
+      "Achieved 340% increase in engagement rate through strategic meme content",
+      "Created multiple viral posts that reached 10,000+ impressions each",
+      "Established 5 Dollar as recognized brand in competitive AI-crypto niche",
+      "Built authentic community of crypto enthusiasts and AI believers",
+      "Generated qualified leads for token presale through targeted content"
+    ],
+    testimonial: "TRISKELION didn't just grow our numbers—they built us a real community. They get crypto culture and delivered exactly what we needed for our $5DOLLAR launch. Best investment we made.",
+    services: ["Web3 Social Strategy", "Community Management", "Crypto Content Creation", "Brand Positioning", "Meme Marketing", "Token Launch Support"],
+    duration: "July 2024 - Present",
+    role: "Lead Social Media Strategist & Community Growth Specialist",
+    images: [
+      "/images/5dollar1.jpeg",
+      "/images/5dollar2.jpeg",
+      "/images/5dollar4.jpeg",
+      "/images/5dollar5.jpeg",
+      "/images/5dollar3.jpeg"
+          ]
+        }
+        },
+        {
+      id: 8,
+  title: "YELLOWFANG @YellowFangUSD1",
+  description: "The crypto project that broke Twitter with AI-generated market predictions and a mascot that roasts other tokens. YELLOWFANG turned financial disruption into viral entertainment.",
+  image: "/images/YELLOWFANG1.png",
+  categories: ["Web3 Branding", "Community Building", "Crypto Marketing", "Content Strategy"],
+  region: "Canada",
+  results: "Transformed unknown AI fintech startup into viral Web3 sensation with 4,173+ organic followers and explosive community engagement",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "YELLOWFANG",
+    industry: "AI Fintech/Web3",
+    location: "Canada",
+    challenge: "YELLOWFANG entered the crowded crypto space as a complete unknown. They needed to establish thought leadership in AI-powered finance while building trust in a market flooded with scams and failed projects. The challenge was creating authentic buzz without the typical crypto hype tactics.",
+    solution: "We positioned YELLOWFANG as the rebels of AI finance—smart, edgy, and refreshingly honest. Our strategy focused on educational storytelling that demystified AI technology while maintaining street credibility in crypto circles. We created a content ecosystem mixing technical insights with cultural commentary, turning complex AI concepts into digestible, shareable content that resonated with both tech enthusiasts and crypto natives.",
+    results: [
+      "Achieved 4,173+ followers with zero paid promotion or bot activity",
+      "Generated 500% increase in organic reach through viral content strategy",
+      "Established YELLOWFANG as go-to voice for AI finance commentary",
+      "Created signature content format that competitors began copying",
+      "Built waitlist of 2,000+ users before product launch",
+      "Secured partnerships with 3 major Web3 influencers",
+      "Developed cult-like community loyalty with 85% engagement retention"
+    ],
+    testimonial: "These guys turned us from nobodies into the talk of crypto Twitter. They understood our vision when nobody else did and made it impossible to ignore.",
+    services: ["AI-Focused Content Strategy", "Viral Community Building", "Thought Leadership Development", "Web3 Brand Architecture", "Influencer Partnerships"],
+    duration: "March 2025 - Ongoing",
+    role: "Web3 Growth Strategist & Community Architect",
+    images: [
+      "/images/YELLOWFANG1.png",
+      "/images/YELLOWFANG2.jpeg",
+          ]
+        }
+        },
+         {
+      id: 8,
+  title: "MYAKU-MYAKU",
+  description: "When Japan's official World Expo 2025 mascot went rogue and launched its own meme coin. The cute red blob that conquered crypto Twitter with kawaii chaos.",
+  image: "/images/MYAKU-MYAKU1.jpeg",
+  categories: ["Meme Marketing", "Cultural Bridging", "Viral Content", "Community Building"],
+  region: "Japan",
+  results: "Turned Japan's beloved Expo mascot into crypto's most unexpected success story with 527+ devoted followers and international media coverage",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "MYAKU-MYAKU",
+    industry: "Meme Coin/Cultural Phenomenon",
+    location: "Japan",
+    challenge: "How do you take a government-approved, family-friendly mascot and make it relevant in the Wild West of crypto without losing its wholesome charm? MYAKU-MYAKU needed to bridge the gap between traditional Japanese culture and degenerate meme coin culture.",
+    solution: "We embraced the absurdity. Instead of trying to make MYAKU-MYAKU 'cool,' we leaned into its adorable weirdness and created a narrative where Japan's most innocent mascot accidentally becomes crypto's most chaotic influencer. Our content strategy mixed traditional Japanese aesthetics with crypto degeneracy, creating a unique brand that felt both respectful and rebellious.",
+    results: [
+      "Gained 527+ organic followers who genuinely love the mascot",
+      "Created viral Japanese-English bilingual meme format",
+      "Featured in 3 major crypto news outlets as 'most wholesome project'",
+      "Built bridge between Japanese culture enthusiasts and crypto community",
+      "Generated 15+ fan art pieces from international community",
+      "Established MYAKU-MYAKU as symbol of 'kawaii defi' movement",
+      "Maintained 92% positive sentiment despite volatile crypto market"
+    ],
+    testimonial: "They made our weird red blob into a crypto legend while keeping it family-friendly. Pure magic.",
+    services: ["Cultural Translation", "Kawaii Content Creation", "Cross-Cultural Community Building", "Meme Coin Marketing", "Bilingual Social Strategy"],
+    duration: "February 2025 - June 2025",
+    role: "Cultural Crypto Strategist & Kawaii Marketing Specialist",
+    images: [
+      "/images/MYAKU-MYAKU.jpeg",
+      "/images/MYAKU-MYAKU2.jpeg",
+          ]
+        }
+        },
+        
+       {
+      id: 8,
+  title: "FinAi Labs",
+  description: "Building the future of finance — in your hands. AI, memes, and ownership. 🚀 First project: $FAI live now!",
+  image: "/images/Fai1.jpeg",
+  categories: ["Branding", "Social Media Management", "Community Management", "Photography"],
+  region: "United Kingdom",
+  results: "Grew community from 0 to 407 followers through strategic social media management and engaging crypto-focused content",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "FinAi Labs",
+    industry: "Crypto/Web3",
+    location: "United Kingdom",
+    challenge: "Launch a new crypto project and build an engaged community from scratch. FinAi Labs needed to establish credibility in the competitive Web3 space while growing their audience and driving traffic to their $FAI token project.",
+    solution: "We developed a comprehensive social media and community management strategy tailored for the crypto/Web3 audience. This included creating engaging meme-based content that resonated with crypto culture, implementing strategic posting schedules across multiple platforms, and fostering genuine community interactions. The approach balanced educational content about AI and finance with entertaining, shareable memes that captured the project's playful yet innovative spirit.",
+    results: [
+      "Grew community from 0 to 407 followers in 8 months (April 2024 to December 2024)",
+      "Established strong brand presence in competitive Web3 space",
+      "Created viral meme content that increased engagement rates",
+      "Built authentic community around $FAI token launch",
+      "Developed consistent brand voice mixing AI, finance, and crypto culture",
+      "Successfully launched $FAI token with community support"
+    ],
+    testimonial: "TRISKELION transformed our Web3 presence from zero to a thriving community. They understand crypto culture and delivered real results with our $FAI launch.",
+    services: ["Social Media Management", "Community Management", "Branding", "Content Creation"],
+    duration: " April 2025 - Present",
+    role: "Social Media Management & Community Builder",
+    images: [
+      "/images/Fai1.jpeg",
+      "/images/fai2.jpeg",
+      "/images/fai3.jpeg"
+       ]
       }
     }
   ];
@@ -686,16 +826,16 @@ fullCaseStudy: {
 
                   {/* CTA */}
                   <section className="text-center pt-8 border-t border-gray-700">
-                    <h3 className="text-xl font-bold text-white mb-4">Ready to Start Your Project?</h3>
+                    <h3 className="text-xl font-bold text-white mb-4"></h3>
                     <div className="flex gap-4 justify-center">
-                      <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl hover:shadow-lg transition-all duration-300">
-                        Get Started
+                      <button className="">
+                        
                       </button>
                       <button 
-                        className="bg-gray-700 text-white px-8 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300"
+                        className=""
                         onClick={() => setShowCaseStudy(false)}
                       >
-                        Close
+                        
                       </button>
                     </div>
                   </section>

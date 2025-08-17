@@ -98,7 +98,7 @@ const TriskelionAgency = () => {
       platforms: "TikTok, Instagram, YouTube Shorts",
       description: "Creating viral content that dominates FYP pages across all platforms",
       accent: "from-pink-500 to-cyan-400",
-      stats: { projects: "3+", followers: "5K+", months: "8" },
+      stats: { projects: "", followers: "", months: "" },
       speciality: "Short-form video specialists"
     },
     {
@@ -109,7 +109,7 @@ const TriskelionAgency = () => {
       platforms: "TikTok, Instagram, YouTube Shorts",
       description: "Trend-jacking and meme culture experts for the Canadian market",
       accent: "from-purple-500 to-pink-500",
-      stats: { projects: "4+", followers: "3K+", months: "4" },
+      stats: { projects: "", followers: "", months: "" },
       speciality: "Meme marketing"
     },
     {
@@ -118,9 +118,9 @@ const TriskelionAgency = () => {
       audience: "67M+",
       reach: "Britons",
       platforms: "TikTok, Instagram, YouTube Shorts",
-      description: "UK trend forecasting and viral content creation",
+      description: "We create original content for our own platforms as well as for clients across different industries. We deeply understand our clients goals, design holistic content & storytelling strategies, and execute.",
       accent: "from-cyan-400 to-purple-500",
-      stats: { projects: "3+", followers: "4K+", months: "5" },
+      stats: { projects: "", followers: "", months: "" },
       speciality: "Trend forecasting"
     },
     {
@@ -131,7 +131,7 @@ const TriskelionAgency = () => {
       platforms: "TikTok, Instagram, YouTube Shorts",
       description: "Afrobeats and pop culture viral content specialists",
       accent: "from-yellow-400 to-pink-500",
-      stats: { projects: "15+", followers: "9K+", months: "6" },
+      stats: { projects: "", followers: "", months: "" },
       speciality: "Cultural trends"
     },
   ];
@@ -343,25 +343,28 @@ const TriskelionAgency = () => {
             animate={isLoaded ? "visible" : "hidden"}
             className="text-center"
           >
-            {/* Header */}
-            <motion.div variants={itemVariants} className="mb-12">
-              <div className="flex justify-center mb-8">
-                <TriskelionLogo size={120} glow />
-              </div>
-              <motion.h1 
-                className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight"
-              >
-                TRISKELION
-              </motion.h1>
-              <div className="w-24 h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mb-4"></div>
-              <motion.p className="text-lg md:text-xl text-pink-200 font-medium">
-                Viral Content Specialists
-              </motion.p>
-              <motion.p className="text-sm text-gray-400 mt-2 max-w-md mx-auto">
-                We make brands trend on TikTok, Instagram, and beyond
-              </motion.p>
-            </motion.div>
-
+           {/* Header */}
+<motion.div variants={itemVariants} className="mb-12">
+  <div className="flex justify-center mb-8">
+    <TriskelionLogo size={120} glow />
+  </div>
+  <motion.h1 
+    className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight"
+  >
+    TRISKELION
+  </motion.h1>
+  <div className="w-24 h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mb-4"></div>
+  <motion.p className="text-lg md:text-7xl text-pink-200 font-bold">
+    Elevate Your Brand
+  </motion.p>
+  <motion.p className="text-lg text-white mt-2 max-w-2xl mx-auto">
+    We are a 360 social media creative marketing and{' '}
+    <span className="text-yellow-400 font-semibold">lead generation</span>{' '}
+    company{' '}
+    <span className="text-yellow-400 font-semibold">leveraging technology, community & content</span>{' '}
+    to design delightful experiences.
+  </motion.p>
+</motion.div>
             {/* Region selector */}
             <motion.div variants={itemVariants} className="mb-12">
               <div className="flex flex-wrap justify-center gap-2 mb-8 bg-black/60 backdrop-blur-lg rounded-2xl p-3 max-w-fit mx-auto border border-white/10 shadow-lg">
@@ -422,19 +425,19 @@ const TriskelionAgency = () => {
 
                 {/* Stats */}
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
+                  className=""
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
                   {[
-                    { number: regions[currentRegion].stats.projects, label: "Viral Projects", icon: "🔥" },
-                    { number: regions[currentRegion].stats.followers, label: "Followers Grown", icon: "📈" },
-                    { number: regions[currentRegion].stats.months, label: "Trending Months", icon: "⏱️" }
+                    { number: regions[currentRegion].stats.projects, label: "", icon: "" },
+                    { number: regions[currentRegion].stats.followers, label: "", icon: "" },
+                    { number: regions[currentRegion].stats.months, label: "", icon: "" }
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
-                      className="bg-black/60 backdrop-blur-lg rounded-xl p-5 border border-white/10 hover:border-pink-500/50 transition-all duration-300"
+                      className=""
                       whileHover={{ y: -2, scale: 1.02 }}
                     >
                       <div className="text-xl mb-2">{stat.icon}</div>
