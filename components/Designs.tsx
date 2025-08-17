@@ -1,70 +1,100 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink } from 'lucide-react';
 
-// Rest of your component code...
+// Type definitions
+type FullCaseStudy = {
+  clientName: string;
+  industry: string;
+  location: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  testimonial: string;
+  services: string[];
+  duration: string;
+  role?: string;
+  images?: string[];
+};
+
+type Project = {
+  id?: number;
+  iid?: number;
+  title: string;
+  description: string;
+  image: string;
+  categories: string[];
+  region: string;
+  results: string;
+  caseStudyLink: string;
+  fullCaseStudy: FullCaseStudy;
+};
 
 // Triskelion Logo Component
-const TriskelionLogo = ({ size = 80, className = "", glow = true }) => (
-  <div 
+const TriskelionLogo = ({ size = 80, className = "" }) => (
+  <motion.div 
     className={`relative ${className}`}
-    style={{ 
-      width: size, 
-      height: size,
-      animation: 'spin 30s linear infinite'
-    }}
+    style={{ width: size, height: size }}
+    animate={{ rotate: 360 }}
+    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
   >
-    <svg width={size} height={size} viewBox="0 0 120 120" className={`drop-shadow-lg ${glow ? 'filter drop-shadow-[0_0_15px_rgba(236,72,153,0.6)]' : ''}`}>
+    <svg width={size} height={size} viewBox="0 0 120 120" className="drop-shadow-lg">
       <defs>
-        <linearGradient id={`triskelion-gradient-${size}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ec4899" />
+        <linearGradient id="triskelion-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#3b82f6" />
           <stop offset="50%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#00f0ff" />
+          <stop offset="100%" stopColor="#ec4899" />
         </linearGradient>
       </defs>
       
-      <circle cx="60" cy="60" r="6" fill={`url(#triskelion-gradient-${size})`} />
+      <circle cx="60" cy="60" r="10" fill="url(#triskelion-gradient)" />
       
       <g transform="translate(60,60)">
         {[0, 120, 240].map((rotation, index) => (
           <g key={index} transform={`rotate(${rotation})`}>
             <path
-              d="M 0,0 Q -12,-20 -20,-32 Q -28,-36 -32,-28 Q -28,-20 -20,-16 Q -12,-12 -8,-20 Q -6,-28 -12,-32"
-              fill={`url(#triskelion-gradient-${size})`}
+              d="M 0,0 Q -20,-30 -30,-50 Q -45,-55 -50,-40 Q -45,-30 -30,-25 Q -20,-20 -15,-30 Q -10,-40 -20,-45"
+              fill="url(#triskelion-gradient)"
               stroke="rgba(255,255,255,0.3)"
-              strokeWidth="0.5"
+              strokeWidth="0.8"
             />
-            <circle cx="-20" cy="-28" r="6" fill={`url(#triskelion-gradient-${size})`} />
+            <circle cx="-30" cy="-40" r="10" fill="url(#triskelion-gradient)" />
           </g>
         ))}
       </g>
     </svg>
-  </div>
+  </motion.div>
 );
 
 const Designs = () => {
   const [selectedFilter, setSelectedFilter] = useState('All');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   // Handle modal state and prevent scroll/navigation issues
   useEffect(() => {
-    setIsLoaded(true);
     if (selectedProject || showCaseStudy) {
+      // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden';
+      // Add modal-open class to body for additional styling if needed
+      document.body.classList.add('modal-open');
     } else {
+      // Restore body scroll when modal is closed
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open');
     }
 
+    // Cleanup function to ensure scroll is restored
     return () => {
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open');
     };
   }, [selectedProject, showCaseStudy]);
 
-  // Complete project data - all your original projects
-  const projects = [
+  // Sample project data - replace with your actual projects
+  const projects: Project[] = [
     {
       id: 1,
       title: "Afrobeats Artist Brand Transformation",
@@ -98,7 +128,7 @@ const Designs = () => {
       }
     },
     {
-      id: 2,
+     id: 2,
 title: "Greengrub: Vegan Restaurant",
 description: "Green Grub is a vegan restaurant on a mission to change the way people see plant-based eating with a vibrant, bold visual identity that celebrates flavor, color, and joy.",
 image: "/images/Greencrub1.png",
@@ -128,8 +158,8 @@ fullCaseStudy: {
     "/images/Greencrub2.png",
     "/images/Greencrub3.png",
     "/images/Greencrub4.png"
-    ]
-      }
+  ]
+}
     },
     {
       iid: 3,
@@ -263,9 +293,9 @@ fullCaseStudy: {
       "/images/Revol.png",
         ]
       }
-    },
+      },
     {
-     id: 7,
+      id: 7,
   title: "Vyrux Solutions: Cybersecurity and Consulting Firm",
   description: "Vyrux Solutions is a cybersecurity and consulting firm focused on securing enterprise IT infrastructures and building a more resilient digital world.",
   image: "/images/Cybersecurity.png",
@@ -298,9 +328,9 @@ fullCaseStudy: {
       "/images/vyrux 3.png",
       "/images/vyrux.png",
           ]
-      }
-    },
-    {
+        }
+        },
+        {
       id: 8,
   title: "5 Dollar ($5DOLLAR Token)",
   description: "Revolutionary AI-powered fintech project combining artificial intelligence, community ownership, and next-generation financial tools. From zero to thriving Web3 community.",
@@ -335,10 +365,10 @@ fullCaseStudy: {
       "/images/5dollar5.jpeg",
       "/images/5dollar3.jpeg"
           ]
-      }
-    },
-    {
-      id: 9,
+        }
+        },
+        {
+      id: 8,
   title: "YELLOWFANG @YellowFangUSD1",
   description: "The crypto project that broke Twitter with AI-generated market predictions and a mascot that roasts other tokens. YELLOWFANG turned financial disruption into viral entertainment.",
   image: "/images/YELLOWFANG1.png",
@@ -369,10 +399,10 @@ fullCaseStudy: {
       "/images/YELLOWFANG1.png",
       "/images/YELLOWFANG2.jpeg",
           ]
-      }
-    },
-    {
-     id: 10,
+        }
+        },
+         {
+      id: 8,
   title: "MYAKU-MYAKU",
   description: "When Japan's official World Expo 2025 mascot went rogue and launched its own meme coin. The cute red blob that conquered crypto Twitter with kawaii chaos.",
   image: "/images/MYAKU-MYAKU1.jpeg",
@@ -403,10 +433,11 @@ fullCaseStudy: {
       "/images/MYAKU-MYAKU.jpeg",
       "/images/MYAKU-MYAKU2.jpeg",
           ]
-      }
-    },
-    {
-     id: 8,
+        }
+        },
+        
+       {
+      id: 8,
   title: "FinAi Labs",
   description: "Building the future of finance — in your hands. AI, memes, and ownership. 🚀 First project: $FAI live now!",
   image: "/images/Fai1.jpeg",
@@ -441,97 +472,90 @@ fullCaseStudy: {
     }
   ];
 
-  const categories = ['All', 'Social Media', 'Digital Ads', 'Brand Development', 'Content Creation', 'Photography', 'Influencer Marketing', 'Web3 Branding', 'Branding', 'Creative Direction', 'UI/UX Design', 'Website', 'Brand Style Guide', 'Crypto Marketing', 'Community Building', 'Meme Marketing', 'Cultural Bridging', 'Viral Content'];
+  const categories = ['All', 'Social Media', 'Digital Ads', 'Brand Development', 'Content Creation', 'Photography', 'Influencer Marketing'];
 
   const filteredProjects = selectedFilter === 'All' 
     ? projects 
     : projects.filter(project => project.categories.includes(selectedFilter));
 
+  const motionValues = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 }
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden bg-black">
-      {/* Hybrid background - Dark trendy with light trustworthy accents */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-slate-700">
-        <div className="absolute inset-0 bg-[radial-gradient(at_center,_#ec4899/15%,_transparent_70%)]"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,_#00f0ff08_0%,_#ff00f815_50%,_#00ff8508_100%)]"></div>
-        {/* Light trustworthy accent */}
-        <div className="absolute inset-0 bg-[radial-gradient(at_top_right,_#fbcfe8/5%,_transparent_60%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(at_bottom_left,_#dbeafe/3%,_transparent_50%)]"></div>
+    <section 
+      id='designs' 
+      className='relative py-20 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden'
+    >
+      {/* Background Triskelion Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/3 left-1/4 opacity-5">
+          <TriskelionLogo size={180} />
+        </div>
+        <div className="absolute bottom-1/4 right-1/4 opacity-5">
+          <TriskelionLogo size={220} />
+        </div>
       </div>
 
-      {/* Floating Triskelion Logos */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[1,2,3,4,5,6,7].map(i => (
-          <div
-            key={i}
-            className={`absolute ${[
-              'top-16 left-10', 'top-32 right-20', 'bottom-40 left-16', 
-              'bottom-20 right-32', 'top-1/2 left-8', 'top-3/4 right-12', 'top-1/4 right-6'
-            ][i-1]} opacity-5 hover:opacity-10 transition-opacity duration-500`}
-            style={{
-              animation: `float-${i} ${8 + i * 2}s ease-in-out infinite`,
-              animationDelay: `${i * 0.5}s`
-            }}
-          >
-            <TriskelionLogo size={60 + i * 8} glow={false} />
-          </div>
-        ))}
-      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <main className='flex flex-col gap-16'>
+          
+          {/* Header Section */}
+          <div className='text-center'>
+            <motion.div className="mb-6" {...motionValues}>
+              <TriskelionLogo size={80} className="mx-auto" />
+            </motion.div>
 
-      {/* Glowing elements */}
-      {[1,2,3,4].map(i => (
-        <div 
-          key={i} 
-          className={`absolute ${['top-20 left-10','bottom-32 right-16','top-1/3 left-1/4','top-3/4 right-1/4'][i-1]} w-32 h-32 rounded-full bg-pink-500/8 blur-[80px] animate-pulse`} 
-          style={{ 
-            animationDelay: `${i * 2}s`, 
-            animationDuration: '6s' 
-          }}
-        ></div>
-      ))}
-
-      {/* Main content */}
-      <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
-        <div className="text-center">
-          {/* Header */}
-          <div className="mb-12">
-            <div className="flex justify-center mb-8">
-              <TriskelionLogo size={120} glow />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+            <motion.h2 
+              className='text-4xl md:text-5xl font-bold text-white mb-6'
+              {...motionValues}
+            >
               Our Project Portfolio
-            </h1>
-            <div className="w-24 h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mb-4"></div>
-            <p className="text-lg text-white mt-2 max-w-2xl mx-auto">
+            </motion.h2>
+
+            <motion.p 
+              className='text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8'
+              {...motionValues}
+            >
               Go from patchwork to a seamless marketing system with Triskelion's integrated ecosystem of services. 
               Check out the projects we've been working on across Nigeria, United States, Canada, and the United Kingdom.
-            </p>
-          </div>
+            </motion.p>
 
-          {/* Category Filter */}
-          <div className="mb-12">
-            <div className="flex flex-wrap justify-center gap-2 mb-8 bg-black/60 backdrop-blur-lg rounded-2xl p-3 max-w-fit mx-auto border border-white/10 shadow-lg">
+            {/* Category Filter */}
+            <motion.div 
+              className="flex flex-wrap justify-center gap-3 mb-12"
+              {...motionValues}
+            >
               {categories.map((category) => (
                 <button
                   key={category}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                    selectedFilter === category 
-                      ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg shadow-pink-500/30' 
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
-                  }`}
                   onClick={() => setSelectedFilter(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    selectedFilter === category
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
                 >
                   {category}
                 </button>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            {...motionValues}
+          >
             {filteredProjects.map((project) => (
-              <div
+              <motion.div
                 key={project.id || project.iid}
-                className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer border border-white/10 hover:border-pink-500/50 hover:-translate-y-2 hover:scale-105"
+                className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer border border-gray-700 hover:border-blue-500"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="relative overflow-hidden">
@@ -543,13 +567,13 @@ fullCaseStudy: {
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                     <span className="text-white font-medium">Click to view details</span>
                   </div>
-                  <div className="absolute top-3 right-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs px-2 py-1 rounded-full">
+                  <div className="absolute top-3 right-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs px-2 py-1 rounded-full">
                     {project.region}
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
                   
@@ -558,287 +582,270 @@ fullCaseStudy: {
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.categories.slice(0, 3).map((cat, idx) => (
+                    {project.categories.map((cat, idx) => (
                       <span 
                         key={idx} 
-                        className="text-xs bg-gray-700/50 text-gray-300 px-2 py-1 rounded border border-white/10"
+                        className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded"
                       >
                         {cat}
                       </span>
                     ))}
                   </div>
 
-                  <div className="text-pink-400 text-sm font-medium">
+                  <div className="text-blue-400 text-sm font-medium">
                     {project.results}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* CTA */}
-          <div className="mt-16">
-            <p className="text-gray-400 text-sm max-w-md mx-auto">
-              We don't just post content - we create cultural moments. Let's make your brand the next big trend.
-            </p>
-          </div>
-        </div>
+        </main>
       </div>
 
       {/* Project Detail Modal */}
-      {selectedProject && (
-        <div
-          className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4"
-          onClick={() => setSelectedProject(null)}
-        >
-          <div
-            className="bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4"
+            onClick={() => setSelectedProject(null)}
           >
-            <div className="relative">
-              <button
-                className="absolute top-4 right-4 text-gray-400 hover:text-white bg-gray-900/50 rounded-full p-2 z-10"
-                onClick={() => setSelectedProject(null)}
-              >
-                <X size={24} />
-              </button>
-              
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-64 object-cover rounded-t-2xl"
-              />
-            </div>
-            
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-4">
-                <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm px-3 py-1 rounded-full">
-                  {selectedProject.region}
-                </span>
-                <div className="flex gap-2">
-                  {selectedProject.categories.map((cat, idx) => (
-                    <span 
-                      key={idx} 
-                      className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded"
-                    >
-                      {cat}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <h3 className="text-3xl font-bold text-white mb-4">
-                {selectedProject.title}
-              </h3>
-              
-              <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                {selectedProject.description}
-              </p>
-
-              <div className="bg-gray-900/50 rounded-xl p-6 mb-6">
-                <h4 className="text-lg font-semibold text-pink-400 mb-3">Results Achieved</h4>
-                <p className="text-gray-300">{selectedProject.results}</p>
-              </div>
-
-              <div className="flex gap-4">
-                <button 
-                  className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300"
-                  onClick={() => {
-                    if (selectedProject.fullCaseStudy) {
-                      setShowCaseStudy(true);
-                    } else {
-                      window.open(selectedProject.caseStudyLink, '_blank');
-                    }
-                  }}
-                >
-                  <ExternalLink size={20} />
-                  Read Full Case Study
-                </button>
-                <button 
-                  className="bg-gray-700 text-white px-6 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300"
-                  onClick={() => setSelectedProject(null)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Full Case Study Modal */}
-      {showCaseStudy && selectedProject?.fullCaseStudy && (
-        <div
-          className="fixed inset-0 bg-black/95 z-[9999] overflow-y-auto"
-          onClick={() => setShowCaseStudy(false)}
-        >
-          <div className="min-h-screen py-8 px-4">
-            <div
-              className="max-w-6xl mx-auto bg-gray-900 rounded-2xl border border-gray-700"
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
               <div className="relative">
                 <button
-                  className="absolute top-6 right-6 text-gray-400 hover:text-white bg-gray-800/50 rounded-full p-2 z-10"
-                  onClick={() => setShowCaseStudy(false)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white bg-gray-900/50 rounded-full p-2 z-10"
+                  onClick={() => setSelectedProject(null)}
                 >
                   <X size={24} />
                 </button>
                 
-                <div className="p-8 border-b border-gray-700">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-4">
-                      <TriskelionLogo size={50} />
-                      <div>
-                        <h1 className="text-3xl font-bold text-white">{selectedProject.title}</h1>
-                        <p className="text-gray-400">Case Study</p>
-                      </div>
-                    </div>
-                    <span className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-full">
-                      {selectedProject.region}
-                    </span>
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full h-64 object-cover rounded-t-2xl"
+                />
+              </div>
+              
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm px-3 py-1 rounded-full">
+                    {selectedProject.region}
+                  </span>
+                  <div className="flex gap-2">
+                    {selectedProject.categories.map((cat, idx) => (
+                      <span 
+                        key={idx} 
+                        className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded"
+                      >
+                        {cat}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  {/* Client Info */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-gray-800/50 rounded-xl p-6">
-                    <div>
-                      <p className="text-gray-400 text-sm">Client</p>
-                      <p className="text-white font-semibold">{selectedProject.fullCaseStudy.clientName}</p>
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  {selectedProject.title}
+                </h3>
+                
+                <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+                  {selectedProject.description}
+                </p>
+
+                <div className="bg-gray-900/50 rounded-xl p-6 mb-6">
+                  <h4 className="text-lg font-semibold text-blue-400 mb-3">Results Achieved</h4>
+                  <p className="text-gray-300">{selectedProject.results}</p>
+                </div>
+
+                <div className="flex gap-4">
+                  <button 
+                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300"
+                    onClick={() => {
+                      if (selectedProject.fullCaseStudy) {
+                        setShowCaseStudy(true);
+                      } else {
+                        window.open(selectedProject.caseStudyLink, '_blank');
+                      }
+                    }}
+                  >
+                    <ExternalLink size={20} />
+                    Read Full Case Study
+                  </button>
+                  <button 
+                    className="bg-gray-700 text-white px-6 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300"
+                    onClick={() => setSelectedProject(null)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Full Case Study Modal */}
+      <AnimatePresence>
+        {showCaseStudy && selectedProject?.fullCaseStudy && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 z-[9999] overflow-y-auto"
+            onClick={() => setShowCaseStudy(false)}
+          >
+            <div className="min-h-screen py-8 px-4">
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="max-w-6xl mx-auto bg-gray-900 rounded-2xl border border-gray-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header */}
+                <div className="relative">
+                  <button
+                    className="absolute top-6 right-6 text-gray-400 hover:text-white bg-gray-800/50 rounded-full p-2 z-10"
+                    onClick={() => setShowCaseStudy(false)}
+                  >
+                    <X size={24} />
+                  </button>
+                  
+                  <div className="p-8 border-b border-gray-700">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-4">
+                        <TriskelionLogo size={50} />
+                        <div>
+                          <h1 className="text-3xl font-bold text-white">{selectedProject.title}</h1>
+                          <p className="text-gray-400">Case Study</p>
+                        </div>
+                      </div>
+                      <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full">
+                        {selectedProject.region}
+                      </span>
                     </div>
-                    <div>
-                      <p className="text-gray-400 text-sm">Industry</p>
-                      <p className="text-white font-semibold">{selectedProject.fullCaseStudy.industry}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-400 text-sm">Location</p>
-                      <p className="text-white font-semibold">{selectedProject.fullCaseStudy.location}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-400 text-sm">Duration</p>
-                      <p className="text-white font-semibold">{selectedProject.fullCaseStudy.duration}</p>
+
+                    {/* Client Info */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-gray-800/50 rounded-xl p-6">
+                      <div>
+                        <p className="text-gray-400 text-sm">Client</p>
+                        <p className="text-white font-semibold">{selectedProject.fullCaseStudy.clientName}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400 text-sm">Industry</p>
+                        <p className="text-white font-semibold">{selectedProject.fullCaseStudy.industry}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400 text-sm">Location</p>
+                        <p className="text-white font-semibold">{selectedProject.fullCaseStudy.location}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400 text-sm">Duration</p>
+                        <p className="text-white font-semibold">{selectedProject.fullCaseStudy.duration}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-8 space-y-8">
-                {/* Challenge */}
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-4">The Challenge</h2>
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    {selectedProject.fullCaseStudy.challenge}
-                  </p>
-                </section>
-
-                {/* Solution */}
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-4">Our Solution</h2>
-                  <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                    {selectedProject.fullCaseStudy.solution}
-                  </p>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {selectedProject.fullCaseStudy.services.map((service, idx) => (
-                      <div key={idx} className="bg-gray-800 rounded-lg p-4 text-center">
-                        <div className="text-pink-400 text-sm font-medium">{service}</div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-
-                {/* Images */}
-                {selectedProject.fullCaseStudy.images && (
+                {/* Content */}
+                <div className="p-8 space-y-8">
+                  {/* Challenge */}
                   <section>
-                    <h2 className="text-2xl font-bold text-white mb-4">Project Highlights</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {selectedProject.fullCaseStudy.images.map((img, idx) => (
-                        <img 
-                          key={idx}
-                          src={img} 
-                          alt={`Project highlight ${idx + 1}`}
-                          className="w-full h-48 object-cover rounded-xl"
-                        />
+                    <h2 className="text-2xl font-bold text-white mb-4">The Challenge</h2>
+                    <p className="text-gray-300 leading-relaxed text-lg">
+                      {selectedProject.fullCaseStudy.challenge}
+                    </p>
+                  </section>
+
+                  {/* Solution */}
+                  <section>
+                    <h2 className="text-2xl font-bold text-white mb-4">Our Solution</h2>
+                    <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                      {selectedProject.fullCaseStudy.solution}
+                    </p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {selectedProject.fullCaseStudy.services.map((service, idx) => (
+                        <div key={idx} className="bg-gray-800 rounded-lg p-4 text-center">
+                          <div className="text-blue-400 text-sm font-medium">{service}</div>
+                        </div>
                       ))}
                     </div>
                   </section>
-                )}
 
-                {/* Results */}
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-4">Results Achieved</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {selectedProject.fullCaseStudy.results.map((result, idx) => (
-                      <div key={idx} className="flex items-center gap-3 bg-gray-800/50 rounded-lg p-4">
-                        <div className="w-2 h-2 bg-pink-400 rounded-full flex-shrink-0"></div>
-                        <span className="text-gray-300">{result}</span>
+                  {/* Images */}
+                  {selectedProject.fullCaseStudy.images && (
+                    <section>
+                      <h2 className="text-2xl font-bold text-white mb-4">Project Highlights</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {selectedProject.fullCaseStudy.images.map((img, idx) => (
+                          <img 
+                            key={idx}
+                            src={img} 
+                            alt={`Project highlight ${idx + 1}`}
+                            className="w-full h-48 object-cover rounded-xl"
+                          />
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </section>
+                    </section>
+                  )}
 
-                {/* Testimonial */}
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-4">Client Testimonial</h2>
-                  <blockquote className="bg-gradient-to-r from-pink-600/10 to-purple-600/10 border-l-4 border-pink-400 rounded-lg p-6">
-                    <p className="text-gray-300 text-lg italic leading-relaxed mb-4">
-                      "{selectedProject.fullCaseStudy.testimonial}"
-                    </p>
-                    <cite className="text-pink-400 font-semibold">
-                      — {selectedProject.fullCaseStudy.clientName}
-                    </cite>
-                  </blockquote>
-                </section>
+                  {/* Results */}
+                  <section>
+                    <h2 className="text-2xl font-bold text-white mb-4">Results Achieved</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {selectedProject.fullCaseStudy.results.map((result, idx) => (
+                        <div key={idx} className="flex items-center gap-3 bg-gray-800/50 rounded-lg p-4">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
+                          <span className="text-gray-300">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
 
-                {/* CTA */}
-                <section className="text-center pt-8 border-t border-gray-700">
-                  <div className="flex gap-4 justify-center">
-                    <button 
-                      className="bg-gray-700 text-white px-6 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300"
-                      onClick={() => setShowCaseStudy(false)}
-                    >
-                      Close Case Study
-                    </button>
-                  </div>
-                </section>
-              </div>
+                  {/* Testimonial */}
+                  <section>
+                    <h2 className="text-2xl font-bold text-white mb-4">Client Testimonial</h2>
+                    <blockquote className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border-l-4 border-blue-400 rounded-lg p-6">
+                      <p className="text-gray-300 text-lg italic leading-relaxed mb-4">
+                        "{selectedProject.fullCaseStudy.testimonial}"
+                      </p>
+                      <cite className="text-blue-400 font-semibold">
+                        — {selectedProject.fullCaseStudy.clientName}
+                      </cite>
+                    </blockquote>
+                  </section>
+
+                  {/* CTA */}
+                  <section className="text-center pt-8 border-t border-gray-700">
+                    <h3 className="text-xl font-bold text-white mb-4"></h3>
+                    <div className="flex gap-4 justify-center">
+                      <button className="">
+                        
+                      </button>
+                      <button 
+                        className=""
+                        onClick={() => setShowCaseStudy(false)}
+                      >
+                        
+                      </button>
+                    </div>
+                  </section>
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes float-1 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        @keyframes float-2 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(180deg); }
-        }
-        @keyframes float-3 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-25px) rotate(180deg); }
-        }
-        @keyframes float-4 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-18px) rotate(180deg); }
-        }
-        @keyframes float-5 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-22px) rotate(180deg); }
-        }
-        @keyframes float-6 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-16px) rotate(180deg); }
-        }
-        @keyframes float-7 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-24px) rotate(180deg); }
-        }
-      `}</style>
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 };
 

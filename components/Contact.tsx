@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { FaWhatsapp, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
-
+import emailjs from '@emailjs/browser';
 // Zod schema for form validation
 export const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -48,6 +48,13 @@ const socials = [
   { name: 'instagram', url: 'https://www.instagram.com/triskelion.collective/' },
   { name: 'email', url: 'mailto:wecare@triskelion.ink' }
 ];
+
+// EmailJS Configuration - Replace these with your actual values
+const EMAILJS_CONFIG = {
+  SERVICE_ID: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+  TEMPLATE_ID: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+  PUBLIC_KEY: 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+};
 
 // Triskelion Logo Component
 const TriskelionLogo = ({ size = 40, className = "", showText = true, animationDuration = 25 }) => (
@@ -146,15 +153,28 @@ const ContactForm = () => {
     setSubmitMessage('');
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        to_email: 'wecare@triskelion.ink',
+        message: formData.message,
+        reply_to: formData.email
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
       
-      console.log('Form submitted:', formData);
-      setSubmitMessage('Message sent successfully!');
+      setSubmitMessage('Message sent successfully! We\'ll get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
+      setErrors({});
     } catch (error) {
-      setSubmitMessage('Failed to send message. Please try again.');
-      console.error('Submit error:', error);
+      console.error('EmailJS Error:', error);
+      setSubmitMessage('Failed to send message. Please try again or contact us directly at wecare@triskelion.ink');
     } finally {
       setIsSubmitting(false);
     }
@@ -188,7 +208,7 @@ const ContactForm = () => {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="wecare@triskelion.ink"
+          placeholder="your.email@example.com"
           className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors"
         />
         {errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}
@@ -201,7 +221,7 @@ const ContactForm = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Message here"
+          placeholder="Tell us about your project..."
           rows={4}
           className="w-full px-4 py-3 rounded-xl bg-transparent border border-white/20 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors resize-vertical"
         />
@@ -213,11 +233,15 @@ const ContactForm = () => {
         disabled={isSubmitting}
         className="bg-transparent rounded-xl text-white border border-white py-3 px-6 font-bold hover:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? 'Submitting...' : 'Submit'}
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>
 
       {submitMessage && (
-        <div className={`text-center text-sm ${submitMessage.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
+        <div className={`text-center text-sm p-3 rounded-lg ${
+          submitMessage.includes('success') 
+            ? 'text-green-400 bg-green-400/10 border border-green-400/20' 
+            : 'text-red-400 bg-red-400/10 border border-red-400/20'
+        }`}>
           {submitMessage}
         </div>
       )}
@@ -251,7 +275,7 @@ const Contact = () => {
   const { title, description } = contact;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 pt-16"> {/* Added pt-16 here */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 pt-16">
       {/* Contact Section */}
       <section id='contact' className='py-20 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-6xl mx-auto flex flex-col items-center gap-12'>
