@@ -16,7 +16,7 @@ const RotatingCircleWidget = ({ className = "" }) => {
               </defs>
               <text className="text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
                 <textPath href="#circle-path" startOffset="0%">
-                  VIRAL • TRENDING • CONTENT • CREATORS • INFLUENCERS • SOCIAL • MEDIA •
+                 COMMUNITY • LIFELONG LEARNING • MUSIC • ART • TECH • BUSINESS • LIFESTYLE •
                 </textPath>
               </text>
             </svg>
