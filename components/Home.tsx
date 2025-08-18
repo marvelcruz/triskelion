@@ -88,6 +88,150 @@ const RotatingCircleWidget = ({ className = "" }) => {
 const TriskelionAgency = () => {
   const [currentRegion, setCurrentRegion] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentMaximizeIndex, setCurrentMaximizeIndex] = useState(0);
+
+  const maximizeTexts = [
+    "Your Wins",
+    "Your Growth", 
+    "Your Brand",
+    "Your Impact",
+    "Your Time",
+    "Your Potential",
+    "Your Revenue",
+    "Your Success"
+  ];
+
+  const scorpionStats = [
+    { number: "20k+", label: "Businesses helped succeed", icon: "🏢" },
+    { number: "$100B+", label: "Revenue generated", icon: "💰" },
+    { number: "200M+", label: "Leads driven for clients", icon: "📈" },
+    { number: "Countless", label: "Records broken", icon: "🏆" }
+  ];
+
+  const services = [
+    {
+      title: "Technology",
+      description: "Revenue-driven technology specifically built for you.",
+      icon: (
+        <div className="relative w-16 h-16 mx-auto mb-4">
+          {/* Phone mockup */}
+          <div className="w-12 h-20 bg-gray-800 rounded-lg border border-gray-600 relative mx-auto">
+            {/* Screen */}
+            <div className="w-10 h-16 bg-gradient-to-b from-blue-500 to-purple-600 rounded-md m-1 relative overflow-hidden">
+              {/* Status bar */}
+              <div className="h-1 bg-white/20 w-full"></div>
+              {/* App icons grid */}
+              <div className="grid grid-cols-3 gap-0.5 p-1 mt-1">
+                {[1,2,3,4,5,6].map(i => (
+                  <div key={i} className={`w-2 h-2 rounded-sm ${
+                    i === 1 ? 'bg-pink-400' : 
+                    i === 2 ? 'bg-blue-400' :
+                    i === 3 ? 'bg-green-400' :
+                    i === 4 ? 'bg-yellow-400' :
+                    i === 5 ? 'bg-red-400' : 'bg-purple-400'
+                  }`}></div>
+                ))}
+              </div>
+              {/* Dashboard lines */}
+              <div className="px-1 mt-2 space-y-1">
+                <div className="h-0.5 bg-white/40 w-8"></div>
+                <div className="h-0.5 bg-white/30 w-6"></div>
+                <div className="h-0.5 bg-white/20 w-7"></div>
+              </div>
+            </div>
+          </div>
+          {/* Floating elements */}
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-yellow-400 rounded-full animate-bounce"></div>
+        </div>
+      )
+    },
+    {
+      title: "Advertising", 
+      description: "Advertising that spends and targets intelligently to grow your business.",
+      icon: (
+        <div className="relative w-16 h-16 mx-auto mb-4">
+          {/* Target with arrow */}
+          <div className="w-14 h-14 mx-auto relative">
+            {/* Target circles */}
+            <div className="w-14 h-14 border-4 border-red-400 rounded-full absolute animate-pulse"></div>
+            <div className="w-10 h-10 border-3 border-red-500 rounded-full absolute top-2 left-2"></div>
+            <div className="w-6 h-6 border-2 border-red-600 rounded-full absolute top-4 left-4"></div>
+            <div className="w-2 h-2 bg-red-600 rounded-full absolute top-6 left-6"></div>
+            
+            {/* Arrow hitting target */}
+            <div className="absolute -right-1 top-6 w-6 h-0.5 bg-yellow-400 transform rotate-45 origin-left">
+              <div className="absolute -left-1 -top-0.5 w-2 h-2 border-t-2 border-r-2 border-yellow-400 transform rotate-45"></div>
+            </div>
+          </div>
+          {/* Ad platform icons around */}
+          <div className="absolute -top-2 left-2 w-3 h-3 bg-blue-500 rounded text-white text-xs flex items-center justify-center font-bold">f</div>
+          <div className="absolute -top-2 right-2 w-3 h-3 bg-pink-500 rounded text-white text-xs flex items-center justify-center">📷</div>
+          <div className="absolute -bottom-2 left-1 w-3 h-3 bg-green-500 rounded text-white text-xs flex items-center justify-center">G</div>
+        </div>
+      )
+    },
+    {
+      title: "Marketing",
+      description: "Marketing that brings you the right clients at the right time.",
+      icon: (
+        <div className="relative w-16 h-16 mx-auto mb-4">
+          {/* Social media platform mockup */}
+          <div className="w-14 h-16 bg-gray-900 rounded-lg border border-gray-700 relative">
+            {/* Screen content */}
+            <div className="p-1">
+              {/* Top bar */}
+              <div className="h-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-sm mb-1"></div>
+              
+              {/* Social media posts */}
+              <div className="space-y-1">
+                {/* Post 1 */}
+                <div className="bg-gray-800 rounded p-1 border-l-2 border-pink-400">
+                  <div className="flex items-center space-x-1">
+                    <div className="w-1.5 h-1.5 bg-pink-400 rounded-full"></div>
+                    <div className="h-0.5 bg-white/60 w-6"></div>
+                  </div>
+                  <div className="h-0.5 bg-white/40 w-8 mt-0.5"></div>
+                </div>
+                
+                {/* Post 2 */}
+                <div className="bg-gray-800 rounded p-1 border-l-2 border-blue-400">
+                  <div className="flex items-center space-x-1">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                    <div className="h-0.5 bg-white/60 w-7"></div>
+                  </div>
+                  <div className="h-0.5 bg-white/40 w-5 mt-0.5"></div>
+                </div>
+                
+                {/* Post 3 */}
+                <div className="bg-gray-800 rounded p-1 border-l-2 border-green-400">
+                  <div className="flex items-center space-x-1">
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+                    <div className="h-0.5 bg-white/60 w-6"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Floating engagement icons */}
+          <div className="absolute -top-1 -right-2 text-red-400 text-xs animate-bounce">❤️</div>
+          <div className="absolute top-2 -right-2 text-blue-400 text-xs animate-pulse">👍</div>
+          <div className="absolute -bottom-1 -right-1 text-yellow-400 text-xs animate-bounce" style={{animationDelay: '0.5s'}}>💬</div>
+          <div className="absolute bottom-1 -left-2 text-green-400 text-xs animate-pulse" style={{animationDelay: '1s'}}>🔄</div>
+        </div>
+      )
+    }
+  ];
+
+  const industries = [
+    { name: "Home Services", icon: "🏠" },
+    { name: "Legal", icon: "⚖️" },
+    { name: "Franchise", icon: "🏪" },
+    { name: "Medical", icon: "🏥" },
+    { name: "Multi-Location", icon: "📍" },
+    { name: "Healthcare Systems", icon: "🏨" }
+  ];
 
   const regions = [
     {
@@ -141,7 +285,15 @@ const TriskelionAgency = () => {
     const interval = setInterval(() => {
       setCurrentRegion((prev) => (prev + 1) % regions.length);
     }, 6000);
-    return () => clearInterval(interval);
+    
+    const maximizeInterval = setInterval(() => {
+      setCurrentMaximizeIndex((prev) => (prev + 1) % maximizeTexts.length);
+    }, 2000);
+    
+    return () => {
+      clearInterval(interval);
+      clearInterval(maximizeInterval);
+    };
   }, []);
 
   const TriskelionLogo = ({ size = 120, className = "", glow = true }) => (
@@ -354,16 +506,133 @@ const TriskelionAgency = () => {
     TRISKELION
   </motion.h1>
   <div className="w-24 h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mx-auto mb-4"></div>
-  <motion.p className="text-lg md:text-7xl text-pink-200 font-bold">
+  
+  {/* MAXIMIZE Section */}
+  <div className="mb-6">
+    <motion.p className="text-6xl md:text-7xl text-pink-200 font-bold mb-2">
+      MAXIMIZE
+    </motion.p>
+    <div className="h-16 flex items-center justify-center">
+      <AnimatePresence mode="wait">
+        <motion.p 
+          key={currentMaximizeIndex}
+          className="text-2xl md:text-3xl text-yellow-400 font-semibold"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {maximizeTexts[currentMaximizeIndex]}
+        </motion.p>
+      </AnimatePresence>
+    </div>
+  </div>
+  
+  <motion.p className="text-lg text-white font-semibold mb-2">
     Elevate Your Brand
   </motion.p>
-  <motion.p className="text-lg text-white mt-2 max-w-2xl mx-auto">
+  <motion.p className="text-base md:text-lg text-pink-200 font-medium mb-4">
+    Digital marketing that brings you revenue, not just leads.
+  </motion.p>
+  <motion.p className="text-base text-white/90 mb-4 italic">
+    Every business we serve exists to help others. <span className="text-yellow-400 font-semibold">Our job is to help them.</span>
+  </motion.p>
+  <motion.p className="text-base text-white mt-2 max-w-2xl mx-auto">
     We are a 360 social media creative marketing and{' '}
     <span className="text-yellow-400 font-semibold">lead generation</span>{' '}
     company{' '}
     <span className="text-yellow-400 font-semibold">leveraging technology, community & content</span>{' '}
     to design delightful experiences.
   </motion.p>
+</motion.div>
+
+{/* Scorpion Stats Section */}
+<motion.div variants={itemVariants} className="mb-12">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+    {scorpionStats.map((stat, index) => (
+      <motion.div
+        key={index}
+        className="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10 text-center hover:border-pink-500/50 transition-all duration-300"
+        whileHover={{ y: -5, scale: 1.02 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 * index }}
+      >
+        <div className="text-2xl mb-2">{stat.icon}</div>
+        <div className="text-2xl md:text-3xl font-bold text-white mb-2">
+          {stat.number}
+        </div>
+        <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+{/* RevenueMAX Section */}
+<motion.div variants={itemVariants} className="mb-12">
+  <div className="bg-gradient-to-r from-pink-500/20 to-purple-500/20 backdrop-blur-lg rounded-2xl p-8 border border-pink-500/30 max-w-3xl mx-auto">
+    <motion.h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      Revenue<span className="text-yellow-400">MAX</span>
+    </motion.h3>
+    <motion.p className="text-lg text-white/90 mb-6">
+      The digital marketing solution that gives you everything you need to succeed online.
+    </motion.p>
+    <div className="flex flex-wrap justify-center gap-4 mb-6">
+      <span className="px-4 py-2 bg-pink-500/30 rounded-full text-white text-sm font-medium">Transformative Product Winner</span>
+      <span className="px-4 py-2 bg-purple-500/30 rounded-full text-white text-sm font-medium">Top Choice in Category</span>
+      <span className="px-4 py-2 bg-cyan-500/30 rounded-full text-white text-sm font-medium">Excellence in Sales & Marketing</span>
+    </div>
+    <motion.button 
+      className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      Watch Video
+    </motion.button>
+  </div>
+</motion.div>
+
+{/* Services Section */}
+<motion.div variants={itemVariants} className="mb-12">
+  <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    {services.map((service, index) => (
+      <motion.div
+        key={index}
+        className="bg-black/40 backdrop-blur-lg rounded-xl p-6 border border-white/10 hover:border-pink-500/50 transition-all duration-300"
+        whileHover={{ y: -5 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 * index }}
+      >
+        <div className="text-center mb-4">{service.icon}</div>
+        <h4 className="text-xl font-bold text-white mb-3">{service.title}</h4>
+        <p className="text-gray-300 text-sm">{service.description}</p>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+{/* Industries Section */}
+<motion.div variants={itemVariants} className="mb-12">
+  <motion.h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+    Choose Your Industry
+  </motion.h3>
+  <motion.p className="text-gray-300 mb-8">
+    The solutions, commitment, and expertise to deliver <span className="text-yellow-400 font-semibold">maximum growth</span>
+  </motion.p>
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-4xl mx-auto">
+    {industries.map((industry, index) => (
+      <motion.button
+        key={index}
+        className="bg-black/50 backdrop-blur-lg rounded-xl p-4 border border-white/10 hover:border-pink-500/50 transition-all duration-300 text-center"
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div className="text-2xl mb-2">{industry.icon}</div>
+        <div className="text-white text-sm font-medium">{industry.name}</div>
+      </motion.button>
+    ))}
+  </div>
 </motion.div>
             {/* Region selector */}
             <motion.div variants={itemVariants} className="mb-12">
@@ -453,24 +722,34 @@ const TriskelionAgency = () => {
 
             {/* CTA */}
             <motion.div variants={itemVariants} className="mt-12">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-                <motion.button
-                  className=""
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                </motion.button>
-                
-                <motion.button
-                  className=""
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                </motion.button>
+              <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-lg rounded-2xl p-8 border border-pink-500/20 max-w-2xl mx-auto text-center">
+                <motion.h3 className="text-3xl md:text-4xl font-bold text-pink-200 mb-4">
+                  MAXIMIZE Your Growth
+                </motion.h3>
+                <motion.p className="text-gray-300 mb-6">
+                  Connected with the providers that matter to maximize your revenue
+                </motion.p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+                  <motion.button
+                    className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Schedule Consultation
+                  </motion.button>
+                  
+                  <motion.button
+                    className="border border-white/30 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Pick Your Industry
+                  </motion.button>
+                </div>
               </div>
               
               <motion.p 
-                className="text-gray-400 text-xs max-w-md mx-auto"
+                className="text-gray-400 text-sm max-w-md mx-auto mt-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}

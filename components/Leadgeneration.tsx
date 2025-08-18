@@ -268,13 +268,13 @@ const Leadgeneration = () => {
             <TriskelionLogo size={80} />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-            Helping Businesses Build Awareness, Foster Connections, and Generate Quality Leads
+            From Lead Generation to Revenue Generation. 
           </h1>
           <h2 className="text-xl md:text-2xl mb-6 text-blue-400 font-medium">
-            Digital Advertising For Businesses
+            Digital Advertising For Businesses. Not all leads are created equal. Turn Leads Into Revenue.
           </h2>
           <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            TRISKELION helps businesses plan, create, and manage social media that converts followers into leads.
+            TRISKELION helps businesses plan, create, and manage digital advertising that converts followers into revenue. Better leads. Maximum revenue. Our job is to bring you not just more leads, but more of the leads you want most.
           </p>
           <button className="">
             

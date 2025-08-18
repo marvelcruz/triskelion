@@ -11,7 +11,7 @@ import Button from "./ui/UIButton";
 const navigationLinks = [
   { title: "About", href: "/about" },
   { title: "How We Help You", href: "/help-you" },
-  { title: "Designs", href: "/designs" },
+  { title: "Portfolio", href: "/designs" },
   { title: "Lead Generation", href: "/lead-generation" },
   { title: "Our Approach", href: "/failure-and-documentation" },
   { title: "Contact", href: "/contact" }
