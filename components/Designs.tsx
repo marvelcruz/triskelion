@@ -402,11 +402,147 @@ fullCaseStudy: {
         }
         },
          {
-      id: 8,
+      id: 9,
+  title: "Caffè Vivace Packaging Project",
+  description: "Premium coffee brand packaging brought to life through meticulous execution.",
+  image: "/images/Vivace11.png",
+  categories: ["D Product Visualization", "Packaging Design", "Brand Identity", "Blender Artistry"],
+  region: "Italy",
+  results: "Delivered photorealistic packaging visuals that elevated brand perception and communicated premium quality through thoughtful materiality and lighting",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "Caffè Vivace",
+    industry: "Premium Coffee",
+    location: "Italy",
+    challenge: "Translating the essence of a heritage Italian coffee brand into modern packaging visuals that communicate luxury while maintaining authentic craftsmanship values. The project required balancing technical accuracy of coffee bag functionality with aspirational brand aesthetics.",
+    solution: "We led the full execution of the Caffè Vivace packaging project, handling everything from the initial concept to the final render using Blender. The process began with crafting the visual identity through sleek packaging design and a custom gold emblem that captures the brand's refined yet energetic nature. I modeled each coffee bag with careful attention to form and proportion, aiming for a luxurious feel with bold simplicity.",
+    results: [
+    "Delivered photorealistic packaging visuals that exceeded client expectations",
+    "Established distinctive visual language for brand's premium positioning",
+    "Created reusable assets for future marketing applications",
+    "Reduced physical prototyping costs by 70% through accurate digital visualization"
+    ],
+    testimonial: "The execution perfectly captured our Italian heritage while giving us a contemporary visual edge in the competitive premium coffee market.",
+    services: ["Product Modeling", "Packaging Visualization", "Material Development", "Lighting Design", "Brand Identity Integration"],
+    duration: "6-week project",
+    role: "Artist & Packaging Designer",
+    images: [
+      "/images/Vivace11.png",
+      "/images/Vivace2.png",
+      "/images/Vivace3.png",
+      "/images/Vivace4.png",
+      "/images/Vivace1.jpeg",
+          ]
+        }
+        },
+         {
+      id: 9,
+  title: "HydroSphere Eco Bottle Visualization",
+  description: "Product visuals for HydroSphere's eco-friendly flasks",
+  image: "/images/Hygro1.png",
+  categories: ["Sustainable Design", "Brand Visualization"],
+  region: "Nigeria",
+  results: "Created premium product renders that boosted engagement by 32% while authentically communicating eco-conscious values",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "HydroSphere",
+    industry: "Sustainable Lifestyle",
+    location: "Nigeria",
+    challenge: "Translating HydroSphere's mission of durable, eco-friendly hydration into visuals that avoid generic product aesthetics while emphasizing material quality and sustainability.",
+    solution: "HydroSphere was founded on the belief that hydration powers life's best moments. For this project, I focused on texturing, UV unwrapping, lighting and rendering in Blender to highlight the brand's sleek, modern identity. The scene was carefully lit to emphasize contrast and surface details, bringing out matte finishes and clean designs that reflect both premium quality and environmental values.",
+    results: [
+     "Achieved 90% photorealism for e-commerce/marketing use",
+    "Increased social media engagement by 32% over previous assets",
+    "Established signature visual style adopted across all packaging",
+    "Reduced photoshoot costs by 60% with versatile assets"
+    ],
+    testimonial: "The execution perfectly captured our Italian heritage while giving us a contemporary visual edge in the competitive premium coffee market.",
+    services: ["Product Modeling", "Packaging Visualization", "Material Development", "Lighting Design", "Brand Identity Integration"],
+    duration: "6-week project",
+    role: "Artist & Packaging Designer",
+    images: [
+      "/images/Hygro1.png",
+      "/images/Hygro2.png",
+      "/images/Hygro3.png",
+      "/images/Hygro4.png",
+          ]
+        }
+        },
+          {
+      id: 9,
+  title: "Skin Glow Toner Bottle Design",
+  description: "Elevating natural skincare through photorealistic packaging design - clean aesthetics meet ingredient transparency in Blender-rendered visuals.",
+  image: "/images/Bootle.png",
+  categories: ["Beauty Packaging", "Brand Visualization"],
+  region: "Nigeria",
+  results: "Created a visually unified skincare line that boosted brand perception, with renders used across e-commerce, social media, and investor presentations",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "Skin Glow Cosmetics",
+    industry: "Natural Skincare",
+    location: "Nigeria",
+    challenge: "Developing distinct yet cohesive packaging visuals for multiple SKUs that communicate 100% natural ingredients while standing out in the crowded clean beauty market. Needed to balance minimalist aesthetics with enough visual detail to convey product benefits.",
+    solution: "Skin Glow Cosmetics transforms routines into soothing rituals with natural ingredients. We modeled dropper bottles in Blender with clean geometry, creating custom glass/liquid shaders and color-coded caps for each variant (Lavender, Vanilla & Honey, etc.). HDRI lighting highlighted texture while minimalist backgrounds focused attention on product purity.",
+    results: [
+    "100% consistent visual system across 5 product variants",
+    "Reduced photoshoot costs by 75% with ready-to-market renders",
+    "Increased conversion by 22% on e-commerce product pages",
+    "Assets adopted across packaging, web, and social media",
+    "Enhanced premium perception for investor presentations"
+    ],
+    testimonial: "The visuals perfectly captured our 'clean beauty meets self-care' ethos - they became the cornerstone of our rebranding.",
+    services: ["Beauty Product Rendering", "Material Development", "Brand Visualization", "Digital Ads", "E-Commerce Assets"],
+    duration: "4-week project",
+    role: "",
+    images: [
+      "/images/Bootle1.png",
+      "/images/Bootle2.png",
+      "/images/Bootle3.png",
+     "/images/Bootle4.png",
+          ]
+        }
+        },
+          {
+      id: 10,
+  title: "Dorado Sauce Bottle Branding",
+  description: "Culinary alchemy meets artistry - crafting a sauce brand's visual identity from bottle design to animated product.",
+  image: "/images/Doroda1.png",
+  categories: ["Product Visualization","Digital Ads", "Packaging Design", "Food Branding", "Blender Artistry"],
+  region: "Americas/Mediterranean",
+  results: "Created an immersive brand world that translated cultural flavors into striking visual identity across packaging and digital assets",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "Dorado Sauces",
+    industry: "Premium Condiments",
+    location: "Americas/Mediterranean",
+    challenge: "Developing a distinctive visual language for a new sauce brand that bridges Mediterranean and Latin American culinary traditions. The project required creating appetite-appealing visuals that communicate both heritage and modern flair while differentiating multiple SKUs through color and texture.",
+    solution: "Dorado takes its name from the legendary city of El Dorado, representing golden quality in global flavors. As the sole creator, I executed the complete pipeline in Blender - from modeling custom sauce bottles to crafting textures that visually 'taste' like each flavor. The labels blend cultural motifs with playful modernity, while material shading makes glass bottles appear tantalizingly real.",
+    results: [
+    "Cultural Brand Storytelling: Developed visual identity rooted in culinary heritage",
+    "Complete Pipeline: Modeling → Texturing → Lighting → Animation",
+    "Flavor Differentiation: Unique material treatments for each sauce variety",
+    "Dynamic Presentation: Camera animations highlighting product details",
+    "Market-Ready Assets: Created production-ready models and renders"
+    ],
+    testimonial: "The execution captured our cultural fusion perfectly - the bottles look so real you can almost taste the sauces through the screen.",
+    services: ["Product Design", "Packaging Visualization", "Brand Identity", "Material Shading", "Motion Presentation"],
+    duration: "6-week project",
+    role: "Artist & Brand Designer",
+    images: [
+      "/images/Doroda1.png",
+      "/images/Doroda2.png",
+      "/images/Doroda3.png",
+      "/images/Doroda4.png",
+      "/images/Doroda5.png",
+          ]
+        }
+        },
+         {
+      id: 10,
   title: "MYAKU-MYAKU",
   description: "When Japan's official World Expo 2025 mascot went rogue and launched its own meme coin. The cute red blob that conquered crypto Twitter with kawaii chaos.",
   image: "/images/MYAKU-MYAKU1.jpeg",
-  categories: ["Meme Marketing", "Cultural Bridging", "Viral Content", "Community Building"],
+  categories: ["Meme Marketing", "Digital Ads","Cultural Bridging", "Viral Content", "Community Building"],
   region: "Japan",
   results: "Turned Japan's beloved Expo mascot into crypto's most unexpected success story with 527+ devoted followers and international media coverage",
   caseStudyLink: "#",
@@ -437,11 +573,11 @@ fullCaseStudy: {
         },
         
        {
-      id: 8,
+      id: 11,
   title: "FinAi Labs",
   description: "Building the future of finance — in your hands. AI, memes, and ownership. 🚀 First project: $FAI live now!",
   image: "/images/Fai1.jpeg",
-  categories: ["Branding", "Social Media Management", "Community Management", "Photography"],
+  categories: ["Branding", "Digital Ads", "Social Media Management", "Community Management", "Photography"],
   region: "United Kingdom",
   results: "Grew community from 0 to 407 followers through strategic social media management and engaging crypto-focused content",
   caseStudyLink: "#",
@@ -553,7 +689,7 @@ fullCaseStudy: {
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id || project.iid}
-                className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer border border-gray-700 hover:border-blue-500"
+                className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 group cursor-pointer border border-gray-100 hover:border-blue-700"
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 onClick={() => setSelectedProject(project)}
@@ -567,7 +703,7 @@ fullCaseStudy: {
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                     <span className="text-white font-medium">Click to view details</span>
                   </div>
-                  <div className="absolute top-3 right-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs px-2 py-1 rounded-full">
+                  <div className="absolute top-3 right-3 bg-gradient-to-r from-blue-600 to-purple-100 text-white text-xs px-2 py-1 rounded-full">
                     {project.region}
                   </div>
                 </div>
