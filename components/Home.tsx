@@ -218,10 +218,10 @@ const TriskelionAgency = () => {
           </div>
           
           {/* Floating engagement icons */}
-          <div className="absolute -top-1 -right-2 text-red-400 text-xs animate-bounce">❤️</div>
-          <div className="absolute top-2 -right-2 text-blue-400 text-xs animate-pulse">👍</div>
-          <div className="absolute -bottom-1 -right-1 text-yellow-400 text-xs animate-bounce" style={{animationDelay: '0.5s'}}>💬</div>
-          <div className="absolute bottom-1 -left-2 text-green-400 text-xs animate-pulse" style={{animationDelay: '1s'}}>🔄</div>
+          <div className="absolute -top-1 -right-2 text-red-400 text-xs animate-bounce"></div>
+          <div className="absolute top-2 -right-2 text-blue-400 text-xs animate-pulse"></div>
+          <div className="absolute -bottom-1 -right-1 text-yellow-400 text-xs animate-bounce" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute bottom-1 -left-2 text-green-400 text-xs animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
       )
     }
@@ -695,7 +695,7 @@ const TriskelionAgency = () => {
 
 {/* Scorpion Stats Section */}
 <motion.div variants={itemVariants} className="mb-12">
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+  <div className="grid grid-cols-3 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
     {scorpionStats.map((stat, index) => (
       <motion.div
         key={index}
