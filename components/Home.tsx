@@ -692,24 +692,23 @@ const TriskelionAgency = () => {
                 ))}
               </div>
             </motion.div>
-
 {/* Scorpion Stats Section */}
 <motion.div variants={itemVariants} className="mb-12">
-  <div className="grid grid-cols-3 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
     {scorpionStats.map((stat, index) => (
       <motion.div
         key={index}
-        className="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10 text-center hover:border-pink-500/50 transition-all duration-300"
+        className="bg-black/50 backdrop-blur-lg rounded-xl p-3 md:p-6 border border-white/10 text-center hover:border-pink-500/50 transition-all duration-300"
         whileHover={{ y: -5, scale: 1.02 }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index }}
       >
-        <div className="text-2xl mb-2">{stat.icon}</div>
-        <div className="text-2xl md:text-3xl font-bold text-white mb-2">
+        <div className="text-xl md:text-2xl mb-1 md:mb-2">{stat.icon}</div>
+        <div className="text-sm md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-2 leading-tight">
           {stat.number}
         </div>
-        <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
+        <div className="text-gray-400 text-xs md:text-sm font-medium">{stat.label}</div>
       </motion.div>
     ))}
   </div>
