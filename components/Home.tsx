@@ -676,14 +676,13 @@ const TriskelionAgency = () => {
 
             {/* CTA */}
             <motion.div variants={itemVariants} className="mt-12">
-              <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-lg rounded-2xl p-8 border border-pink-500/20 max-w-2xl mx-auto text-center">
-                <motion.h3 className="text-3xl md:text-4xl font-bold text-pink-200 mb-4">
+              <div className="">
+                <motion.h3 className="">
                   MAXIMIZE Your Growth
                 </motion.h3>
-                <motion.p className="text-gray-300 mb-6">
-                  Connected with the providers that matter to maximize your revenue
+                <motion.p className="">
                 </motion.p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+                <div className="">
                   <motion.button
                     className=""
                     whileHover={{ scale: 1.05 }}
