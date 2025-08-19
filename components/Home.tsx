@@ -578,9 +578,9 @@ const TriskelionAgency = () => {
       The digital marketing solution that gives you everything you need to succeed online.
     </motion.p>
     <div className="flex flex-wrap justify-center gap-4 mb-6">
-      <span className="px-4 py-2 bg-pink-500/30 rounded-full text-white text-sm font-medium">Transformative Product Winner</span>
-      <span className="px-4 py-2 bg-purple-500/30 rounded-full text-white text-sm font-medium">Top Choice in Category</span>
-      <span className="px-4 py-2 bg-cyan-500/30 rounded-full text-white text-sm font-medium">Excellence in Sales & Marketing</span>
+      <span className="px-4 py-2 bg-pink-500/30 rounded-full text-white text-sm font-medium"></span>
+      <span className="px-4 py-2 bg-purple-500/30 rounded-full text-white text-sm font-medium"></span>
+      <span className="px-4 py-2 bg-cyan-500/30 rounded-full text-white text-sm font-medium"></span>
     </div>
     <motion.button 
       className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
