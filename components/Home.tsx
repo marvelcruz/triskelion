@@ -588,28 +588,6 @@ const TriskelionAgency = () => {
   </div>
 </motion.div>
 
-{/* Industries Section */}
-<motion.div variants={itemVariants} className="mb-12">
-  <motion.h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-    Choose Your Industry
-  </motion.h3>
-  <motion.p className="text-gray-300 mb-8">
-    The solutions, commitment, and expertise to deliver <span className="text-yellow-400 font-semibold">maximum growth</span>
-  </motion.p>
-  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-4xl mx-auto">
-    {industries.map((industry, index) => (
-      <motion.button
-        key={index}
-        className="bg-black/50 backdrop-blur-lg rounded-xl p-4 border border-white/10 hover:border-pink-500/50 transition-all duration-300 text-center"
-        whileHover={{ scale: 1.05, y: -2 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <div className="text-2xl mb-2">{industry.icon}</div>
-        <div className="text-white text-sm font-medium">{industry.name}</div>
-      </motion.button>
-    ))}
-  </div>
-</motion.div>
             {/* Region selector */}
             <motion.div variants={itemVariants} className="mb-12">
               <div className="flex flex-wrap justify-center gap-2 mb-8 bg-black/60 backdrop-blur-lg rounded-2xl p-3 max-w-fit mx-auto border border-white/10 shadow-lg">
