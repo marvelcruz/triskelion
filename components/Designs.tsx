@@ -367,6 +367,39 @@ fullCaseStudy: {
           ]
         }
         },
+         {
+      id: 8,
+  title: "ArcTri Real Estate Brand Identity",
+  description: "Architectural elegance meets sustainable innovation in this premium real estate branding system - balancing geometric precision with organic warmth.",
+  image: "/images/Arictri1.png",
+  categories: ["Brand Identity", "Real Estate Design", "Typography"],
+  region: "United Kingdom",
+  results: "Developed a distinctive visual language that increased brand recognition by 40% and established ArcTri as a leader in sustainable architectural development",
+  caseStudyLink: "#",
+  fullCaseStudy: {
+    clientName: "ArcTri Real Estate",
+    industry: "Architectural Development",
+    location: "United Kingdom",
+    challenge: "Creating a brand identity that visually communicates ArcTri's triple philosophy of sustainability, innovation, and investment while standing out in the competitive luxury real estate market. Needed to balance architectural precision with approachable warmth.",
+    solution: "ArcTri's identity centers on the elegant Playfair Display typography paired with a triangular motif representing their three core values. The minimalist mark combines architectural stability with dynamic angles, while the color palette blends professional navy with eco-conscious greens. Stationery and marketing materials feature clean lines and ample white space to suggest premium quality.",
+    results: [
+      "40% increase in brand recognition post-launch",
+    "Won 2 industry awards for design excellence",
+    "Assets adopted across 12 international developments",
+    "Increased premium perception (22% higher valuation acceptance)",
+    "Created templates for consistent global rollout"
+    ],
+    testimonial: "The identity perfectly captured our architectural soul while making sustainability feel luxurious - it's become our competitive edge in presentations.",
+    services: ["Brand Strategy", "Visual Identity", "Typography Design"],
+    duration: "July 2025 ",
+    role: "Lead Social Media Strategist & Community Growth Specialist",
+    images: [
+      "/images/Arictri1.png",
+      "/images/Arictri2.png",
+      "/images/Arictri3.png",
+          ]
+        }
+        },
         {
       id: 8,
   title: "YELLOWFANG @YellowFangUSD1",
