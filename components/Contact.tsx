@@ -240,24 +240,24 @@ const Contact = () => {
             <div>
               <h4 className="font-semibold mb-4 text-purple-400">Strategy & Planning</h4>
               <div className="space-y-2">
-                <p className="text-sm text-purple-400">Social media strategy development</p>
-                <p className="text-sm text-blue-400">Content calendar planning</p>
-                <p className="text-sm text-pink-400">Brand voice and messaging</p>
-                <p className="text-sm text-blue-400">Competitor analysis</p>
-                <p className="text-sm text-purple-400">Platform-specific strategies</p>
-                <p className="text-sm text-pink-400">Content audits</p>
+                <p className="text-sm text-white-400">Social media strategy development</p>
+                <p className="text-sm text-white-400">Content calendar planning</p>
+                <p className="text-sm text-white-400">Brand voice and messaging</p>
+                <p className="text-sm text-white-400">Competitor analysis</p>
+                <p className="text-sm text-white-400">Platform-specific strategies</p>
+                <p className="text-sm text-white-400">Content audits</p>
               </div>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4 text-pink-400">Management & Ads</h4>
               <div className="space-y-2">
-                <p className="text-sm text-pink-400">Daily posting and scheduling</p>
-                <p className="text-sm text-blue-400">Community management</p>
-                <p className="text-sm text-purple-400">Account setup and optimization</p>
-                <p className="text-sm text-pink-400">Paid social advertising</p>
-                <p className="text-sm text-blue-400">Analytics and reporting</p>
-                <p className="text-sm text-purple-400">Influencer marketing</p>
+                <p className="text-sm text-white-400">Daily posting and scheduling</p>
+                <p className="text-sm text-white-400">Community management</p>
+                <p className="text-sm text-white-400">Account setup and optimization</p>
+                <p className="text-sm text-white-400">Paid social advertising</p>
+                <p className="text-sm text-white-400">Analytics and reporting</p>
+                <p className="text-sm text-white-400">Influencer marketing</p>
               </div>
             </div>
           </div>
