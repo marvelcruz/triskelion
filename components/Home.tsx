@@ -102,10 +102,10 @@ const TriskelionAgency = () => {
   ];
 
   const scorpionStats = [
-    { number: "20k+", label: "Businesses helped succeed", icon: "🏢" },
-    { number: "$100B+", label: "Revenue generated", icon: "💰" },
-    { number: "200M+", label: "Leads driven for clients", icon: "📈" },
-    { number: "Countless", label: "Records broken", icon: "🏆" }
+    { number: "", label: "", icon: "" },
+    { number: "", label: "", icon: "" },
+    { number: "", label: "", icon: "" },
+    { number: "", label: "", icon: "" }
   ];
 
   const services = [
