@@ -174,7 +174,7 @@ const TriskelionAgency = () => {
       )
     },
     {
-      title: "Marketing",
+      title: "Social and Digital Marketing",
       description: "Marketing that brings you the right clients at the right time.",
       image: "/images/5dollar11.jpeg",
       icon: (
