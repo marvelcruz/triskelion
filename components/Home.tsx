@@ -685,19 +685,18 @@ const TriskelionAgency = () => {
                 </motion.p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
                   <motion.button
-                    className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                    className=""
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Schedule Consultation
+                  
                   </motion.button>
                   
                   <motion.button
-                    className="border border-white/30 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+                    className=""
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Pick Your Industry
                   </motion.button>
                 </div>
               </div>
