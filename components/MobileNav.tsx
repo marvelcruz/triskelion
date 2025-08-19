@@ -44,7 +44,7 @@ const MobileNav = ({ links, show, onClose }: LinkProps) => {
     <AnimatePresence>
       {show && (
         <motion.section
-          className='mobile-nav border_b bg-black/95 backdrop-blur-md'
+          className='mobile-nav border_b bg-black backdrop-blur-md'
           key='modal'
           variants={variants1}
           initial='close'
