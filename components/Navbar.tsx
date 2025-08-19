@@ -77,6 +77,11 @@ const Navbar = () => {
     setShowNav((prev) => !prev);
   };
 
+  // Add this function to close the mobile nav
+  const closeMobileNav = () => {
+    setShowNav(false);
+  };
+
   return (
     <header className="header border_b">
       <nav className="nav-bar py-0">
@@ -114,7 +119,8 @@ const Navbar = () => {
         </Button>
       </nav>
 
-      <MobileNav links={navigationLinks} show={showNav} />
+      {/* Pass the onClose function to MobileNav */}
+      <MobileNav links={navigationLinks} show={showNav} onClose={closeMobileNav} />
     </header>
   );
 };

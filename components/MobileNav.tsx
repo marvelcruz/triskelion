@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
-const MobileNav = ({ links, show }: LinkProps) => {
+interface LinkProps {
+  links: Array<{ title: string; href: string }>;
+  show: boolean;
+  onClose: () => void; // Add this prop
+}
+
+const MobileNav = ({ links, show, onClose }: LinkProps) => {
   const variants1: Variants = {
     open: {
       height: '33.33vh',
@@ -46,9 +52,13 @@ const MobileNav = ({ links, show }: LinkProps) => {
           exit='close'
         >
           <ul className='flex-center flex-col gap-4'>
-            {links.map(({ title, href }: Link, index) => (
+            {links.map(({ title, href }, index) => (
               <motion.li key={index} variants={variants2}>
-                <Link href={href} className='link focus:mobile-nav_link-active'>
+                <Link 
+                  href={href} 
+                  className='link focus:mobile-nav_link-active'
+                  onClick={onClose} // Close nav when link is clicked
+                >
                   {title}
                 </Link>
               </motion.li>
