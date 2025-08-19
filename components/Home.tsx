@@ -238,15 +238,15 @@ const TriskelionAgency = () => {
 
   const regions = [
     {
-      country: "United States",
-      flag: "🇺🇸",
-      audience: "330M+",
-      reach: "Americans",
-      platforms: "Facebook, X(Twitter), Linkedin, TikTok, Instagram, YouTube ",
-      description: "Creating viral content that dominates FYP pages across all platforms",
-      accent: "from-pink-500 to-cyan-400",
+      country: "",
+      flag: "",
+      audience: "",
+      reach: "",
+      platforms: "",
+      description: "",
+      accent: "",
       stats: { projects: "", followers: "", months: "" },
-      speciality: "Short-form video specialists"
+      speciality: ""
     },
   ];
 
@@ -499,34 +499,32 @@ const TriskelionAgency = () => {
   </div>
   
   <motion.p className="text-lg text-white font-semibold mb-2">
-    Elevate Your Brand
   </motion.p>
   <motion.p className="text-base md:text-lg text-pink-200 font-medium mb-4">
-    Digital marketing that brings you revenue, not just leads.
   </motion.p>
-  <motion.p className="text-base text-white/90 mb-4 italic">
-    Every business we serve exists to help others. <span className="text-yellow-400 font-semibold">Our job is to help them.</span>
-  </motion.p>
-  <motion.p className="text-base text-white mt-2 max-w-2xl mx-auto">
+  <motion.p className="text-5xl md:text-5xl text-pink-200 font-bold mb-2">
     We are a 360 social media creative marketing and{' '}
     <span className="text-yellow-400 font-semibold">lead generation</span>{' '}
     company{' '}
     <span className="text-yellow-400 font-semibold">leveraging technology, community & content</span>{' '}
     to design delightful experiences.
   </motion.p>
+  <motion.p className="text-base text-white/90 mb-4 italic">
+    Every business we serve exists to help others. <span className="text-yellow-400 font-semibold">Our job is to help them.</span>
+  </motion.p>
 </motion.div>
 
 
             {/* Region selector */}
-            <motion.div variants={itemVariants} className="mb-12">
-              <div className="flex flex-wrap justify-center gap-2 mb-8 bg-black/60 backdrop-blur-lg rounded-2xl p-3 max-w-fit mx-auto border border-white/10 shadow-lg">
+            <motion.div variants={itemVariants} className="">
+              <div className="">
                 {regions.map((region, index) => (
                   <motion.button
                     key={index}
-                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    className={`] ${
                       currentRegion === index 
-                        ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg shadow-pink-500/30' 
-                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                        ? '' 
+                        : ''
                     }`}
                     onClick={() => setCurrentRegion(index)}
                     whileHover={{ scale: 1.02 }}
@@ -550,9 +548,9 @@ const TriskelionAgency = () => {
               >
                 <div className="mb-10">
                   <motion.h2 
-                    className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
+                    className=""
                   >
-                    Reaching <span className={`bg-gradient-to-r ${regions[currentRegion].accent} bg-clip-text text-transparent font-black`}>
+                   <span className={` ${regions[currentRegion].accent} `}>
                       {regions[currentRegion].audience}
                     </span> {regions[currentRegion].reach}
                   </motion.h2>
@@ -569,9 +567,9 @@ const TriskelionAgency = () => {
                   <motion.div 
                     className="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10 mb-6 hover:border-pink-500/50 transition-colors"
                   >
-                    <p className="text-xs text-pink-400 mb-2 uppercase tracking-wider font-medium">Platform Focus</p>
-                    <p className="text-lg text-white font-medium mb-2">{regions[currentRegion].platforms}</p>
-                    <p className="text-sm text-gray-400">{regions[currentRegion].speciality}</p>
+                    <p className=""></p>
+                    <p className="">{regions[currentRegion].platforms}</p>
+                    <p className="">{regions[currentRegion].speciality}</p>
                   </motion.div>
                 </div>
 
