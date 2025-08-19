@@ -678,7 +678,6 @@ const TriskelionAgency = () => {
             <motion.div variants={itemVariants} className="mt-12">
               <div className="">
                 <motion.h3 className="">
-                  MAXIMIZE Your Growth
                 </motion.h3>
                 <motion.p className="">
                 </motion.p>
