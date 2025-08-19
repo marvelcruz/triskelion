@@ -102,16 +102,17 @@ const TriskelionAgency = () => {
   ];
 
   const scorpionStats = [
-    { number: "", label: "", icon: "" },
-    { number: "", label: "", icon: "" },
-    { number: "", label: "", icon: "" },
-    { number: "", label: "", icon: "" }
+    { number: "Your Vision", label: "", icon: "" },
+    { number: "Our Impact", label: "", icon: "" },
+    { number: "Your Growth", label: "", icon: "" },
+    { number: "Your Success", label: "", icon: "" }
   ];
 
   const services = [
     {
       title: "Technology",
       description: "Revenue-driven technology specifically built for you.",
+      image: "/images/Tech.png",
       icon: (
         <div className="relative w-16 h-16 mx-auto mb-4">
           {/* Phone mockup */}
@@ -149,6 +150,7 @@ const TriskelionAgency = () => {
     {
       title: "Advertising", 
       description: "Advertising that spends and targets intelligently to grow your business.",
+      image: "/images/Advertisment.png",
       icon: (
         <div className="relative w-16 h-16 mx-auto mb-4">
           {/* Target with arrow */}
@@ -174,6 +176,7 @@ const TriskelionAgency = () => {
     {
       title: "Marketing",
       description: "Marketing that brings you the right clients at the right time.",
+      image: "/images/5dollar11.jpeg",
       icon: (
         <div className="relative w-16 h-16 mx-auto mb-4">
           {/* Social media platform mockup */}
@@ -546,47 +549,6 @@ const TriskelionAgency = () => {
   </motion.p>
 </motion.div>
 
-{/* Scorpion Stats Section */}
-<motion.div variants={itemVariants} className="mb-12">
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-    {scorpionStats.map((stat, index) => (
-      <motion.div
-        key={index}
-        className="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10 text-center hover:border-pink-500/50 transition-all duration-300"
-        whileHover={{ y: -5, scale: 1.02 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 * index }}
-      >
-        <div className="text-2xl mb-2">{stat.icon}</div>
-        <div className="text-2xl md:text-3xl font-bold text-white mb-2">
-          {stat.number}
-        </div>
-        <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
-      </motion.div>
-    ))}
-  </div>
-</motion.div>
-
-{/* Services Section */}
-<motion.div variants={itemVariants} className="mb-12">
-  <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {services.map((service, index) => (
-      <motion.div
-        key={index}
-        className="bg-black/40 backdrop-blur-lg rounded-xl p-6 border border-white/10 hover:border-pink-500/50 transition-all duration-300"
-        whileHover={{ y: -5 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 * index }}
-      >
-        <div className="text-center mb-4">{service.icon}</div>
-        <h4 className="text-xl font-bold text-white mb-3">{service.title}</h4>
-        <p className="text-gray-300 text-sm">{service.description}</p>
-      </motion.div>
-    ))}
-  </div>
-</motion.div>
 
             {/* Region selector */}
             <motion.div variants={itemVariants} className="mb-12">
@@ -674,6 +636,85 @@ const TriskelionAgency = () => {
               </motion.div>
             </AnimatePresence>
 
+            {/* Services Section */}
+            <motion.div variants={itemVariants} className="mb-12">
+              <motion.div 
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">Services</span>
+                </h2>
+                <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                  Revenue-driven solutions that maximize your potential across technology, advertising, and marketing.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                {services.map((service, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-black/40 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all duration-300 group cursor-pointer"
+                    whileHover={{ 
+                      y: -5,
+                      scale: 1.02,
+                      boxShadow: "0 20px 40px rgba(236, 72, 153, 0.3)"
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                  >
+                    {/* Image Section */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                      <div className="absolute top-4 right-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                        {service.icon}
+                      </div>
+                    </div>
+                    
+                    {/* Content Section */}
+                    <div className="p-6">
+                      <h4 className="text-xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors duration-300">
+                        {service.title}
+                      </h4>
+                      <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                        {service.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+{/* Scorpion Stats Section */}
+<motion.div variants={itemVariants} className="mb-12">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+    {scorpionStats.map((stat, index) => (
+      <motion.div
+        key={index}
+        className="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10 text-center hover:border-pink-500/50 transition-all duration-300"
+        whileHover={{ y: -5, scale: 1.02 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 * index }}
+      >
+        <div className="text-2xl mb-2">{stat.icon}</div>
+        <div className="text-2xl md:text-3xl font-bold text-white mb-2">
+          {stat.number}
+        </div>
+        <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
             {/* CTA */}
             <motion.div variants={itemVariants} className="mt-12">
               <div className="">
@@ -698,6 +739,7 @@ const TriskelionAgency = () => {
                   </motion.button>
                 </div>
               </div>
+
               
               <motion.p 
                 className="text-gray-400 text-sm max-w-md mx-auto mt-8"
