@@ -226,19 +226,19 @@ const Contact = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4 text-blue-400">Content & Creative</h4>
+              <h4 className="font-semibold mb-4 text-white-400">Content & Creative</h4>
               <div className="space-y-2">
-                <p className="text-sm text-blue-400">Content creation (posts, stories, reels, videos)</p>
-                <p className="text-sm text-purple-400">Graphic design and visual content</p>
-                <p className="text-sm text-pink-400">Video production and editing</p>
-                <p className="text-sm text-blue-400">Copy writing and caption creation</p>
-                <p className="text-sm text-purple-400">Photography and photo editing</p>
-                <p className="text-sm text-pink-400">Brand storytelling</p>
+                <p className="text-sm text-white-400">Content creation (posts, stories, reels, videos)</p>
+                <p className="text-sm text-white-400">Graphic design and visual content</p>
+                <p className="text-sm text-white-400">Video production and editing</p>
+                <p className="text-sm text-white-400">Copy writing and caption creation</p>
+                <p className="text-sm text-white-400">Photography and photo editing</p>
+                <p className="text-sm text-white-400">Brand storytelling</p>
               </div>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4 text-purple-400">Strategy & Planning</h4>
+              <h4 className="font-semibold mb-4 text-white-400">Strategy & Planning</h4>
               <div className="space-y-2">
                 <p className="text-sm text-white-400">Social media strategy development</p>
                 <p className="text-sm text-white-400">Content calendar planning</p>
@@ -250,7 +250,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4 text-pink-400">Management & Ads</h4>
+              <h4 className="font-semibold mb-4 text-white-400">Management & Ads</h4>
               <div className="space-y-2">
                 <p className="text-sm text-white-400">Daily posting and scheduling</p>
                 <p className="text-sm text-white-400">Community management</p>
