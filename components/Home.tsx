@@ -248,39 +248,6 @@ const TriskelionAgency = () => {
       stats: { projects: "", followers: "", months: "" },
       speciality: "Short-form video specialists"
     },
-    {
-      country: "Canada",
-      flag: "🇨🇦", 
-      audience: "38M+",
-      reach: "Canadians",
-      platforms: "Facebook, X(Twitter), Linkedin, TikTok, Instagram, YouTube ",
-      description: "Trend-jacking and meme culture experts for the Canadian market",
-      accent: "from-purple-500 to-pink-500",
-      stats: { projects: "", followers: "", months: "" },
-      speciality: "Meme marketing"
-    },
-    {
-      country: "United Kingdom", 
-      flag: "🇬🇧",
-      audience: "67M+",
-      reach: "Britons",
-      platforms: "Facebook, X(Twitter), Linkedin, TikTok, Instagram, YouTube ",
-      description: "We create original content for our own platforms as well as for clients across different industries. We deeply understand our clients goals, design holistic content & storytelling strategies, and execute.",
-      accent: "from-cyan-400 to-purple-500",
-      stats: { projects: "", followers: "", months: "" },
-      speciality: "Trend forecasting"
-    },
-    {
-      country: "Nigeria",
-      flag: "🇳🇬", 
-      audience: "200M+",
-      reach: "Nigerians",
-      platforms: "Facebook, X(Twitter), Linkedin, TikTok, Instagram, YouTube ",
-      description: "Afrobeats and pop culture viral content specialists",
-      accent: "from-yellow-400 to-pink-500",
-      stats: { projects: "", followers: "", months: "" },
-      speciality: "Cultural trends"
-    },
   ];
 
   useEffect(() => {
