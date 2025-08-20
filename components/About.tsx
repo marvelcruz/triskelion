@@ -231,11 +231,11 @@ const TriskelionAbout = () => {
               <TriskelionLogo size={120} glow />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800 dark:text-slate-200 mt-20">
-              Hiii, We're Triskelion
+              Hiii, We're Triskelion -
+              A New Form of Marketing Agency
             </h1>
             <p className="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-6">
-              A small agency that actually cares about growing your business and social media engagement. 
-              No BS, no inflated promises, just real work that gets real results.
+             With the mindset of creating a user-friendly process that focuses on clarity, we completely changed the experience of working with a marketing agency, allowing us to deliver intentional and meaningful design in a way that builds lasting relationships.
             </p>
             
             <div className="space-y-8 max-w-3xl mx-auto text-center">
@@ -247,9 +247,9 @@ const TriskelionAbout = () => {
                 </p>
               </div>
               
-              <div className="border-t border-slate-200 dark:border-slate-700 pt-8">
+              <div className="">
               <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4">Our Purpose</h2>
-              <p className="text-xl font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-lg font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
                   We give local businesses the chance to share their story.
                 </p>
               </div>
@@ -270,7 +270,6 @@ const TriskelionAbout = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-1 shadow-sm border border-slate-200 dark:border-slate-700">
               {[
                 { id: 'story', label: 'Our Story' },
-                { id: 'services', label: 'Services' },
                 { id: 'why', label: 'Why Us?' },
                 { id: 'stats', label: 'The Numbers' }
               ].map((tab) => (
@@ -317,103 +316,14 @@ const TriskelionAbout = () => {
                   </p>
                   
                   <p>
-                    <strong className="text-slate-800 dark:text-slate-200">Our promise:</strong> Work with us for 3 months. If you don't see real improvement in your social media results, we'll refund your last month. That's how confident we are.
+                    <strong className="text-slate-800 dark:text-slate-200">Our promise:</strong> Work with us for 3 months  That's how confident we are.
                   </p>
                 </div>
               </div>
             </motion.div>
           )}
 
-          {/* Services Tab */}
-          {activeTab === 'services' && (
-            <motion.div
-              key="services"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-center mb-8 relative">
-                <div className="absolute -top-4 -right-4">
-                  <TriskelionLogo size={40} />
-                </div>
-                <div className="absolute -top-2 -left-6">
-                  <TriskelionLogo size={35} glow />
-                </div>
-                <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200">
-                  What Launch Kit Provides
-                </h2>
-                <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                  A comprehensive suite of digital marketing services designed specifically for small businesses
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    title: "Branding & Design",
-                    description: "The weight ♎ that tech companies give to branding and design is inconsistent, to say the least. At one end of the spectrum you have the Apples of the world. At the other, you have countless startups that only start to consider these things a few months before going public, if at all.",
-                    icon: "",
-                    color: ""
-                  },
-                  {
-                    title: "Website + SEO",
-                    description: "Mobile friendly, search engine optimized business websites.",
-                    icon: "",
-                    color: ""
-                  },
-                  {
-                    title: "Social Media",
-                    description: "Consistent photos, videos, and account management to promote your business.",
-                    icon: "",
-                    color: ""
-                  },
-                  {
-                    title: "Graphic Design",
-                    description: "On-demand graphic design for all your marketing collateral and customer touchpoints.",
-                    icon: "",
-                    color: ""
-                  },
-                  {
-                    title: "Photo/Video",
-                    description: "Photo and video content to showcase your unique product, team and branding.",
-                    icon: "",
-                    color: ""
-                  },
-                  {
-                    title: "Digital Ads",
-                    description: "Facebook and Google advertising to amplify your marketing reach.",
-                    icon: "",
-                    color: ""
-                  }
-                ].map((service, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all duration-300"
-                  >
-                    <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center text-xl mb-4`}>
-                      {service.icon}
-                    </div>
-                    <h3 className="text-lg font-semibold mb-3 text-slate-800 dark:text-slate-200">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 text-center">
-                <p className="text-slate-700 dark:text-slate-300 text-sm">
-                  TRISKELION partners with local businesses through unique programs that combine these services for maximum impact and growth.
-                </p>
-              </div>
-            </motion.div>
-          )}
-
+         
           {/* Why Choose Us Tab */}
           {activeTab === 'why' && (
             <motion.div
