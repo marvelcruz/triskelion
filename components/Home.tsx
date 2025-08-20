@@ -480,7 +480,6 @@ const TriskelionAgency = () => {
   {/* MAXIMIZE Section */}
   <div className="mb-6">
     <motion.p className="text-6xl md:text-7xl text-pink-200 font-bold mb-2">
-      MAXIMIZE
     </motion.p>
     <div className="h-16 flex items-center justify-center">
       <AnimatePresence mode="wait">
