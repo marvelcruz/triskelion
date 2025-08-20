@@ -1,16 +1,36 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent, DragEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, X, Camera, Globe, Palette, Video, Target, Share2, CheckCircle } from 'lucide-react';
 
+// Define types
+interface ServiceImages {
+  [key: string]: string | null;
+}
 
-const RotatingCircleWidget = ({ className = "" }) => {
+interface ImageUploadProps {
+  onImageUpload: (imageData: string | null) => void;
+  currentImage: string | null;
+  title: string;
+}
+
+interface Service {
+  title: string;
+  description: string;
+  defaultImage: string;
+  icon: React.ReactNode;
+  packages?: { name: string; desc: string }[];
+  features?: string[];
+  platforms?: string[];
+  includes?: string[];
+  services?: string[];
+}
+
+const RotatingCircleWidget = ({ className = "" }: { className?: string }) => {
   return (
     <div className={`fixed bottom-4 right-4 w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
       <div className="w-full h-full relative rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-1 shadow-lg shadow-blue-500/30">
         <div className="w-full h-full rounded-full bg-gradient-to-br from-white/95 to-blue-50/90 backdrop-blur-md relative overflow-hidden border border-blue-200/20">
-          
-          {/* Rotating Text */}
           <div className="absolute w-full h-full animate-spin" style={{ animationDuration: '40s' }}>
             <svg viewBox="0 0 180 180" className="w-full h-full">
               <defs>
@@ -23,13 +43,10 @@ const RotatingCircleWidget = ({ className = "" }) => {
               </text>
             </svg>
           </div>
-          
-          {/* Stationary Center Logo */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-10">
             <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 text-[6px] sm:text-[7px] md:text-[8px] font-bold text-blue-800 tracking-wide">
               TRISKELION
             </div>
-            
             <svg className="w-full h-full filter drop-shadow-sm animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
               <defs>
                 <linearGradient id="triskelionGradWidget" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -45,7 +62,6 @@ const RotatingCircleWidget = ({ className = "" }) => {
                   </feMerge>
                 </filter>
               </defs>
-              
               <g transform="translate(50,50)" filter="url(#glowWidget)">
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
                       fill="url(#triskelionGradWidget)" 
@@ -53,31 +69,25 @@ const RotatingCircleWidget = ({ className = "" }) => {
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(0)"/>
-                
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
                       fill="url(#triskelionGradWidget)" 
                       stroke="#1e40af" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(120)"/>
-                
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
                       fill="url(#triskelionGradWidget)" 
                       stroke="#1e40af" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(240)"/>
-                
                 <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#1e40af" strokeWidth="0.5" opacity="0.95"/>
               </g>
             </svg>
-            
             <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 text-[6px] sm:text-[7px] md:text-[8px] font-bold text-blue-800 tracking-wide">
               GIVERS GAIN®
             </div>
           </div>
-          
-          {/* Floating particles */}
           <div className="absolute w-0.5 h-0.5 bg-blue-400/80 rounded-full animate-bounce" style={{ left: '30%', animationDelay: '0s', animationDuration: '4s' }}></div>
           <div className="absolute w-0.5 h-0.5 bg-cyan-400/80 rounded-full animate-bounce" style={{ left: '70%', animationDelay: '1s', animationDuration: '4s' }}></div>
           <div className="absolute w-0.5 h-0.5 bg-purple-400/80 rounded-full animate-bounce" style={{ left: '50%', animationDelay: '2s', animationDuration: '4s' }}></div>
@@ -87,10 +97,10 @@ const RotatingCircleWidget = ({ className = "" }) => {
   );
 };
 
-const ImageUpload = ({ onImageUpload, currentImage, title }) => {
+const ImageUpload = ({ onImageUpload, currentImage, title }: ImageUploadProps) => {
   const [dragActive, setDragActive] = useState(false);
-  
-  const handleDrag = (e) => {
+
+  const handleDrag = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     if (e.type === "dragenter" || e.type === "dragover") {
@@ -100,7 +110,7 @@ const ImageUpload = ({ onImageUpload, currentImage, title }) => {
     }
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
@@ -109,18 +119,20 @@ const ImageUpload = ({ onImageUpload, currentImage, title }) => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0]);
     }
   };
 
-  const handleFile = (file) => {
+  const handleFile = (file: File) => {
     if (file.type.startsWith('image/')) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        onImageUpload(e.target.result);
+        if (e.target?.result && typeof e.target.result === 'string') {
+          onImageUpload(e.target.result);
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -136,7 +148,6 @@ const ImageUpload = ({ onImageUpload, currentImage, title }) => {
           <X size={16} />
         </button>
       )}
-      
       <div
         className={`relative border-2 border-dashed rounded-lg p-4 text-center transition-colors ${
           dragActive 
@@ -156,7 +167,6 @@ const ImageUpload = ({ onImageUpload, currentImage, title }) => {
           onChange={handleChange}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
         />
-        
         {currentImage ? (
           <div className="space-y-2">
             <img 
@@ -183,7 +193,7 @@ const TriskelionAgency = () => {
   const [currentRegion, setCurrentRegion] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentMaximizeIndex, setCurrentMaximizeIndex] = useState(0);
-  const [serviceImages, setServiceImages] = useState({});
+  const [serviceImages, setServiceImages] = useState<ServiceImages>({});
 
   const maximizeTexts = [
     "Your Wins",
@@ -203,8 +213,7 @@ const TriskelionAgency = () => {
     { number: "Your Success", label: "", icon: "" }
   ];
 
-  // Triskelion Services
-  const services = [
+  const services: Service[] = [
     {
       title: "Branding",
       description: "In-depth design to provide a sustainable brand identity foundation. From crafting compelling logos and selecting vibrant colors to defining your mission, vision, and values.",
@@ -272,7 +281,7 @@ const TriskelionAgency = () => {
     },
   ];
 
-  const handleImageUpload = (serviceIndex, imageData) => {
+  const handleImageUpload = (serviceIndex: string | number, imageData: string | null) => {
     setServiceImages(prev => ({
       ...prev,
       [serviceIndex]: imageData
@@ -295,7 +304,7 @@ const TriskelionAgency = () => {
     };
   }, []);
 
-  const TriskelionLogo = ({ size = 120, className = "", glow = true }) => (
+  const TriskelionLogo = ({ size = 120, className = "", glow = true }: { size?: number; className?: string; glow?: boolean }) => (
     <motion.div 
       className={`relative ${className}`}
       style={{ width: size, height: size }}
@@ -310,9 +319,7 @@ const TriskelionAgency = () => {
             <stop offset="100%" stopColor="#06b6d4" />
           </linearGradient>
         </defs>
-        
         <circle cx="60" cy="60" r="6" fill={`url(#triskelion-gradient-${size})`} />
-        
         <g transform="translate(60,60)">
           {[0, 120, 240].map((rotation, index) => (
             <g key={index} transform={`rotate(${rotation})`}>
@@ -357,14 +364,11 @@ const TriskelionAgency = () => {
   return (
     <>
       <div className="min-h-screen relative overflow-hidden">
-        {/* Background with light overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-50/95 via-blue-50/90 to-indigo-50/95"></div>
           <div className="absolute inset-0 bg-[radial-gradient(at_center,_#3b82f6/8%,_transparent_70%)]"></div>
           <div className="absolute inset-0 bg-[linear-gradient(135deg,_#06b6d408_0%,_#8b5cf608_50%,_#3b82f608_100%)]"></div>
         </div>
-
-        {/* Floating Triskelion Logos */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[1,2,3,4,5,6,7].map(i => (
             <motion.div
@@ -392,9 +396,7 @@ const TriskelionAgency = () => {
                     <stop offset="100%" stopColor="#06b6d4" />
                   </linearGradient>
                 </defs>
-                
                 <circle cx="60" cy="60" r="4" fill={`url(#floating-triskelion-${i})`} opacity="0.6" />
-                
                 <g transform="translate(60,60)">
                   {[0, 120, 240].map((rotation, index) => (
                     <g key={index} transform={`rotate(${rotation})`}>
@@ -411,8 +413,6 @@ const TriskelionAgency = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Main content */}
         <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
           <motion.div
             variants={containerVariants}
@@ -420,7 +420,6 @@ const TriskelionAgency = () => {
             animate={isLoaded ? "visible" : "hidden"}
             className="text-center"
           >
-            {/* Header */}
             <motion.div variants={itemVariants} className="mb-12">
               <div className="flex justify-center mb-8">
                 <TriskelionLogo size={120} glow />
@@ -431,8 +430,6 @@ const TriskelionAgency = () => {
                 TRISKELION
               </motion.h1>
               <div className="w-24 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mb-4"></div>
-              
-              {/* MAXIMIZE Section */}
               <div className="mb-6">
                 <div className="h-16 flex items-center justify-center">
                   <AnimatePresence mode="wait">
@@ -449,8 +446,6 @@ const TriskelionAgency = () => {
                   </AnimatePresence>
                 </div>
               </div>
-              
-              {/* Main Hero Content with Text Overlay on Image */}
               <motion.div 
                 className="relative rounded-2xl overflow-hidden border border-blue-200/30 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-xl mb-8 max-w-6xl mx-auto h-96 md:h-[500px]"
                 whileHover={{ 
@@ -459,17 +454,12 @@ const TriskelionAgency = () => {
                   boxShadow: "0 25px 50px rgba(59, 130, 246, 0.15)"
                 }}
               >
-                {/* Background Image */}
                 <img 
                   src="/images/sunrise-office-view-stockcake.jpg" 
                   alt="Triskelion Agency - Social Media Marketing Excellence"
-                  className="w-full h-full object-cover hover:scale-150 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-                
-                {/* Dark overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
-                
-                {/* Text Content Overlay - Top Left */}
                 <div className="absolute top-8 left-8 max-w-md p-6 text-left">
                   <motion.h2 
                     className="text-lg md:text-xl lg:text-2xl font-bold mb-4 leading-tight text-white drop-shadow-2xl"
@@ -479,7 +469,6 @@ const TriskelionAgency = () => {
                   >
                     We are a 360 social media creative marketing and lead generation company leveraging technology, community & content to design delightful experiences.
                   </motion.h2>
-                  
                   <motion.p 
                     className="text-sm md:text-base lg:text-lg text-white/90 italic drop-shadow-lg mb-6"
                     initial={{ opacity: 0, x: -20 }}
@@ -491,8 +480,6 @@ const TriskelionAgency = () => {
                       Our job is to help them.
                     </span>
                   </motion.p>
-
-                  {/* Contact Button */}
                   <motion.button
                     className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                     initial={{ opacity: 0, x: -20 }}
@@ -505,20 +492,14 @@ const TriskelionAgency = () => {
                     Contact Us
                   </motion.button>
                 </div>
-                
-                {/* Floating decorative elements */}
                 <div className="absolute top-8 left-8 w-12 h-12 border-2 border-blue-400/50 rounded-full animate-pulse"></div>
                 <div className="absolute top-12 right-12 w-8 h-8 bg-purple-500/30 rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
                 <div className="absolute bottom-16 left-12 w-16 h-16 border border-cyan-400/40 rounded-full animate-spin" style={{animationDuration: '8s'}}></div>
                 <div className="absolute bottom-8 right-8 w-6 h-6 bg-amber-400/40 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
-                
-                {/* Corner accent elements */}
                 <div className="absolute top-0 left-0 w-20 h-20 border-l-4 border-t-4 border-blue-400/70 rounded-tl-2xl"></div>
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-r-4 border-b-4 border-cyan-400/70 rounded-br-2xl"></div>
               </motion.div>
             </motion.div>
-
-            {/* Triskelion Services Section */}
             <motion.div variants={itemVariants} className="mb-12">
               <motion.div 
                 className="text-center mb-12"
@@ -538,7 +519,6 @@ const TriskelionAgency = () => {
                   </p>
                 </div>
               </motion.div>
-
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                 {services.map((service, index) => (
                   <motion.div
@@ -553,7 +533,6 @@ const TriskelionAgency = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * index }}
                   >
-                    {/* Image Section */}
                     <div className="relative h-48 overflow-hidden">
                       {serviceImages[index] || service.defaultImage ? (
                         <img 
@@ -561,10 +540,12 @@ const TriskelionAgency = () => {
                           alt={service.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           onError={(e) => {
-                            // Fallback to icon if image fails to load
                             const iconDiv = document.createElement('div');
                             iconDiv.className = "w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center group-hover:from-blue-50 group-hover:to-purple-50 transition-all duration-500";
-                            e.target.parentElement.replaceChild(iconDiv, e.target);
+                            const target = e.target as HTMLImageElement;
+                            if (target.parentElement) {
+                              target.parentElement.replaceChild(iconDiv, target);
+                            }
                           }}
                         />
                       ) : (
@@ -574,8 +555,6 @@ const TriskelionAgency = () => {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
                     </div>
-                    
-                    {/* Content Section */}
                     <div className="p-6">
                       <div className="flex items-center mb-3">
                         {service.icon}
@@ -583,12 +562,9 @@ const TriskelionAgency = () => {
                           {service.title}
                         </h4>
                       </div>
-                      
                       <p className="text-slate-600 text-sm leading-relaxed mb-4 group-hover:text-slate-700 transition-colors duration-300">
                         {service.description}
                       </p>
-
-                      {/* Service-specific details */}
                       {service.packages && (
                         <div className="mb-4">
                           <p className="font-semibold text-slate-700 mb-2 text-sm">Packages:</p>
@@ -600,7 +576,6 @@ const TriskelionAgency = () => {
                           ))}
                         </div>
                       )}
-
                       {service.features && (
                         <div className="mb-4">
                           <p className="font-semibold text-slate-700 mb-2 text-sm">Includes:</p>
@@ -614,7 +589,6 @@ const TriskelionAgency = () => {
                           </div>
                         </div>
                       )}
-
                       {service.platforms && (
                         <div className="mb-4">
                           <p className="font-semibold text-slate-700 mb-2 text-sm">Platforms:</p>
@@ -627,7 +601,6 @@ const TriskelionAgency = () => {
                           </div>
                         </div>
                       )}
-
                       {service.includes && (
                         <div className="mb-4">
                           <p className="font-semibold text-slate-700 mb-2 text-sm">Process:</p>
@@ -639,7 +612,6 @@ const TriskelionAgency = () => {
                           ))}
                         </div>
                       )}
-
                       {service.services && (
                         <div className="mb-4">
                           <p className="font-semibold text-slate-700 mb-2 text-sm">Services:</p>
@@ -651,8 +623,6 @@ const TriskelionAgency = () => {
                           ))}
                         </div>
                       )}
-
-                      {/* Image Upload Section */}
                       <div className="mt-4">
                         <ImageUpload
                           onImageUpload={(imageData) => handleImageUpload(index, imageData)}
@@ -664,8 +634,6 @@ const TriskelionAgency = () => {
                   </motion.div>
                 ))}
               </div>
-
-              {/* Call to Action */}
               <motion.div 
                 className="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200/30"
                 initial={{ opacity: 0, y: 20 }}
@@ -673,34 +641,31 @@ const TriskelionAgency = () => {
                 transition={{ delay: 0.8 }}
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+                  Ready to Elevate Your Brand?
                 </h3>
                 <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
                   Our mission is to give small businesses the chance to share their story.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    className=""
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
+                    Get Started
                   </motion.button>
-                  
                   <motion.button
-                    className=""
+                    className="bg-transparent border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-=                  </motion.button>
+                    Learn More
+                  </motion.button>
                 </div>
               </motion.div>
             </motion.div>
-            
-             
-            {/* Detailed Services Section with Alternating Layout */}
             <motion.div variants={itemVariants} className="mb-16">
               <div className="max-w-7xl mx-auto space-y-16">
-                
-                {/* Thoughtful Brand Development - Image Left */}
                 <motion.div 
                   className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
                   initial={{ opacity: 0, x: -30 }}
@@ -721,7 +686,6 @@ const TriskelionAgency = () => {
                       )}
                     </div>
                   </div>
-                  
                   <div className="lg:w-1/2 space-y-6">
                     <div>
                       <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
@@ -731,7 +695,6 @@ const TriskelionAgency = () => {
                         From crafting compelling logos and selecting vibrant colors to defining your mission, vision, and values, our in-house design team covers every aspect.
                       </p>
                     </div>
-                    
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Logo Kit</h4>
@@ -739,7 +702,6 @@ const TriskelionAgency = () => {
                           An efficient design process that gets you the essential items your business needs.
                         </p>
                       </div>
-                      
                       <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 border border-green-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Brand Design</h4>
                         <p className="text-slate-600 text-sm">
@@ -749,8 +711,6 @@ const TriskelionAgency = () => {
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Website Development - Image Right */}
                 <motion.div 
                   className="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12"
                   initial={{ opacity: 0, x: 30 }}
@@ -771,7 +731,6 @@ const TriskelionAgency = () => {
                       )}
                     </div>
                   </div>
-                  
                   <div className="lg:w-1/2 space-y-6">
                     <div>
                       <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
@@ -781,7 +740,6 @@ const TriskelionAgency = () => {
                         Triskelion provides businesses with website design through our unique web membership program. The program includes website design, development, ongoing support, and maintenance. Triskelion becomes an extension of your in-house team.
                       </p>
                     </div>
-                    
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-3">
                         {['Website Design', 'Website Development', 'Website Hosting', 'Website Analytics'].map((item, idx) => (
@@ -791,7 +749,6 @@ const TriskelionAgency = () => {
                           </div>
                         ))}
                       </div>
-                      
                       <div className="space-y-3">
                         {['Search Engine Optimization (SEO)', 'Website Updates', 'Monthly Performance Reporting'].map((item, idx) => (
                           <div key={idx} className="flex items-center text-slate-600">
@@ -803,8 +760,6 @@ const TriskelionAgency = () => {
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Digital Marketing Program - Image Left */}
                 <motion.div 
                   className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
                   initial={{ opacity: 0, x: -30 }}
@@ -825,7 +780,6 @@ const TriskelionAgency = () => {
                       )}
                     </div>
                   </div>
-                  
                   <div className="lg:w-1/2 space-y-6">
                     <div>
                       <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
@@ -835,7 +789,6 @@ const TriskelionAgency = () => {
                         To consistently provide your business with high-quality photo and video content, our digital marketing program enables us to create authentic media that showcases your business's story.
                       </p>
                     </div>
-                    
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Monthly Planning Meeting</h4>
@@ -843,7 +796,6 @@ const TriskelionAgency = () => {
                           Begin each month by looking at business objectives to determine what content we should create.
                         </p>
                       </div>
-                      
                       <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6 border border-pink-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Social Media Management + Ads</h4>
                         <p className="text-slate-600 text-sm">
@@ -853,8 +805,6 @@ const TriskelionAgency = () => {
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Lead Gen Digital Ads - Image Right */}
                 <motion.div 
                   className="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12"
                   initial={{ opacity: 0, x: 30 }}
@@ -875,7 +825,6 @@ const TriskelionAgency = () => {
                       )}
                     </div>
                   </div>
-                  
                   <div className="lg:w-1/2 space-y-6">
                     <div>
                       <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
@@ -885,7 +834,6 @@ const TriskelionAgency = () => {
                         We properly configure your ad accounts to optimize ad performance and track conversions. Our team designs, produces, and edits eye-catching advertisements across photo, video, and graphic design formats.
                       </p>
                     </div>
-                    
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border border-red-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Account Setup</h4>
@@ -893,7 +841,6 @@ const TriskelionAgency = () => {
                           We properly configure your ad accounts to optimize ad performance and track conversions.
                         </p>
                       </div>
-                      
                       <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Ad Creation</h4>
                         <p className="text-slate-600 text-sm">
@@ -903,8 +850,6 @@ const TriskelionAgency = () => {
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Graphic Design Material - Image Left */}
                 <motion.div 
                   className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
                   initial={{ opacity: 0, x: -30 }}
@@ -925,7 +870,6 @@ const TriskelionAgency = () => {
                       )}
                     </div>
                   </div>
-                  
                   <div className="lg:w-1/2 space-y-6">
                     <div>
                       <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
@@ -935,7 +879,6 @@ const TriskelionAgency = () => {
                         Professional marketing collateral designed by our in-house team to align perfectly with your brand identity and business objectives.
                       </p>
                     </div>
-                    
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl p-6 border border-amber-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Marketing Materials</h4>
@@ -943,7 +886,6 @@ const TriskelionAgency = () => {
                           Flyers, rack cards, business cards, signs, menus and more. You name it; we'll design it.
                         </p>
                       </div>
-                      
                       <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl p-6 border border-yellow-200/30">
                         <h4 className="font-bold text-slate-800 mb-3 text-lg">Dedicated Designer</h4>
                         <p className="text-slate-600 text-sm">
@@ -953,11 +895,8 @@ const TriskelionAgency = () => {
                     </div>
                   </div>
                 </motion.div>
-
               </div>
             </motion.div>
-
-{/* Scorpion Stats Section */}
             <motion.div variants={itemVariants} className="mb-12">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
                 {scorpionStats.map((stat, index) => (
@@ -978,9 +917,6 @@ const TriskelionAgency = () => {
                 ))}
               </div>
             </motion.div>
-
-
-            {/* Final CTA */}
             <motion.div variants={itemVariants} className="mt-12">
               <motion.p 
                 className="text-slate-600 text-sm max-w-md mx-auto mt-8"
@@ -993,12 +929,8 @@ const TriskelionAgency = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Bottom accent */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400"></div>
       </div>
-      
-      {/* Rotating Circle Widget */}
       <RotatingCircleWidget />
     </>
   );
