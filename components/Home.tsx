@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, Globe, Palette, Video, Target, Share2, CheckCircle } from 'lucide-react';
+import { Camera, Globe, Palette, Video, Target, Share2, CheckCircle, Upload, FileText, Zap, TrendingUp, ChevronDown } from 'lucide-react';
 
 const RotatingCircleWidget = ({ className = "" }) => {
   return (
@@ -86,10 +86,74 @@ const RotatingCircleWidget = ({ className = "" }) => {
   );
 };
 
+const ImageUploader = ({ onImageUpload, placeholder = "Drag & drop an image or click to select" }) => {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      onImageUpload(files[0]);
+    }
+  };
+
+  const handleFileSelect = (e) => {
+    const files = e.target.files;
+    if (files.length > 0) {
+      onImageUpload(files[0]);
+    }
+  };
+
+  return (
+    <div
+      className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-300 cursor-pointer ${
+        isDragging 
+          ? 'border-blue-500 bg-blue-50/50' 
+          : 'border-gray-300 hover:border-blue-400 hover:bg-gray-50/50'
+      }`}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+      onClick={() => document.getElementById('file-input').click()}
+    >
+      <input
+        id="file-input"
+        type="file"
+        accept="image/*"
+        onChange={handleFileSelect}
+        className="hidden"
+      />
+      
+      <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+      
+      <p className="text-gray-600 font-medium mb-2">
+        {placeholder}
+      </p>
+      
+      <p className="text-sm text-gray-500">
+        Support for PNG, JPG, and GIF files
+      </p>
+    </div>
+  );
+};
+
 const TriskelionAgency = () => {
   const [currentRegion, setCurrentRegion] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentMaximizeIndex, setCurrentMaximizeIndex] = useState(0);
+  const [expandedService, setExpandedService] = useState(null);
+  const [imageErrors, setImageErrors] = useState({});
 
   const maximizeTexts = [
     "Your Wins",
@@ -103,81 +167,145 @@ const TriskelionAgency = () => {
   ];
 
   const scorpionStats = [
-    { number: "Your Vision", label: "", icon: "" },
-    { number: "Our Impact", label: "", icon: "" },
-    { number: "Your Growth", label: "", icon: "" },
-    { number: "Your Success", label: "", icon: "" }
+    { number: "Your Vision", label: "Collaborative Planning", icon: "🎯" },
+    { number: "Our Impact", label: "Proven Results", icon: "🚀" },
+    { number: "Your Growth", label: "Sustained Success", icon: "📈" },
+    { number: "Your Success", label: "Shared Achievement", icon: "✨" }
   ];
 
-  // Clean Triskelion Services - Simple Cards Only
+  // Enhanced Services with detailed features
   const services = [
     {
-      title: "Branding",
-      description: "In-depth design to provide a sustainable brand identity foundation. From crafting compelling logos and selecting vibrant colors to defining your mission, vision, and values.",
+      title: "Brand Development",
+      shortDescription: "Thoughtful Brand Development",
+      description: "From crafting compelling logos and selecting vibrant colors to defining your mission, vision, and values, our in-house design team covers every aspect.",
       defaultImage: "/images/Branding.png",
-      icon: <Palette className="w-8 h-8 text-blue-600" />
+      icon: <Palette className="w-8 h-8 text-blue-600" />,
+      features: [
+        {
+          title: "Logo Kit",
+          description: "An efficient design process that gets you the essential items your business needs.",
+          icon: <Zap className="w-5 h-5 text-amber-500" />
+        },
+        {
+          title: "Brand Design", 
+          description: "An in-depth experience that creates the foundation for years of business growth ahead.",
+          icon: <TrendingUp className="w-5 h-5 text-green-500" />
+        }
+      ],
+      uploadPlaceholder: "Drag & drop an image for Brand Development, or click to select"
     },
     {
-      title: "Website + SEO",
-      description: "Mobile friendly, search engine optimized business websites. Complete web membership program including design, development, hosting, updates, analytics, and SEO.",
+      title: "Website Development",
+      shortDescription: "A Fresh Approach To Business Websites",
+      description: "Triskelion provides businesses with website design through our unique web membership program. The program includes website design, development, ongoing support, and maintenance. Triskelion becomes an extension of your in-house team.",
       defaultImage: "/images/Website + SEO.png",
-      icon: <Globe className="w-8 h-8 text-purple-600" />
+      icon: <Globe className="w-8 h-8 text-purple-600" />,
+      features: [
+        { title: "Website Design", icon: <Palette className="w-5 h-5 text-purple-500" /> },
+        { title: "Website Development", icon: <Globe className="w-5 h-5 text-blue-500" /> },
+        { title: "Website Hosting", icon: <CheckCircle className="w-5 h-5 text-green-500" /> },
+        { title: "Website Analytics", icon: <Target className="w-5 h-5 text-orange-500" /> },
+        { title: "Search Engine Optimization (SEO)", icon: <TrendingUp className="w-5 h-5 text-cyan-500" /> },
+        { title: "Website Updates", icon: <FileText className="w-5 h-5 text-indigo-500" /> },
+        { title: "Monthly Performance Reporting", icon: <CheckCircle className="w-5 h-5 text-green-500" /> }
+      ],
+      uploadPlaceholder: "Drag & drop an image for Website Development, or click to select"
     },
     {
-      title: "Social Media Management",
-      description: "Consistent photos, videos, and account management to promote your business. We manage your TikTok, Instagram, Facebook, LinkedIn, YouTube, Google MyBusiness and run your ads.",
+      title: "Digital Marketing",
+      shortDescription: "Digital Marketing Program",
+      description: "To consistently provide your business with high-quality photo and video content, our digital marketing program enables us to create authentic media that showcases your business's story.",
       defaultImage: "/images/Social Media Management.png",
-      icon: <Share2 className="w-8 h-8 text-cyan-600" />
-    },
-    {
-      title: "Photo/Video Content",
-      description: "Photo and video content to showcase your unique product, team and branding. Production days at your job site, office, or storefront to create authentic media.",
-      defaultImage: "/images/Photo:Video Content.png",
-      icon: <Camera className="w-8 h-8 text-green-600" />
-    },
-    {
-      title: "Graphic Design",
-      description: "On-demand graphic design for all your marketing collateral and customer touchpoints. Professional designs that align with your brand identity.",
-      defaultImage: "/images/Graphic Design.png",
-      icon: <Palette className="w-8 h-8 text-amber-600" />
+      icon: <Share2 className="w-8 h-8 text-cyan-600" />,
+      features: [
+        {
+          title: "Monthly Planning Meeting",
+          description: "Begin each month by looking at business objectives to determine what content we should create.",
+          icon: <Target className="w-5 h-5 text-blue-500" />
+        },
+        {
+          title: "Social Media Management + Ads",
+          description: "We manage your TikTok, Instagram, Facebook, LinkedIn, YouTube, Google MyBusiness and run your ads.",
+          icon: <Share2 className="w-5 h-5 text-cyan-500" />
+        }
+      ],
+      uploadPlaceholder: "Drag & drop an image for Digital Marketing, or click to select"
     },
     {
       title: "Digital Ads",
-      description: "Facebook and Google advertising to amplify your marketing reach. Account setup, ad creation, and monthly reporting to optimize performance.",
+      shortDescription: "Lead Gen Digital Ads",
+      description: "We properly configure your ad accounts to optimize ad performance and track conversions. Our team designs, produces, and edits eye-catching advertisements across photo, video, and graphic design formats.",
       defaultImage: "/images/Digital Ads.png",
-      icon: <Target className="w-8 h-8 text-red-600" />
-    }
-  ];
-
-  const regions = [
-    {
-      country: "",
-      flag: "",
-      audience: "",
-      reach: "",
-      platforms: "",
-      description: "",
-      accent: "",
-      stats: { projects: "", followers: "", months: "" },
-      speciality: ""
+      icon: <Target className="w-8 h-8 text-red-600" />,
+      features: [
+        {
+          title: "Account Setup",
+          description: "We properly configure your ad accounts to optimize ad performance and track conversions.",
+          icon: <CheckCircle className="w-5 h-5 text-green-500" />
+        },
+        {
+          title: "Ad Creation",
+          description: "We design, produce, and edit eye-catching photo, video, and graphic design-based advertisements.",
+          icon: <Video className="w-5 h-5 text-red-500" />
+        }
+      ],
+      uploadPlaceholder: "Drag & drop an image for Digital Ads, or click to select"
     },
+    {
+      title: "Photo/Video Content",
+      shortDescription: "Professional Content Creation",
+      description: "Photo and video content to showcase your unique product, team and branding. Production days at your job site, office, or storefront to create authentic media.",
+      defaultImage: "/images/Photo:Video Content.png",
+      icon: <Camera className="w-8 h-8 text-green-600" />,
+      features: [
+        { title: "Professional Photography", icon: <Camera className="w-5 h-5 text-green-500" /> },
+        { title: "Video Production", icon: <Video className="w-5 h-5 text-blue-500" /> },
+        { title: "On-site Shoots", icon: <Target className="w-5 h-5 text-orange-500" /> }
+      ],
+      uploadPlaceholder: "Drag & drop an image for Photo/Video Content, or click to select"
+    },
+    {
+      title: "Graphic Design",
+      shortDescription: "On-Brand Graphic Design Material",
+      description: "Professional marketing collateral designed by our in-house team to align perfectly with your brand identity and business objectives.",
+      defaultImage: "/images/Graphic Design.png",
+      icon: <Palette className="w-8 h-8 text-amber-600" />,
+      features: [
+        {
+          title: "Marketing Materials",
+          description: "Flyers, rack cards, business cards, signs, menus and more. You name it; we'll design it.",
+          icon: <FileText className="w-5 h-5 text-amber-500" />
+        },
+        {
+          title: "Dedicated Designer",
+          description: "All your designs are created by our in-house design team ensuring consistency and quality.",
+          icon: <Palette className="w-5 h-5 text-purple-500" />
+        }
+      ],
+      uploadPlaceholder: "Drag & drop an image for Graphic Design, or click to select"
+    }
   ];
 
   useEffect(() => {
     setIsLoaded(true);
-    const interval = setInterval(() => {
-      setCurrentRegion((prev) => (prev + 1) % regions.length);
-    }, 6000);
     
     const maximizeInterval = setInterval(() => {
       setCurrentMaximizeIndex((prev) => (prev + 1) % maximizeTexts.length);
     }, 2000);
     
     return () => {
-      clearInterval(interval);
       clearInterval(maximizeInterval);
     };
   }, []);
+
+  const handleImageUpload = (file, serviceIndex) => {
+    console.log(`Image uploaded for service ${serviceIndex}:`, file.name);
+  };
+
+  const handleImageError = (index) => {
+    setImageErrors(prev => ({ ...prev, [index]: true }));
+  };
 
   const TriskelionLogo = ({ size = 120, className = "", glow = true }) => (
     <motion.div 
@@ -347,7 +475,7 @@ const TriskelionAgency = () => {
                 <img 
                   src="/images/sunrise-office-view-stockcake.jpg" 
                   alt="Triskelion Agency - Social Media Marketing Excellence"
-                  className="w-full h-full object-cover hover:scale-150 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
                 
                 {/* Dark overlay for better text readability */}
@@ -402,7 +530,7 @@ const TriskelionAgency = () => {
               </motion.div>
             </motion.div>
 
-            {/* Clean Triskelion Services Section */}
+            {/* Enhanced Services Section */}
             <motion.div variants={itemVariants} className="mb-12">
               <motion.div 
                 className="text-center mb-12"
@@ -423,7 +551,7 @@ const TriskelionAgency = () => {
                 </div>
               </motion.div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {services.map((service, index) => (
                   <motion.div
                     key={index}
@@ -436,36 +564,100 @@ const TriskelionAgency = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * index }}
+                    onClick={() => setExpandedService(expandedService === index ? null : index)}
                   >
-                    {/* Image Section */}
+                    {/* Image Section with Upload */}
                     <div className="relative h-48 overflow-hidden">
-                      {service.defaultImage ? (
+                      {!imageErrors[index] && service.defaultImage ? (
                         <img 
                           src={service.defaultImage} 
                           alt={service.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          onError={(e) => {
-                            const fallbackDiv = document.createElement('div');
-                            fallbackDiv.className = "w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center group-hover:from-blue-50 group-hover:to-purple-50 transition-all duration-500";
-                            e.target.parentElement.replaceChild(fallbackDiv, e.target);
-                          }}
+                          onError={() => handleImageError(index)}
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center group-hover:from-blue-50 group-hover:to-purple-50 transition-all duration-500">
                           {service.icon}
                         </div>
                       )}
+                      
+                      {/* Upload overlay on hover */}
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-white text-center p-4">
+                          <Upload className="w-8 h-8 mx-auto mb-2" />
+                          <p className="text-xs">{service.uploadPlaceholder}</p>
+                        </div>
+                      </div>
                     </div>
                     
-                    {/* Content Section - Clean */}
+                    {/* Content Section */}
                     <div className="p-6">
-                      <h4 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                      <h4 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                         {service.title}
                       </h4>
                       
-                      <p className="text-slate-600 text-sm leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
+                      <h5 className="text-lg font-semibold text-blue-600 mb-3">
+                        {service.shortDescription}
+                      </h5>
+                      
+                      <p className="text-slate-600 text-sm leading-relaxed group-hover:text-slate-700 transition-colors duration-300 mb-4">
                         {service.description}
                       </p>
+
+                      {/* Expandable Features */}
+                      <AnimatePresence>
+                        {expandedService === index && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="border-t border-slate-200 pt-4 mt-4"
+                          >
+                            <div className="space-y-3">
+                              {service.features.map((feature, featureIndex) => (
+                                <div key={featureIndex} className="flex items-start space-x-3">
+                                  <div className="flex-shrink-0 mt-0.5">
+                                    {feature.icon}
+                                  </div>
+                                  <div>
+                                    <h6 className="font-semibold text-slate-800 text-sm">
+                                      {feature.title}
+                                    </h6>
+                                    {feature.description && (
+                                      <p className="text-slate-600 text-xs mt-1">
+                                        {feature.description}
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Image Upload Area */}
+                            <div className="mt-4">
+                              <ImageUploader
+                                onImageUpload={(file) => handleImageUpload(file, index)}
+                                placeholder={service.uploadPlaceholder}
+                              />
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Expand/Collapse Button */}
+                      <button 
+                        className="text-blue-600 hover:text-blue-800 font-medium text-sm mt-3 flex items-center"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedService(expandedService === index ? null : index);
+                        }}
+                      >
+                        {expandedService === index ? 'Show Less' : 'Learn More'}
+                        <ChevronDown 
+                          className={`w-4 h-4 ml-1 transition-transform duration-200 ${expandedService === index ? 'rotate-180' : ''}`}
+                        />
+                      </button>
                     </div>
                   </motion.div>
                 ))}
