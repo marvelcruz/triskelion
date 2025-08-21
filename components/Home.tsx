@@ -151,7 +151,7 @@ const TriskelionAgency = () => {
       title: "Website Development",
       shortDescription: "A Fresh Approach To Business Websites",
       description: "Triskelion provides businesses with website design through our unique web membership program. The program includes website design, development, ongoing support, and maintenance. Triskelion becomes an extension of your in-house team.",
-      defaultImage: "/images/WebsiteSEO.png",
+      defaultImage: "/images/Websiteseo.png",
       icon: <Globe className="w-8 h-8 text-purple-600" />,
       features: [
         { title: "Website Design", icon: <Palette className="w-5 h-5 text-purple-500" /> },
