@@ -1,9 +1,24 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, Globe, Palette, Video, Target, Share2, CheckCircle, Upload, FileText, Zap, TrendingUp, ChevronDown } from 'lucide-react';
+import { Camera, Globe, Palette, Video, Target, Share2, CheckCircle, FileText, Zap, TrendingUp, ChevronDown } from 'lucide-react';
 
-const RotatingCircleWidget = ({ className = "" }) => {
+interface ServiceFeature {
+  title: string;
+  description?: string;
+  icon: React.ReactElement;
+}
+
+interface Service {
+  title: string;
+  shortDescription: string;
+  description: string;
+  defaultImage: string;
+  icon: React.ReactElement;
+  features: ServiceFeature[];
+}
+
+const RotatingCircleWidget = ({ className = "" }: { className?: string }) => {
   return (
     <div className={`fixed bottom-4 right-4 w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
       <div className="w-full h-full relative rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-1 shadow-lg shadow-blue-500/30">
@@ -86,74 +101,12 @@ const RotatingCircleWidget = ({ className = "" }) => {
   );
 };
 
-const ImageUploader = ({ onImageUpload, placeholder = "Drag & drop an image or click to select" }) => {
-  const [isDragging, setIsDragging] = useState(false);
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      onImageUpload(files[0]);
-    }
-  };
-
-  const handleFileSelect = (e) => {
-    const files = e.target.files;
-    if (files.length > 0) {
-      onImageUpload(files[0]);
-    }
-  };
-
-  return (
-    <div
-      className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-300 cursor-pointer ${
-        isDragging 
-          ? 'border-blue-500 bg-blue-50/50' 
-          : 'border-gray-300 hover:border-blue-400 hover:bg-gray-50/50'
-      }`}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-      onClick={() => document.getElementById('file-input').click()}
-    >
-      <input
-        id="file-input"
-        type="file"
-        accept="image/*"
-        onChange={handleFileSelect}
-        className="hidden"
-      />
-      
-      <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-      
-      <p className="text-gray-600 font-medium mb-2">
-        {placeholder}
-      </p>
-      
-      <p className="text-sm text-gray-500">
-        Support for PNG, JPG, and GIF files
-      </p>
-    </div>
-  );
-};
-
 const TriskelionAgency = () => {
   const [currentRegion, setCurrentRegion] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentMaximizeIndex, setCurrentMaximizeIndex] = useState(0);
-  const [expandedService, setExpandedService] = useState(null);
-  const [imageErrors, setImageErrors] = useState({});
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
 
   const maximizeTexts = [
     "Your Wins",
@@ -174,7 +127,7 @@ const TriskelionAgency = () => {
   ];
 
   // Enhanced Services with detailed features
-  const services = [
+  const services: Service[] = [
     {
       title: "Brand Development",
       shortDescription: "Thoughtful Brand Development",
@@ -192,8 +145,7 @@ const TriskelionAgency = () => {
           description: "An in-depth experience that creates the foundation for years of business growth ahead.",
           icon: <TrendingUp className="w-5 h-5 text-green-500" />
         }
-      ],
-      uploadPlaceholder: "Drag & drop an image for Brand Development, or click to select"
+      ]
     },
     {
       title: "Website Development",
@@ -209,8 +161,7 @@ const TriskelionAgency = () => {
         { title: "Search Engine Optimization (SEO)", icon: <TrendingUp className="w-5 h-5 text-cyan-500" /> },
         { title: "Website Updates", icon: <FileText className="w-5 h-5 text-indigo-500" /> },
         { title: "Monthly Performance Reporting", icon: <CheckCircle className="w-5 h-5 text-green-500" /> }
-      ],
-      uploadPlaceholder: "Drag & drop an image for Website Development, or click to select"
+      ]
     },
     {
       title: "Digital Marketing",
@@ -229,8 +180,7 @@ const TriskelionAgency = () => {
           description: "We manage your TikTok, Instagram, Facebook, LinkedIn, YouTube, Google MyBusiness and run your ads.",
           icon: <Share2 className="w-5 h-5 text-cyan-500" />
         }
-      ],
-      uploadPlaceholder: "Drag & drop an image for Digital Marketing, or click to select"
+      ]
     },
     {
       title: "Digital Ads",
@@ -249,8 +199,7 @@ const TriskelionAgency = () => {
           description: "We design, produce, and edit eye-catching photo, video, and graphic design-based advertisements.",
           icon: <Video className="w-5 h-5 text-red-500" />
         }
-      ],
-      uploadPlaceholder: "Drag & drop an image for Digital Ads, or click to select"
+      ]
     },
     {
       title: "Photo/Video Content",
@@ -262,8 +211,7 @@ const TriskelionAgency = () => {
         { title: "Professional Photography", icon: <Camera className="w-5 h-5 text-green-500" /> },
         { title: "Video Production", icon: <Video className="w-5 h-5 text-blue-500" /> },
         { title: "On-site Shoots", icon: <Target className="w-5 h-5 text-orange-500" /> }
-      ],
-      uploadPlaceholder: "Drag & drop an image for Photo/Video Content, or click to select"
+      ]
     },
     {
       title: "Graphic Design",
@@ -282,8 +230,7 @@ const TriskelionAgency = () => {
           description: "All your designs are created by our in-house design team ensuring consistency and quality.",
           icon: <Palette className="w-5 h-5 text-purple-500" />
         }
-      ],
-      uploadPlaceholder: "Drag & drop an image for Graphic Design, or click to select"
+      ]
     }
   ];
 
@@ -299,15 +246,11 @@ const TriskelionAgency = () => {
     };
   }, []);
 
-  const handleImageUpload = (file, serviceIndex) => {
-    console.log(`Image uploaded for service ${serviceIndex}:`, file.name);
-  };
-
-  const handleImageError = (index) => {
+  const handleImageError = (index: number) => {
     setImageErrors(prev => ({ ...prev, [index]: true }));
   };
 
-  const TriskelionLogo = ({ size = 120, className = "", glow = true }) => (
+  const TriskelionLogo = ({ size = 120, className = "", glow = true }: { size?: number; className?: string; glow?: boolean }) => (
     <motion.div 
       className={`relative ${className}`}
       style={{ width: size, height: size }}
@@ -566,7 +509,7 @@ const TriskelionAgency = () => {
                     transition={{ delay: 0.1 * index }}
                     onClick={() => setExpandedService(expandedService === index ? null : index)}
                   >
-                    {/* Image Section with Upload */}
+                    {/* Image Section */}
                     <div className="relative h-48 overflow-hidden">
                       {!imageErrors[index] && service.defaultImage ? (
                         <img 
@@ -580,14 +523,6 @@ const TriskelionAgency = () => {
                           {service.icon}
                         </div>
                       )}
-                      
-                      {/* Upload overlay on hover */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="text-white text-center p-4">
-                          <Upload className="w-8 h-8 mx-auto mb-2" />
-                          <p className="text-xs">{service.uploadPlaceholder}</p>
-                        </div>
-                      </div>
                     </div>
                     
                     {/* Content Section */}
@@ -632,14 +567,6 @@ const TriskelionAgency = () => {
                                   </div>
                                 </div>
                               ))}
-                            </div>
-
-                            {/* Image Upload Area */}
-                            <div className="mt-4">
-                              <ImageUploader
-                                onImageUpload={(file) => handleImageUpload(file, index)}
-                                placeholder={service.uploadPlaceholder}
-                              />
                             </div>
                           </motion.div>
                         )}
