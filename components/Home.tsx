@@ -120,10 +120,10 @@ const TriskelionAgency = () => {
   ];
 
   const scorpionStats = [
-    { number: "Your Vision", label: "Collaborative Planning", icon: "🎯" },
-    { number: "Our Impact", label: "Proven Results", icon: "🚀" },
-    { number: "Your Growth", label: "Sustained Success", icon: "📈" },
-    { number: "Your Success", label: "Shared Achievement", icon: "✨" }
+    { number: "Your Vision", label: "Collaborative Planning", icon: "" },
+    { number: "Our Impact", label: "Proven Results", icon: "" },
+    { number: "Your Growth", label: "Sustained Success", icon: "" },
+    { number: "Your Success", label: "Shared Achievement", icon: "" }
   ];
 
   // Enhanced Services with detailed features
