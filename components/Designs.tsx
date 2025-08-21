@@ -162,7 +162,7 @@ fullCaseStudy: {
 }
     },
     {
-      iid: 3,
+      id: 3,
       title: "Neat n Nailed: Nail Studio",
       description: "Neat n Nailed is a contemporary nail studio that celebrates clean lines, bold details, and self-expression through nail art with precision and creative edge.",
       image: "/images/Neat and Nail 3.png",
@@ -335,7 +335,7 @@ fullCaseStudy: {
   title: "5 Dollar ($5DOLLAR Token)",
   description: "Revolutionary AI-powered fintech project combining artificial intelligence, community ownership, and next-generation financial tools. From zero to thriving Web3 community.",
   image: "/images/5dollar11.jpeg",
-  categories: ["Web3 Branding", "Community Building", "Crypto Marketing", "Content Strategy"],
+  categories: ["Web3 Branding", "Community Building", "Crypto Marketing", "Social Media"],
   region: "Canada",
   results: "Built engaged social media crypto community from 0 to 559+ followers and successfully launched $5DOLLAR token through strategic meme marketing and authentic community engagement",
   caseStudyLink: "#",
@@ -368,7 +368,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 8,
+      id: 9,
   title: "ArcTri Real Estate Brand Identity",
   description: "Architectural elegance meets sustainable innovation in this premium real estate branding system - balancing geometric precision with organic warmth.",
   image: "/images/Arictri1.png",
@@ -401,11 +401,11 @@ fullCaseStudy: {
         }
         },
         {
-      id: 8,
+      id: 10,
   title: "YELLOWFANG @YellowFangUSD1",
   description: "The crypto project that broke Twitter with AI-generated market predictions and a mascot that roasts other tokens. YELLOWFANG turned financial disruption into viral entertainment.",
   image: "/images/YELLOWFANG1.png",
-  categories: ["Web3 Branding", "Community Building", "Crypto Marketing", "Content Strategy"],
+  categories: ["Web3 Branding","Social Media", "Community Building", "Crypto Marketing", "Content Strategy"],
   region: "Canada",
   results: "Transformed unknown AI fintech startup into viral Web3 sensation with 4,173+ organic followers and explosive community engagement",
   caseStudyLink: "#",
@@ -435,7 +435,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 9,
+      id: 11,
   title: "Caffè Vivace Packaging Project",
   description: "Premium coffee brand packaging brought to life through meticulous execution.",
   image: "/images/Vivace11.png",
@@ -469,7 +469,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 9,
+      id: 12,
   title: "HydroSphere Eco Bottle Visualization",
   description: "Product visuals for HydroSphere's eco-friendly flasks",
   image: "/images/Hygro1.png",
@@ -502,7 +502,7 @@ fullCaseStudy: {
         }
         },
           {
-      id: 9,
+      id: 13,
   title: "Skin Glow Toner Bottle Design",
   description: "Elevating natural skincare through photorealistic packaging design - clean aesthetics meet ingredient transparency in Blender-rendered visuals.",
   image: "/images/Bootle.png",
@@ -536,11 +536,11 @@ fullCaseStudy: {
         }
         },
           {
-      id: 10,
+      id: 14,
   title: "Dorado Sauce Bottle Branding",
   description: "Culinary alchemy meets artistry - crafting a sauce brand's visual identity from bottle design to animated product.",
   image: "/images/Doroda1.png",
-  categories: ["Product Visualization","Digital Ads", "Packaging Design", "Food Branding", "Blender Artistry"],
+  categories: ["Product Visualization","Digital Ads", "Packaging Design", "Food Branding", "Social Media"],
   region: "Americas/Mediterranean",
   results: "Created an immersive brand world that translated cultural flavors into striking visual identity across packaging and digital assets",
   caseStudyLink: "#",
@@ -571,11 +571,11 @@ fullCaseStudy: {
         }
         },
          {
-      id: 10,
+      id: 15,
   title: "MYAKU-MYAKU",
   description: "When Japan's official World Expo 2025 mascot went rogue and launched its own meme coin. The cute red blob that conquered crypto Twitter with kawaii chaos.",
   image: "/images/MYAKU-MYAKU1.jpeg",
-  categories: ["Meme Marketing", "Digital Ads","Cultural Bridging", "Viral Content", "Community Building"],
+  categories: ["Meme Marketing", "Digital Ads","Social Media", "Viral Content", "Community Building"],
   region: "Japan",
   results: "Turned Japan's beloved Expo mascot into crypto's most unexpected success story with 527+ devoted followers and international media coverage",
   caseStudyLink: "#",
@@ -606,11 +606,11 @@ fullCaseStudy: {
         },
         
        {
-      id: 11,
+      id: 16,
   title: "FinAi Labs",
   description: "Building the future of finance — in your hands. AI, memes, and ownership. 🚀 First project: $FAI live now!",
   image: "/images/Fai1.jpeg",
-  categories: ["Branding", "Digital Ads", "Social Media Management", "Community Management", "Photography"],
+  categories: ["Branding", "Digital Ads", "Social Media", "Community Management", "Photography"],
   region: "United Kingdom",
   results: "Grew community from 0 to 407 followers through strategic social media management and engaging crypto-focused content",
   caseStudyLink: "#",

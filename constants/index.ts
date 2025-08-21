@@ -9,6 +9,7 @@ export const links = [
   { title: "Designs", href: "#designs" },
   { title: "Projects", href: "#projects" },
   { title: "Leadgeneration", href: "#Lead Generation" },
+  { title: "Socialmediamanagemnet", href: "#Socialmediamanagemnet" },
   { title: "Documentation", href: "#Social Media Crisis Documentation" }, // Matches exact section title
   { title: "Contact", href: "#contact" },
 ]

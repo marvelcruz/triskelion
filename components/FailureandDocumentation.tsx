@@ -47,29 +47,29 @@ const RotatingCircleWidget = ({ className = "" }) => {
                 </filter>
               </defs>
               
-              <g transform="translate(50,50)" filter="url(#glowWidgetLearning)">
+              <g transform="translate(50,50)" filter="url(#glowWidget)">
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
-                      fill="url(#triskelionGradWidgetLearning)" 
+                      fill="url(#triskelionGradWidget)" 
                       stroke="#fff" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(0)"/>
                 
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
-                      fill="url(#triskelionGradWidgetLearning)" 
+                      fill="url(#triskelionGradWidget)" 
                       stroke="#fff" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(120)"/>
                 
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
-                      fill="url(#triskelionGradWidgetLearning)" 
+                      fill="url(#triskelionGradWidget)" 
                       stroke="#fff" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(240)"/>
                 
-                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidgetLearning)" stroke="#fff" strokeWidth="0.5" opacity="0.95"/>
+                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#fff" strokeWidth="0.5" opacity="0.95"/>
               </g>
             </svg>
             
@@ -92,7 +92,7 @@ const RotatingCircleWidget = ({ className = "" }) => {
 // Component to show the breakdown details
 export const WidgetBreakdown = () => {
   return (
-    <div className="min-h-screen bg-slate-50 p-8 pt-16"> {/* Added pt-16 here */}
+    <div className="min-h-screen bg-slate-50 p-8 pt-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center text-slate-800">Rotating Circle Widget Breakdown</h1>
         
@@ -244,18 +244,22 @@ const LearningShowcase = () => {
 
   return (
     <>
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 pt-16"> {/* Added pt-16 here */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-slate-50/95 via-blue-50/90 to-indigo-50/95 pt-16 relative overflow-hidden">
+        {/* Background overlay effects matching home page */}
+        <div className="absolute inset-0 bg-[radial-gradient(at_center,_#3b82f6/8%,_transparent_70%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,_#06b6d408_0%,_#8b5cf608_50%,_#3b82f608_100%)]"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header */}
           <motion.div {...motionValues} className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full mb-6">
-              <Rocket className="text-blue-600 dark:text-blue-400 text-2xl" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100/80 backdrop-blur-sm rounded-full mb-6">
+              <Rocket className="text-blue-600 text-2xl" />
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl font-bold text-slate-800 mb-4">
               Built Through Real Experience
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Our systems aren't theoretical, they're battle-tested solutions born from real challenges and refined through continuous learning.
             </p>
           </motion.div>
@@ -263,10 +267,10 @@ const LearningShowcase = () => {
           {/* Core Principles */}
           <motion.div {...motionValues} className="grid md:grid-cols-3 gap-8 mb-20">
             {principles.map((principle, index) => (
-              <div key={index} className="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div key={index} className="text-center p-6 bg-white/80 backdrop-blur-lg rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-blue-200/30">
                 <div className="mb-4">{principle.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{principle.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{principle.description}</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{principle.title}</h3>
+                <p className="text-slate-600">{principle.description}</p>
               </div>
             ))}
           </motion.div>
@@ -274,7 +278,7 @@ const LearningShowcase = () => {
           {/* Learning Stories */}
           <div className="space-y-16">
             {learningStories.map((story) => (
-              <motion.div key={story.id} {...motionValues} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+              <motion.div key={story.id} {...motionValues} className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden border border-blue-200/30">
                 
                 {/* Story Header */}
                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
@@ -293,69 +297,69 @@ const LearningShowcase = () => {
                   
                   {/* Challenge & Insight */}
                   <div className="grid md:grid-cols-2 gap-8 mb-10">
-                    <div className="p-6 bg-orange-50 dark:bg-orange-900/20 rounded-lg border-l-4 border-orange-400">
-                      <h4 className="font-bold text-orange-800 dark:text-orange-200 mb-2">The Challenge</h4>
-                      <p className="text-gray-700 dark:text-gray-300">{story.challenge}</p>
+                    <div className="p-6 bg-orange-50/80 backdrop-blur-sm rounded-lg border-l-4 border-orange-400">
+                      <h4 className="font-bold text-orange-800 mb-2">The Challenge</h4>
+                      <p className="text-slate-700">{story.challenge}</p>
                     </div>
-                    <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-400">
-                      <h4 className="font-bold text-green-800 dark:text-green-200 mb-2">Our Insight</h4>
-                      <p className="text-gray-700 dark:text-gray-300">{story.insight}</p>
+                    <div className="p-6 bg-green-50/80 backdrop-blur-sm rounded-lg border-l-4 border-green-400">
+                      <h4 className="font-bold text-green-800 mb-2">Our Insight</h4>
+                      <p className="text-slate-700">{story.insight}</p>
                     </div>
                   </div>
 
                   {/* Evolution */}
-                  <div className="mb-10 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Our Evolution</h4>
+                  <div className="mb-10 p-6 bg-blue-50/80 backdrop-blur-sm rounded-lg">
+                    <h4 className="text-xl font-bold text-slate-800 mb-4">Our Evolution</h4>
                     <div className="grid md:grid-cols-3 gap-6">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                          <span className="text-red-600 dark:text-red-400 font-bold">Before</span>
+                        <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                          <span className="text-red-600 font-bold text-xs">Before</span>
                         </div>
-                        <p className="text-gray-700 dark:text-gray-300 font-medium">{story.evolution.before}</p>
+                        <p className="text-slate-700 font-medium">{story.evolution.before}</p>
                       </div>
                       <div className="flex items-center justify-center">
-                        <div className="w-8 h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                        <div className="w-8 h-0.5 bg-slate-300"></div>
                         <Rocket className="text-blue-500 mx-4 text-xl" />
-                        <div className="w-8 h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                        <div className="w-8 h-0.5 bg-slate-300"></div>
                       </div>
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                          <span className="text-green-600 dark:text-green-400 font-bold">After</span>
+                        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                          <span className="text-green-600 font-bold text-xs">After</span>
                         </div>
-                        <p className="text-gray-700 dark:text-gray-300 font-medium">{story.evolution.after}</p>
+                        <p className="text-slate-700 font-medium">{story.evolution.after}</p>
                       </div>
                     </div>
-                    <div className="mt-6 text-center p-4 bg-white dark:bg-gray-700 rounded-lg">
-                      <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">{story.evolution.improvement}</p>
-                      <p className="text-gray-600 dark:text-gray-300">Performance Improvement</p>
+                    <div className="mt-6 text-center p-4 bg-white/80 backdrop-blur-sm rounded-lg">
+                      <p className="text-2xl font-bold text-blue-600 mb-1">{story.evolution.improvement}</p>
+                      <p className="text-slate-600">Performance Improvement</p>
                     </div>
                   </div>
 
                   {/* Solutions */}
                   <div className="mb-10">
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Solutions We Built</h4>
+                    <h4 className="text-xl font-bold text-slate-800 mb-6">Solutions We Built</h4>
                     <div className="grid md:grid-cols-3 gap-6">
                       {story.solutions.map((solution, index) => (
-                        <div key={index} className="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg hover:shadow-md transition-shadow">
+                        <div key={index} className="p-6 bg-slate-50/80 backdrop-blur-sm rounded-lg hover:shadow-md transition-shadow border border-slate-200/50">
                           <div className="mb-4">{solution.icon}</div>
-                          <h5 className="font-bold text-gray-900 dark:text-white mb-2">{solution.title}</h5>
-                          <p className="text-gray-600 dark:text-gray-300 text-sm">{solution.description}</p>
+                          <h5 className="font-bold text-slate-800 mb-2">{solution.title}</h5>
+                          <p className="text-slate-600 text-sm">{solution.description}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Results */}
-                  <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
-                    <h4 className="text-xl font-bold text-green-800 dark:text-green-200 mb-4 flex items-center">
+                  <div className="bg-green-50/80 backdrop-blur-sm rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-green-800 mb-4 flex items-center">
                       <Trophy className="mr-2" />
                       Proven Results
                     </h4>
                     <div className="grid md:grid-cols-3 gap-4">
                       {story.results.map((result, index) => (
                         <div key={index} className="flex items-center">
-                          <CheckCircle className="text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
-                          <p className="text-gray-700 dark:text-gray-300">{result}</p>
+                          <CheckCircle className="text-green-600 mr-3 flex-shrink-0" />
+                          <p className="text-slate-700">{result}</p>
                         </div>
                       ))}
                     </div>

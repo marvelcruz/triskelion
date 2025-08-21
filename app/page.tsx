@@ -5,6 +5,7 @@ import HowIHelpYou from "@/components/HowIHelpYou";
 import Designs from "@/components/Designs";
 import Projects from "@/components/Projects";
 import Leadgeneration from "@/components/Leadgeneration";
+import Socialmediamangement from "@/components/Socialmediamangement";
 import WorkPlans from "@/components/WorkPlans";
 import FailureandDocumentation from "@/components/FailureandDocumentation";
 import Contact from "@/components/Contact";

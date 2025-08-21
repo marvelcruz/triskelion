@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Network, Music, Briefcase, X, ExternalLink } from "lucide-react";
+import { Network, Music, Briefcase, X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Type definitions
 type FullCaseStudy = {
@@ -32,7 +32,7 @@ type Project = {
 };
 
 // Triskelion Logo Component
-const TriskelionLogo = ({ size = 80, className = "" }) => (
+const TriskelionLogo = ({ size = 80, className = "" }: { size?: number; className?: string }) => (
   <motion.div 
     className={`relative ${className}`}
     style={{ width: size, height: size }}
@@ -68,7 +68,7 @@ const TriskelionLogo = ({ size = 80, className = "" }) => (
 );
 
 // Rotating Circle Widget Component
-const RotatingCircleWidget = ({ className = "" }) => {
+const RotatingCircleWidget = ({ className = "" }: { className?: string }) => {
   return (
     <div className={`fixed bottom-4 right-4 w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
       <div className="w-full h-full relative rounded-full bg-gradient-to-r from-red-400 via-teal-400 via-blue-400 via-green-400 via-yellow-400 to-pink-400 p-1 shadow-lg shadow-red-400/30">
@@ -157,11 +157,17 @@ const RotatingCircleWidget = ({ className = "" }) => {
 interface CaseStudy {
   id: number;
   title: string;
+  category?: string;
+  image?: string;
   problem: {
     icon: string;
     header: string;
     statement: string;
     description: string;
+    additionalChallenges?: Array<{
+      title: string;
+      description: string;
+    }>;
   };
   solution: {
     icon: string;
@@ -169,20 +175,25 @@ interface CaseStudy {
     approach: string;
     description: string;
     services: string[];
+    additionalSolutions?: Array<{
+      title: string;
+      description: string;
+    }>;
   };
   result: {
     icon: string;
     header: string;
     outcome: string;
     details: string[];
+    additionalResults?: Array<{
+      title: string;
+      details: string[];
+    }>;
   };
 }
 
-// Define the tab keys as a type
-type TabKey = 'networking' | 'creative' | 'business';
-
 const SolutionsShowcase = () => {
-  const [activeTab, setActiveTab] = useState<TabKey>("networking");
+  const [activeCase, setActiveCase] = useState(0);
 
   const motionValues = {
     initial: { opacity: 0, y: 20 },
@@ -191,48 +202,39 @@ const SolutionsShowcase = () => {
     viewport: { once: true }
   };
 
-  const tabs = [
-    {
-      id: "networking" as TabKey,
-      label: "Professional Networks",
-      icon: <Network className="text-lg" />,
-      description: "BNI, Chambers of Commerce & Professional Organizations"
-    },
-    {
-      id: "creative" as TabKey,
-      label: "Music & Arts",
-      icon: <Music className="text-lg" />,
-      description: "Artists, Musicians, Galleries & Creative Businesses"
-    },
-    {
-      id: "business" as TabKey,
-      label: "General Business",
-      icon: <Briefcase className="text-lg" />,
-      description: "Startups, E-commerce, Professional Services & Local Businesses"
-    }
-  ];
-
-  const caseStudiesByCategory: Record<TabKey, CaseStudy[]> = {
+ const caseStudiesByCategory = {
     networking: [
       {
         id: 1,
         title: "BNI Regional Social Media Transformation",
         problem: {
-          icon: "🔴", // Red circle to represent BNI branding
+          icon: "🔴",
           header: "THE CHALLENGE",
           statement: "Inconsistent Digital Presence Across Chapters",
-          description: "BNI regions with amazing networking success stories weren't reaching beyond meeting rooms. Chapters posted sporadically, branding was inconsistent, and quality member attraction was suffering."
+          description: "BNI regions with amazing networking success stories weren't reaching beyond meeting rooms. Chapters posted sporadically, branding was inconsistent, and quality member attraction was suffering.",
+          additionalChallenges: [
+            {
+              title: "The 90-Minute Gap Problem",
+              description: "After weekly chapter meetings end, members struggle to stay top of mind with fellow networkers throughout the week. Referral opportunities are missed and business relationships weaken between meetings due to lack of consistent visibility."
+            }
+          ]
         },
         solution: {
           icon: "",
           header: "OUR SOLUTION",
           approach: "Unified Regional Social Media Strategy",
           description: "We created cohesive social media strategies that amplify BNI success stories while maintaining professional branding consistency across all chapters.",
+          additionalSolutions: [
+            {
+              title: "Strategic Member Engagement Solutions",
+              description: "We developed systems to keep members visible and engaged throughout the entire week, not just during the 90-minute meeting window."
+            }
+          ],
           services: [
             "Regional brand guidelines and visual consistency",
             "Member success story campaigns and spotlights",
             "Visitor conversion and recruitment funnels",
-            "Cross-chapter collaboration content"
+            "Strategic week-long member engagement systems"
           ]
         },
         result: {
@@ -244,6 +246,17 @@ const SolutionsShowcase = () => {
             "Consistent branding across 12 regional chapters",
             "Member stories reaching 4,000+ local business owners monthly",
             "20% improvement in member retention rates"
+          ],
+          additionalResults: [
+            {
+              title: "Enhanced Member Engagement & Referral Generation",
+              details: [
+                "Significant increase in member visibility between meetings",
+                "Higher referral activity throughout the week",
+                "Stronger member relationships and recall",
+                "Improved business opportunities beyond meeting rooms"
+              ]
+            }
           ]
         }
       },
@@ -296,10 +309,9 @@ const SolutionsShowcase = () => {
           approach: "Authentic Artist Brand and Content Strategy",
           description: "Built genuine social media presence showcasing personality, creative process, and musical journey while growing engaged fanbase organically.",
           services: [
-            "Artist brand identity,  visual direction & Music release promotion campaigns",
+            "Artist brand identity, visual direction & Music release promotion campaigns",
             "Behind-the-scenes content creation & Live performance documentation",
-            "Instagram Reels and TikTok strategy & Fan community building and engagement",
-            
+            "Instagram Reels and TikTok strategy & Fan community building and engagement"
           ]
         },
         result: {
@@ -331,7 +343,7 @@ const SolutionsShowcase = () => {
           services: [
             "Exhibition promotion, artist features & Opening night event coverage",
             "Art education content creation & Collector and patron engagement strategy",
-            "Local artist collaboration campaigns",
+            "Local artist collaboration campaigns"
           ]
         },
         result: {
@@ -366,7 +378,7 @@ const SolutionsShowcase = () => {
             "Mouth-watering food photography and videography",
             "Family story and restaurant history content",
             "Daily specials and behind-the-scenes content",
-            "Customer feature campaigns AND Local partnership and event promotion",
+            "Customer feature campaigns AND Local partnership and event promotion"
           ]
         },
         result: {
@@ -398,7 +410,7 @@ const SolutionsShowcase = () => {
           services: [
             "Legal education content creation AND Referral partner collaboration posts",
             "Client success story development",
-            "LinkedIn thought leadership strategy AND Professional networking content",
+            "LinkedIn thought leadership strategy AND Professional networking content"
           ]
         },
         result: {
@@ -415,6 +427,56 @@ const SolutionsShowcase = () => {
       }
     ]
   };
+
+  // All case studies in one array for easy navigation with images
+  const allCaseStudies: CaseStudy[] = [
+    {
+      ...caseStudiesByCategory.networking[0], // BNI Regional
+      category: "Professional Networking",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      ...caseStudiesByCategory.creative[0], // Independent Musician
+      category: "Music & Arts",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      ...caseStudiesByCategory.networking[1], // Chamber of Commerce
+      category: "Professional Networking", 
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      ...caseStudiesByCategory.creative[1], // Art Gallery
+      category: "Music & Arts",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      ...caseStudiesByCategory.business[0], // Restaurant
+      category: "Local Business",
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      ...caseStudiesByCategory.business[1], // Law Firm
+      category: "Professional Services",
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
+  const nextCase = () => {
+    setActiveCase((prev) => (prev + 1) % allCaseStudies.length);
+  };
+
+  const prevCase = () => {
+    setActiveCase((prev) => (prev - 1 + allCaseStudies.length) % allCaseStudies.length);
+  };
+
+  // Auto-advance every 8 seconds (was 5 seconds)
+  useEffect(() => {
+    const interval = setInterval(nextCase, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentCase = allCaseStudies[activeCase];
 
   return (
     <>
@@ -437,120 +499,228 @@ const SolutionsShowcase = () => {
             </p>
           </motion.div>
 
-          {/* Tab Navigation */}
+          {/* Auto-Cycling Case Study Display */}
+          <motion.div {...motionValues} className="mb-8 text-center">
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+            </p>
+            <div className="flex justify-center mt-4 space-x-2">
+              {allCaseStudies.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    activeCase === index
+                      ? 'bg-blue-600 w-6'
+                      : 'bg-gray-300 dark:bg-gray-600'
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Case Study Navigation Buttons - Now Optional */}
           <motion.div {...motionValues} className="mb-12">
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {tabs.map((tab) => (
+            <div className="text-center mb-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                 Click any case study to view it immediately:
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {allCaseStudies.map((caseStudy, index) => (
                 <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
-                    activeTab === tab.id
+                  key={caseStudy.id}
+                  onClick={() => setActiveCase(index)}
+                  className={`px-4 py-2 text-sm rounded-lg font-medium transition-all ${
+                    activeCase === index
                       ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
-                  {tab.icon}
-                  <span>{tab.label}</span>
+                  {caseStudy.title.split(' ').slice(0, 3).join(' ')}
                 </button>
               ))}
             </div>
             
-            <div className="text-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                {tabs.find(tab => tab.id === activeTab)?.description}
-              </p>
+            {/* Navigation Controls - Simplified */}
+            <div className="flex justify-center items-center gap-4 mt-4">
+              <button
+                onClick={prevCase}
+                className="p-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-lg transition-all"
+                title="Previous case study"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <div className="text-center px-4">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Case {activeCase + 1} of {allCaseStudies.length} • Auto-cycling
+                </span>
+              </div>
+              
+              <button
+                onClick={nextCase}
+                className="p-2 rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-lg transition-all"
+                title="Next case study"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </motion.div>
 
-          {/* Case Studies */}
-          <div className="space-y-16">
-            {caseStudiesByCategory[activeTab]?.map((caseStudy) => (
-              <motion.div 
-                key={caseStudy.id}
-                {...motionValues}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
-              >
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">
-                    {caseStudy.title}
-                  </h3>
+          {/* Active Case Study */}
+          <motion.div 
+            key={activeCase}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden"
+          >
+            {/* Case Study Header with Image */}
+            <div className="relative h-64 md:h-80 overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${currentCase.image})` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <div className="mb-2">
+                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm rounded-full font-medium">
+                    {currentCase.category}
+                  </span>
+                </div>
+                <h3 className="text-3xl font-bold mb-2">
+                  {currentCase.title}
+                </h3>
+              </div>
+            </div>
 
-                  <div className="grid lg:grid-cols-3 gap-8">
-                    
-                    {/* Problem */}
-                    <div className="p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500">
-                      <div className="flex items-center mb-3">
-                        <span className="text-xl mr-2">{caseStudy.problem.icon}</span>
-                        <h4 className="font-bold text-red-700 dark:text-red-300">
-                          {caseStudy.problem.header}
-                        </h4>
-                      </div>
-                      <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                        {caseStudy.problem.statement}
-                      </h5>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm">
-                        {caseStudy.problem.description}
-                      </p>
-                    </div>
-
-                    {/* Solution */}
-                    <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
-                      <div className="flex items-center mb-3">
-                        <span className="text-xl mr-2">{caseStudy.solution.icon}</span>
-                        <h4 className="font-bold text-blue-700 dark:text-blue-300">
-                          {caseStudy.solution.header}
-                        </h4>
-                      </div>
-                      <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                        {caseStudy.solution.approach}
-                      </h5>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
-                        {caseStudy.solution.description}
-                      </p>
-                      
-                      <div className="space-y-2">
-                        {caseStudy.solution.services.slice(0, 3).map((service, index) => (
-                          <div key={index} className="flex items-start text-sm">
-                            <span className="mr-2 text-blue-500">•</span>
-                            <span className="text-gray-700 dark:text-gray-300">{service}</span>
-                          </div>
-                        ))}
-                        {caseStudy.solution.services.length > 3 && (
-                          <p className="text-xs text-gray-500 italic">
-                            +{caseStudy.solution.services.length - 3} more services
+            <div className="p-8">
+              <div className="grid lg:grid-cols-3 gap-8">
+                
+                {/* Problem */}
+                <div className="p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border-l-4 border-red-500">
+                  <div className="flex items-center mb-3">
+                    <span className="text-xl mr-2">{currentCase.problem.icon}</span>
+                    <h4 className="font-bold text-red-700 dark:text-red-300">
+                      {currentCase.problem.header}
+                    </h4>
+                  </div>
+                  <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                    {currentCase.problem.statement}
+                  </h5>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">
+                    {currentCase.problem.description}
+                  </p>
+                  
+                  {/* Additional Challenges */}
+                  {currentCase.problem.additionalChallenges && (
+                    <div className="mt-4 pt-3 border-t border-red-200 dark:border-red-800">
+                      {currentCase.problem.additionalChallenges.map((challenge: {title: string, description: string}, index: number) => (
+                        <div key={index} className="mb-3">
+                          <h6 className="font-semibold text-red-800 dark:text-red-200 text-sm mb-1">
+                            {challenge.title}
+                          </h6>
+                          <p className="text-gray-700 dark:text-gray-300 text-xs">
+                            {challenge.description}
                           </p>
-                        )}
-                      </div>
+                        </div>
+                      ))}
                     </div>
+                  )}
+                </div>
 
-                    {/* Result */}
-                    <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
-                      <div className="flex items-center mb-3">
-                        <span className="text-xl mr-2">{caseStudy.result.icon}</span>
-                        <h4 className="font-bold text-green-700 dark:text-green-300">
-                          {caseStudy.result.header}
-                        </h4>
-                      </div>
-                      <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                        {caseStudy.result.outcome}
-                      </h5>
-                      <div className="space-y-2">
-                        {caseStudy.result.details.map((detail, index) => (
-                          <div key={index} className="flex items-start text-sm">
-                            <span className="mr-2 text-green-500">✓</span>
-                            <span className="text-gray-700 dark:text-gray-300">{detail}</span>
-                          </div>
-                        ))}
-                      </div>
+                {/* Solution */}
+                <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+                  <div className="flex items-center mb-3">
+                    <span className="text-xl mr-2">{currentCase.solution.icon}</span>
+                    <h4 className="font-bold text-blue-700 dark:text-blue-300">
+                      {currentCase.solution.header}
+                    </h4>
+                  </div>
+                  <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                    {currentCase.solution.approach}
+                  </h5>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
+                    {currentCase.solution.description}
+                  </p>
+                  
+                  {/* Additional Solutions */}
+                  {currentCase.solution.additionalSolutions && (
+                    <div className="mb-4 pb-3 border-b border-blue-200 dark:border-blue-800">
+                      {currentCase.solution.additionalSolutions.map((solution: {title: string, description: string}, index: number) => (
+                        <div key={index} className="mb-2">
+                          <h6 className="font-semibold text-blue-800 dark:text-blue-200 text-sm mb-1">
+                            {solution.title}
+                          </h6>
+                          <p className="text-gray-700 dark:text-gray-300 text-xs">
+                            {solution.description}
+                          </p>
+                        </div>
+                      ))}
                     </div>
+                  )}
+                  
+                  <div className="space-y-2">
+                    {currentCase.solution.services.slice(0, 3).map((service, index) => (
+                      <div key={index} className="flex items-start text-sm">
+                        <span className="mr-2 text-blue-500">•</span>
+                        <span className="text-gray-700 dark:text-gray-300">{service}</span>
+                      </div>
+                    ))}
+                    {currentCase.solution.services.length > 3 && (
+                      <p className="text-xs text-gray-500 italic">
+                        +{currentCase.solution.services.length - 3} more services
+                      </p>
+                    )}
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Call to Action */}
+                {/* Result */}
+                <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
+                  <div className="flex items-center mb-3">
+                    <span className="text-xl mr-2">{currentCase.result.icon}</span>
+                    <h4 className="font-bold text-green-700 dark:text-green-300">
+                      {currentCase.result.header}
+                    </h4>
+                  </div>
+                  <h5 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                    {currentCase.result.outcome}
+                  </h5>
+                  <div className="space-y-2 mb-3">
+                    {currentCase.result.details.map((detail, index) => (
+                      <div key={index} className="flex items-start text-sm">
+                        <span className="mr-2 text-green-500">✓</span>
+                        <span className="text-gray-700 dark:text-gray-300">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Additional Results */}
+                  {currentCase.result.additionalResults && (
+                    <div className="mt-4 pt-3 border-t border-green-200 dark:border-green-800">
+                      {currentCase.result.additionalResults.map((result: {title: string, details: string[]}, index: number) => (
+                        <div key={index} className="mb-3">
+                          <h6 className="font-semibold text-green-800 dark:text-green-200 text-sm mb-2">
+                            {result.title}
+                          </h6>
+                          <div className="space-y-1">
+                            {result.details.map((detail: string, detailIndex: number) => (
+                              <div key={detailIndex} className="flex items-start text-xs">
+                                <span className="mr-2 text-green-500">✓</span>
+                                <span className="text-gray-700 dark:text-gray-300">{detail}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Progress Indicators - Removed since we have them at the top now */}
         </div>
       </section>
       

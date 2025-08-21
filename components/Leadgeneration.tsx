@@ -5,8 +5,8 @@ import { Users, MessageCircle, TrendingUp, Star } from "lucide-react";
 const RotatingCircleWidget = ({ className = "" }) => {
   return (
     <div className={`fixed bottom-4 right-4 w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 z-50 cursor-pointer transition-all duration-300 hover:scale-110 hover:brightness-110 ${className}`}>
-      <div className="w-full h-full relative rounded-full bg-gradient-to-r from-red-400 via-teal-400 via-blue-400 via-green-400 via-yellow-400 to-pink-400 p-1 shadow-lg shadow-red-400/30">
-        <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-black/80 backdrop-blur-md relative overflow-hidden border border-white/10">
+      <div className="w-full h-full relative rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-1 shadow-lg shadow-blue-500/30">
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-white/95 to-blue-50/90 backdrop-blur-md relative overflow-hidden border border-blue-200/20">
           
           {/* Rotating Text */}
           <div className="absolute w-full h-full animate-spin" style={{ animationDuration: '40s' }}>
@@ -14,7 +14,7 @@ const RotatingCircleWidget = ({ className = "" }) => {
               <defs>
                 <path id="circle-path" d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
               </defs>
-              <text className="text-[8px] sm:text-[10px] md:text-[11px] font-semibold uppercase tracking-wider fill-white drop-shadow-lg opacity-90 hover:opacity-100 hover:text-xs transition-all duration-300">
+              <text className="text-[8px] sm:text-[10px] md:text-[11px] font-semibold uppercase tracking-wider fill-blue-800 drop-shadow-sm opacity-90 hover:opacity-100 transition-all duration-300">
                 <textPath href="#circle-path" startOffset="0%">
                   COMMUNITY • LIFELONG LEARNING • MUSIC • ART • TECH • BUSINESS • LIFESTYLE •
                 </textPath>
@@ -25,20 +25,20 @@ const RotatingCircleWidget = ({ className = "" }) => {
           {/* Stationary Center Logo */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-10">
             {/* TRISKELION label above */}
-            <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 text-[6px] sm:text-[7px] md:text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+            <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 text-[6px] sm:text-[7px] md:text-[8px] font-bold text-blue-800 tracking-wide">
               TRISKELION
             </div>
             
             {/* Triskelion SVG */}
-            <svg className="w-full h-full filter drop-shadow-lg animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
+            <svg className="w-full h-full filter drop-shadow-sm animate-pulse" style={{ animationDuration: '3s' }} viewBox="0 0 100 100">
               <defs>
                 <linearGradient id="triskelionGradWidget" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-                  <stop offset="50%" stopColor="#f0f0f0" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="50%" stopColor="#8b5cf6" />
+                  <stop offset="100%" stopColor="#06b6d4" />
                 </linearGradient>
                 <filter id="glowWidget">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
                   <feMerge> 
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -49,39 +49,39 @@ const RotatingCircleWidget = ({ className = "" }) => {
               <g transform="translate(50,50)" filter="url(#glowWidget)">
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
                       fill="url(#triskelionGradWidget)" 
-                      stroke="#fff" 
+                      stroke="#1e40af" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(0)"/>
                 
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
                       fill="url(#triskelionGradWidget)" 
-                      stroke="#fff" 
+                      stroke="#1e40af" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(120)"/>
                 
                 <path d="M 0,0 Q -15,-20 -30,-8 Q -25,8 -12,2 Q -8,-12 0,0" 
                       fill="url(#triskelionGradWidget)" 
-                      stroke="#fff" 
+                      stroke="#1e40af" 
                       strokeWidth="0.5"
                       opacity="0.9"
                       transform="rotate(240)"/>
                 
-                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#fff" strokeWidth="0.5" opacity="0.95"/>
+                <circle cx="0" cy="0" r="4" fill="url(#triskelionGradWidget)" stroke="#1e40af" strokeWidth="0.5" opacity="0.95"/>
               </g>
             </svg>
             
             {/* GIVERS GAIN label below */}
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 text-[8px] font-bold text-white text-shadow-lg tracking-wide">
+            <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 text-[6px] sm:text-[7px] md:text-[8px] font-bold text-blue-800 tracking-wide">
               GIVERS GAIN®
             </div>
           </div>
           
           {/* Floating particles */}
-          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '30%', animationDelay: '0s', animationDuration: '4s' }}></div>
-          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '70%', animationDelay: '1s', animationDuration: '4s' }}></div>
-          <div className="absolute w-0.5 h-0.5 bg-white/60 rounded-full animate-bounce" style={{ left: '50%', animationDelay: '2s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-blue-400/80 rounded-full animate-bounce" style={{ left: '30%', animationDelay: '0s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-cyan-400/80 rounded-full animate-bounce" style={{ left: '70%', animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute w-0.5 h-0.5 bg-purple-400/80 rounded-full animate-bounce" style={{ left: '50%', animationDelay: '2s', animationDuration: '4s' }}></div>
         </div>
       </div>
     </div>
@@ -208,117 +208,85 @@ const Leadgeneration = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden relative pt-16"> {/* Added pt-16 here */}
-      <style jsx>{`
-        @keyframes float1 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes float2 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
-        @keyframes float3 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes float4 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes float5 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
-        @keyframes float6 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes float7 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
-        @keyframes float8 { 0%, 100% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        @keyframes bob1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
-        @keyframes bob2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        @keyframes bob3 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-        @keyframes bob4 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
-        
-        @keyframes sway1 { 0%, 100% { transform: translateX(0px); } 50% { transform: translateX(-8px); } }
-        
-        @keyframes pulse1 { 0%, 100% { transform: scale(0.8); } 50% { transform: scale(1.2); } }
-        @keyframes pulse2 { 0%, 100% { transform: scale(0.9); } 50% { transform: scale(1.1); } }
-        @keyframes pulse3 { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.7); } }
-        
-        @keyframes complex1 { 
-          0% { transform: translateX(0px) translateY(0px); }
-          25% { transform: translateX(-12px) translateY(-15px); }
-          50% { transform: translateX(12px) translateY(-15px); }
-          75% { transform: translateX(12px) translateY(15px); }
-          100% { transform: translateX(0px) translateY(0px); }
-        }
-        
-        @keyframes complex2 { 
-          0% { transform: translateX(0px) translateY(0px); }
-          33% { transform: translateX(-10px) translateY(-5px); }
-          66% { transform: translateX(10px) translateY(5px); }
-          100% { transform: translateX(0px) translateY(0px); }
-        }
-      `}</style>
+    <div className="min-h-screen relative overflow-hidden pt-16">
+      {/* Background with light overlay - matching About section */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/95 via-blue-50/90 to-indigo-50/95"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(at_center,_#3b82f6/8%,_transparent_70%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,_#06b6d408_0%,_#8b5cf608_50%,_#3b82f608_100%)]"></div>
+      </div>
+
+      {/* Floating Triskelion Logos - matching About section */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-1/4 left-1/4">
+          <TriskelionLogo size={200} showText={false} className="opacity-20" animationDuration={45} />
+        </div>
+        <div className="absolute bottom-1/3 right-1/4">
+          <TriskelionLogo size={180} showText={false} className="opacity-15" animationDuration={32} />
+        </div>
+        <div className="absolute top-1/3 right-1/3">
+          <TriskelionLogo size={150} showText={false} className="opacity-10" animationDuration={38} />
+        </div>
+      </div>
 
       {/* Rotating Circle Widget */}
       <RotatingCircleWidget />
 
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 relative overflow-hidden z-10">
-        <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/4">
-            <TriskelionLogo size={200} showText={false} className="opacity-20" animationDuration={45} />
-          </div>
-          <div className="absolute bottom-1/3 right-1/4">
-            <TriskelionLogo size={180} showText={false} className="opacity-15" animationDuration={32} />
-          </div>
-          <div className="absolute top-1/3 right-1/3">
-            <TriskelionLogo size={150} showText={false} className="opacity-10" animationDuration={38} />
-          </div>
-        </div>
-
+      <section className="py-12 relative overflow-hidden z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="mb-6">
             <TriskelionLogo size={80} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-800">
             From Lead Generation to Revenue Generation. 
           </h1>
-          <h2 className="text-xl md:text-2xl mb-6 text-blue-400 font-medium">
+          <h2 className="text-xl md:text-2xl mb-6 text-blue-600 font-medium">
             Digital Advertising For Businesses. Not all leads are created equal. Turn Leads Into Revenue.
           </h2>
-          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl mb-6 text-slate-600 max-w-3xl mx-auto leading-relaxed">
             TRISKELION helps businesses plan, create, and manage digital advertising that converts followers into revenue. Better leads. Maximum revenue. Our job is to bring you not just more leads, but more of the leads you want most.
           </p>
-          <button className="">
-            
-          </button>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-12 bg-gradient-to-b from-gray-800 to-gray-900 relative z-10 overflow-hidden">
+      <section className="py-12 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+            <h3 className="text-3xl font-bold mb-4 text-slate-800">
               A Fresh Approach to Small Business Ads
             </h3>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+            <div className="text-center p-8 rounded-xl bg-white/80 backdrop-blur-sm border border-blue-200/30 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-blue-500/20">
-                <TrendingUp className="w-8 h-8 text-blue-400" />
+                <TrendingUp className="w-8 h-8 text-blue-600" />
               </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Build Awareness</h4>
-              <p className="text-gray-300 leading-relaxed">
+              <h4 className="text-xl font-bold mb-4 text-slate-800">Build Awareness</h4>
+              <p className="text-slate-600 leading-relaxed">
                 Boost your brand's visibility with digital ads that are tailored to your target market.
               </p>
             </div>
 
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+            <div className="text-center p-8 rounded-xl bg-white/80 backdrop-blur-sm border border-blue-200/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-500/20">
-                <Users className="w-8 h-8 text-purple-400" />
+                <Users className="w-8 h-8 text-purple-600" />
               </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Generate Leads</h4>
-              <p className="text-gray-300 leading-relaxed">
+              <h4 className="text-xl font-bold mb-4 text-slate-800">Generate Leads</h4>
+              <p className="text-slate-600 leading-relaxed">
                 Drive qualified leads to your business via phone calls, emails, or website inquiries.
               </p>
             </div>
 
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10">
+            <div className="text-center p-8 rounded-xl bg-white/80 backdrop-blur-sm border border-blue-200/30 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10">
               <div className="w-16 h-16 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-pink-500/20">
-                <MessageCircle className="w-8 h-8 text-pink-400" />
+                <MessageCircle className="w-8 h-8 text-pink-600" />
               </div>
-              <h4 className="text-xl font-bold mb-4 text-white">Integrated Ecosystem</h4>
-              <p className="text-gray-300 leading-relaxed">
+              <h4 className="text-xl font-bold mb-4 text-slate-800">Integrated Ecosystem</h4>
+              <p className="text-slate-600 leading-relaxed">
                 We seamlessly integrate advertising with our photo, video, and design services for a cohesive experience.
               </p>
             </div>
@@ -327,12 +295,12 @@ const Leadgeneration = () => {
       </section>
 
       {/* Content Creation Section */}
-      <section className="py-12 bg-gradient-to-r from-gray-50 to-blue-50 relative z-10 overflow-hidden">
+      <section className="py-12 relative z-10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-gray-900">Content Creation</h3>
+            <h3 className="text-3xl font-bold mb-6 text-slate-800">Content Creation</h3>
             <div className="w-20 h-1 bg-blue-600 mx-auto rounded mb-6"></div>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-slate-600 leading-relaxed">
               Thanks to our in-house content and design team, we are able to create on-brand photos, videos, and graphics that resonate with your target market and stand out from the pack.
             </p>
           </div>
@@ -340,49 +308,49 @@ const Leadgeneration = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-12 bg-white relative z-10 overflow-hidden">
+      <section className="py-12 relative z-10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-gray-900">Our Proven Process</h3>
+            <h3 className="text-3xl font-bold mb-6 text-slate-800">Our Proven Process</h3>
             <div className="w-20 h-1 bg-blue-600 mx-auto rounded mb-8"></div>
             <h4 className="text-xl font-semibold mb-8 text-blue-600">The Monthly Routine</h4>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
               Our team has developed a collaborative, high-performance monthly routine that ensures we stay consistent with our digital advertising efforts. Resulting in increased brand awareness and lead generation for your business.
             </p>
           </div>
 
           <div className="space-y-8">
-            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-gradient-to-r from-blue-50 to-white rounded-xl border-l-4 border-blue-600">
+            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-200/30 border-l-4 border-l-blue-600">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">1</div>
               </div>
               <div>
-                <h5 className="text-xl font-bold mb-2 text-gray-900">Monthly Reporting</h5>
-                <p className="text-gray-600 leading-relaxed">
+                <h5 className="text-xl font-bold mb-2 text-slate-800">Monthly Reporting</h5>
+                <p className="text-slate-600 leading-relaxed">
                   Begin each month with a report to review ad performance, share business updates, and discuss new ad creation.
                 </p>
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-gradient-to-r from-green-50 to-white rounded-xl border-l-4 border-green-600">
+            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-200/30 border-l-4 border-l-green-600">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">2</div>
               </div>
               <div>
-                <h5 className="text-xl font-bold mb-2 text-gray-900">Ad Creation</h5>
-                <p className="text-gray-600 leading-relaxed">
+                <h5 className="text-xl font-bold mb-2 text-slate-800">Ad Creation</h5>
+                <p className="text-slate-600 leading-relaxed">
                   Our team produces, edits, designs, and writes your advertisements using our project platform for a collaborative user experience.
                 </p>
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-gradient-to-r from-purple-50 to-white rounded-xl border-l-4 border-purple-600">
+            <div className="flex flex-col md:flex-row items-start gap-6 p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-200/30 border-l-4 border-l-purple-600">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">3</div>
               </div>
               <div>
-                <h5 className="text-xl font-bold mb-2 text-gray-900">Ad Monitoring</h5>
-                <p className="text-gray-600 leading-relaxed">
+                <h5 className="text-xl font-bold mb-2 text-slate-800">Ad Monitoring</h5>
+                <p className="text-slate-600 leading-relaxed">
                   With ads up and running, we monitor performance and make adjustments to keywords and copywriting as needed.
                 </p>
               </div>
@@ -392,24 +360,24 @@ const Leadgeneration = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-12 bg-gray-50 relative z-10 overflow-hidden">
+      <section className="py-12 relative z-10 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-gray-900">Advertising Platforms</h3>
+            <h3 className="text-3xl font-bold mb-6 text-slate-800">Advertising Platforms</h3>
             <div className="w-20 h-1 bg-blue-600 mx-auto rounded mb-6"></div>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
               TRISKELION provides professional digital advertising using Facebook, Instagram, TikTok, Google, YouTube, LinkedIn and Amazon platforms. As a team, we select which platforms are most relevant for your business to advertise on.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 mt-8">
               {socialPlatforms.map((platform, index) => (
                 <div 
                   key={index} 
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:scale-105 hover:-translate-y-1"
+                  className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-blue-200/30 hover:border-blue-500/50 hover:scale-105 hover:-translate-y-1"
                 >
                   <div className={`w-12 h-12 ${platform.bgColor} rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg ${platform.name === 'Google' ? 'text-gray-600' : 'text-white'}`}>
                     <SocialIcon platform={platform.name} />
                   </div>
-                  <span className="font-medium text-gray-700 text-sm">{platform.name}</span>
+                  <span className="font-medium text-slate-700 text-sm">{platform.name}</span>
                 </div>
               ))}
             </div>
@@ -418,28 +386,31 @@ const Leadgeneration = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 bg-white relative z-10 overflow-hidden">
+      <section className="py-12 relative z-10 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-gray-900">What Our Clients Say</h3>
+            <h3 className="text-3xl font-bold mb-6 text-slate-800">What Our Clients Say</h3>
             <div className="w-20 h-1 bg-blue-600 mx-auto rounded"></div>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.slice(0, 3).map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border border-gray-100">
+              <div key={index} className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-blue-200/30 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4 italic">"{testimonial.quote}"</p>
-                <p className="font-semibold text-gray-900">— {testimonial.name}</p>
+                <p className="text-slate-600 mb-4 italic">"{testimonial.quote}"</p>
+                <p className="font-semibold text-slate-800">— {testimonial.name}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Bottom accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400"></div>
     </div>
   );
 };
