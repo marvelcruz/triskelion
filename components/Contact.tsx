@@ -3,6 +3,20 @@
 import { Fragment, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Github, Instagram, Linkedin, Twitter, Mail } from 'lucide-react';
+import { z } from 'zod';
+
+// Form Schema - Added this export
+export const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }),
+});
 
 // Types
 interface FormData {
