@@ -419,6 +419,12 @@ const TriskelionAgency = () => {
                   src="/images/sunrise-office-view-stockcake.jpg" 
                   alt="Triskelion Agency - Social Media Marketing Excellence"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    const fallbackDiv = document.createElement('div');
+                    fallbackDiv.className = "w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center group-hover:from-blue-50 group-hover:to-purple-50 transition-all duration-500";
+                    target.parentElement?.replaceChild(fallbackDiv, target);
+                  }}
                 />
                 
                 {/* Dark overlay for better text readability */}
