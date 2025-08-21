@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, Globe, Palette, Video, Target, Share2, CheckCircle, FileText, Zap, TrendingUp, ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation'; // Added this import
 
 interface ServiceFeature {
   title: string;
@@ -107,6 +108,7 @@ const TriskelionAgency = () => {
   const [currentMaximizeIndex, setCurrentMaximizeIndex] = useState(0);
   const [expandedService, setExpandedService] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+  const router = useRouter(); // Added router hook
 
   const maximizeTexts = [
     "Your Wins",
@@ -453,14 +455,14 @@ const TriskelionAgency = () => {
                     </span>
                   </motion.p>
 
-                  {/* Contact Button */}
+                  {/* Contact Button - UPDATED */}
                   <motion.button
                     className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.9, duration: 0.8 }}
                     onClick={() => {
-                      console.log('Contact button clicked');
+                      router.push('/contact');
                     }}
                   >
                     Contact Us
