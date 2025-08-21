@@ -657,7 +657,7 @@ fullCaseStudy: {
   return (
     <section 
       id='designs' 
-      className='relative py-20 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden'
+      className='relative py-20 bg-gradient-to-b from-gray-100 to-gray-800 overflow-hidden'
     >
       {/* Background Triskelion Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -679,14 +679,14 @@ fullCaseStudy: {
             </motion.div>
 
             <motion.h2 
-              className='text-4xl md:text-5xl font-bold text-white mb-6'
+              className='text-4xl md:text-5xl font-bold text-black mb-6'
               {...motionValues}
             >
               Our Project Portfolio
             </motion.h2>
 
             <motion.p 
-              className='text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8'
+              className='text-lg text-black-100 max-w-4xl mx-auto leading-relaxed mb-8'
               {...motionValues}
             >
               Go from patchwork to a seamless marketing system with Triskelion's integrated ecosystem of services. 
@@ -722,7 +722,7 @@ fullCaseStudy: {
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id || project.iid}
-                className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 group cursor-pointer border border-gray-100 hover:border-blue-700"
+                className="bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 group cursor-pointer border border-gray-200 hover:border-blue-700"
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 onClick={() => setSelectedProject(project)}
@@ -746,7 +746,7 @@ fullCaseStudy: {
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-100 text-sm mb-4 line-clamp-3">
                     {project.description}
                   </p>
 
@@ -786,7 +786,7 @@ fullCaseStudy: {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
+              className="bg-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-400"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
