@@ -98,32 +98,34 @@ const Designs = () => {
     {
       id: 1,
       title: "Afrobeats Artist Brand Transformation",
-      description: "Complete brand overhaul for emerging Nigerian artist, growing Instagram from 5K to 75K followers in 6 months through authentic storytelling and viral content strategy.",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      description: "Complete brand overhaul for emerging Nigerian artist DELA, growing Instagram followers by 1400% in 6 months through authentic storytelling and viral content strategy. We helped DELA transform from an unknown artist with less than 1K followers into a recognized voice in the Nigerian Afrobeats scene, building genuine fan connections and establishing her digital presence across all major social platforms.",
+      image: "/images/Dela2.jpg",
       categories: ["Social Media", "Brand Development", "Content Creation"],
       region: "Nigeria",
       results: "1400% follower growth, 3M+ video views, 2 viral campaigns",
       caseStudyLink: "#",
       fullCaseStudy: {
-        clientName: "Minato",
+        clientName: "DELA",
         industry: "Music & Entertainment",
         location: "Lagos, Nigeria",
-        challenge: "An emerging Afrobeats artist with incredible talent but struggling to break through the noise of social media. With only less than 1k Instagram followers and limited brand recognition, the artist needed a comprehensive strategy to build authentic connections with fans and establish a strong digital presence in the competitive Nigerian music scene.",
+       challenge: "DELA was an incredibly talented Afrobeats artist struggling to break through the saturated Nigerian music scene. With less than 1,000 Instagram followers and limited brand recognition, she needed a comprehensive digital strategy to build authentic connections with fans and establish a strong presence in the competitive Lagos music landscape. Her main challenges included low social media engagement, lack of brand consistency, and difficulty reaching her target audience of young Nigerian music lovers.",
         solution: "We implemented a multi-phase approach focusing on authentic storytelling, behind-the-scenes content, and strategic collaborations with other Nigerian creators. Our team developed a content calendar that showcased the artist's personality, musical journey, and cultural roots while leveraging trending sounds and challenges on TikTok and Instagram.",
         results: [
-          "1400% follower growth on Instagram",
-          "1M+ total video views across platforms",
-          "2 viral campaigns reaching 100K+ users each",
-          "Featured on 3 major Nigerian music blogs",
-          "Secured collaboration with 1 established artists"
+      "1400% follower growth on Instagram (from <1K to 3K+ engaged followers)",
+      "3M+ total video views across all platforms",
+      "2 viral campaigns reaching 100K+ users each organically",
+      "Featured coverage on 3 major Nigerian music blogs",
+      "Strategic collaborations with 2 established Afrobeats artists",
+      "85% increase in music streaming following social media campaigns",
+      "Built authentic community of 5K+ engaged fans"
         ],
         testimonial: "Triskelion helped me find my voice online. They didn't just grow my numbers, they helped me connect with real fans who genuinely love my music.",
         services: ["Social Media Strategy", "Content Creation", "Influencer Partnerships", "Brand Development"],
         duration: "6 months",
         images: [
-          "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
-          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
-          "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop"
+          "/images/Dela.JPG",
+          "/images/Dela2.jpg",
+          "/images/Dela.JPG"
         ]
       }
     },
