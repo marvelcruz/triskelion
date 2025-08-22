@@ -121,7 +121,7 @@ const Designs = () => {
         ],
         testimonial: "Triskelion helped me find my voice online. They didn't just grow my numbers, they helped me connect with real fans who genuinely love my music.",
         services: ["Social Media Strategy", "Content Creation", "Influencer Partnerships", "Brand Development"],
-        duration: "6 months",
+        duration: "2 YEARS",
         images: [
           "/images/Dela.JPG",
           "/images/Dela2.jpg",
