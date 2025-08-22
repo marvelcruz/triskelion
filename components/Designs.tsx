@@ -733,7 +733,7 @@ fullCaseStudy: {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-auto min-h-48 object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                     <span className="text-white font-medium">Click to view details</span>
@@ -802,7 +802,7 @@ fullCaseStudy: {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-64 object-cover rounded-t-2xl"
+                  className="w-full h-64 object-contain rounded-t-2xl"
                 />
               </div>
               
@@ -962,7 +962,7 @@ fullCaseStudy: {
                             key={idx}
                             src={img} 
                             alt={`Project highlight ${idx + 1}`}
-                            className="w-full h-48 object-cover rounded-xl"
+                            className="w-full h-auto min-h-48 object-contain rounded-xl"
                           />
                         ))}
                       </div>
