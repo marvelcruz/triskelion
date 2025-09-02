@@ -131,10 +131,10 @@ const TriskelionAbout = () => {
 
   // Data arrays
   const realStats = [
-    { number: "Small", label: "Dedicated Team", icon: "👥" },
-    { number: "8-ish+", label: "Happy Clients", icon: "😊" },
-    { number: "30+", label: "Projects Completed", icon: "🚀" },
-    { number: "Since 2020", label: "Years in Business", icon: "📅" }
+    { number: "Small", label: "Dedicated Team", icon: "" },
+    { number: "8-ish+", label: "Happy Clients", icon: "" },
+    { number: "30+", label: "Projects Completed", icon: "" },
+    { number: "Since 2023", label: "Years in Business", icon: "" }
   ];
 
   const teamMembers = [
@@ -232,25 +232,25 @@ const TriskelionAbout = () => {
     {
       title: "We Actually Answer Our Phone",
       description: "No phone trees, no waiting weeks for responses. When you need us, we're here.",
-      icon: "📞",
+      icon: "",
       color: "bg-green-100 text-green-600"
     },
     {
       title: "Small Enough to Care", 
       description: "You're not client #247. We know your name, your business, and what makes you tick.",
-      icon: "❤️",
+      icon: "",
       color: "bg-red-100 text-red-600"
     },
     {
       title: "Real Results, Not Vanity Metrics",
       description: "We focus on leads, sales, and actual business growth - not just likes and follows.",
-      icon: "📈",
+      icon: "",
       color: "bg-blue-100 text-blue-600"
     },
     {
       title: "No Long-Term Contracts",
       description: "Month-to-month service. If we're not delivering, you can leave anytime.",
-      icon: "🤝",
+      icon: "",
       color: "bg-purple-100 text-purple-600"
     }
   ];
