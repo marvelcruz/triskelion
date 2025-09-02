@@ -390,7 +390,7 @@ const TriskelionAbout = () => {
                     We started Triskelion because we understand that small business owners are swamped with their core operations and don't have time to stay on top of constantly changing social media trends, that's where we come in, working quietly behind the scenes.
                   </p>
                   
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-6 text-slate-700 dark:text-slate-300">
                     <div>
                       <p>
                         <strong className="text-slate-800 dark:text-slate-200">Here's the truth:</strong> We're not the biggest agency. We don't have a fancy downtown office. We don't throw around buzzwords like "synergistic solutions" or "disruptive paradigms."
