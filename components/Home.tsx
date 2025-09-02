@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, Globe, Palette, Video, Target, Share2, CheckCircle, FileText, Zap, TrendingUp, ChevronDown } from 'lucide-react';
-import { useRouter } from 'next/navigation'; // Added this import
+import { useRouter } from 'next/navigation';
 
 interface ServiceFeature {
   title: string;
@@ -108,7 +108,7 @@ const TriskelionAgency = () => {
   const [currentMaximizeIndex, setCurrentMaximizeIndex] = useState(0);
   const [expandedService, setExpandedService] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
-  const router = useRouter(); // Added router hook
+  const router = useRouter();
 
   const maximizeTexts = [
     "Your Wins",
@@ -370,8 +370,8 @@ const TriskelionAgency = () => {
         </div>
 
         {/* Main content */}
-        <div className="relative z-10 container mx-auto px-6 pt-24 pb-16">
-          <motion.div
+<div className="relative z-10 w-full px-6 pt-0 pb-16">
+           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
@@ -407,20 +407,19 @@ const TriskelionAgency = () => {
                 </div>
               </div>
               
-              {/* Main Hero Content with Text Overlay on Image */}
+              {/* Main Hero Content with Text Overlay on Image - FULL WIDTH */}
               <motion.div 
-                className="relative rounded-2xl overflow-hidden border border-blue-200/30 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-xl mb-8 max-w-6xl mx-auto h-96 md:h-[500px]"
+                className="relative overflow-hidden border-b border-t border-blue-200/30 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-xl mb-8 w-full h-96 md:h-[500px]"
                 whileHover={{ 
                   y: -2,
-                  scale: 1.01,
                   boxShadow: "0 25px 50px rgba(59, 130, 246, 0.15)"
                 }}
               >
-                {/* Background Image */}
+                {/* Background Image - FULL WIDTH */}
                 <img 
                   src="/images/sunrise-office-view-stockcake.jpg" 
                   alt="Triskelion Agency - Social Media Marketing Excellence"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     const fallbackDiv = document.createElement('div');
@@ -432,54 +431,50 @@ const TriskelionAgency = () => {
                 {/* Dark overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
 
-                
-                
-                {/* Text Content Overlay - Top Left */}
-                <div className="absolute top-8 left-8 right-8 p-6 text-left">
-                  <motion.h2 
-                    className="text-lg md:text-xl lg:text-4xl font-bold mb-4 leading-tight text-white drop-shadow-2xl"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                  >
-                    A Connected Suite of Marketing Services
-                  </motion.h2>
-                  
-                  <motion.p 
-                    className="text-sm md:text-base lg:text-lg text-white/90 italic drop-shadow-lg mb-6"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                  >
-                    Tired of juggling fragmented marketing tactics and clunky processes? It's time to replace the chaos with a streamlined operating system that actually creates delightful experiences.{' '}
-                    <span className="text-amber-400 font-black not-italic text-base md:text-lg lg:text-xl block mt-2">
-                      We are a 360 social media creative marketing and lead generation company leveraging technology, community & content to design systematic yet delightful experiences for your business.
-                    </span>
-                  </motion.p>
+                {/* Text Content Overlay - Centered with container for text alignment */}
+                <div className="absolute inset-0 flex items-center justify-start">
+        <div className="px-6 max-w-5xl text-left"> {/* Remove container mx-auto, add text-left */}
+          <motion.h2 
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight text-white drop-shadow-2xl max-w-3xl text-left"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            A Connected Suite of Marketing Services
+          </motion.h2>
+          
+          <motion.p 
+            className="text-base md:text-lg lg:text-xl text-white/90 italic drop-shadow-lg mb-6 max-w-4xl text-left"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            Tired of juggling fragmented marketing tactics and clunky processes? It's time to replace the chaos with a streamlined operating system that actually creates delightful experiences.{' '}
+            <span className="text-amber-400 font-black not-italic text-lg md:text-xl lg:text-2xl block mt-2 text-left">
+              We are a 360 social media creative marketing and lead generation company leveraging technology, community & content to design systematic yet delightful experiences for your business.
+            </span>
+          </motion.p>
 
-                  {/* Contact Button - UPDATED */}
-                  <motion.button
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}
-                    onClick={() => {
-                      router.push('/contact');
-                    }}
-                  >
-                    Contact Us
-                  </motion.button>
-                </div>
+          {/* Contact Button */}
+          <motion.button
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+            onClick={() => {
+              router.push('/contact');
+            }}
+          >
+            Contact Us
+          </motion.button>
+        </div>
+      </div>
                 
                 {/* Floating decorative elements */}
                 <div className="absolute top-8 left-8 w-12 h-12 border-2 border-blue-400/50 rounded-full animate-pulse"></div>
                 <div className="absolute top-12 right-12 w-8 h-8 bg-purple-500/30 rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
                 <div className="absolute bottom-16 left-12 w-16 h-16 border border-cyan-400/40 rounded-full animate-spin" style={{animationDuration: '8s'}}></div>
                 <div className="absolute bottom-8 right-8 w-6 h-6 bg-amber-400/40 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
-                
-                {/* Corner accent elements */}
-                <div className="absolute top-0 left-0 w-20 h-20 border-l-4 border-t-4 border-blue-400/70 rounded-tl-2xl"></div>
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-r-4 border-b-4 border-cyan-400/70 rounded-br-2xl"></div>
               </motion.div>
             </motion.div>
 
