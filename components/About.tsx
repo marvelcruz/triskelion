@@ -580,26 +580,7 @@ const TriskelionAbout = () => {
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                {realStats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm"
-                  >
-                    <div className="text-2xl mb-3">{stat.icon}</div>
-                    <div className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-1">
-                      {stat.number}
-                    </div>
-                    <div className="text-slate-500 dark:text-slate-400 text-sm">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
+             
               <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
                 <p className="text-blue-800 dark:text-blue-200 text-center text-sm">
                   <strong>Real talk:</strong> We're not trying to be the next big agency empire. We want to stay small, personal, and focused on getting you results. 
