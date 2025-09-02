@@ -564,31 +564,7 @@ const TriskelionAbout = () => {
             </motion.div>
           )}
 
-          {activeTab === 'stats' && (
-            <motion.div
-              key="stats"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200">
-                  We're Small, But We're Growing Fast
-                </h2>
-                <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                  These aren't inflated numbers. This is where we actually are right now - and we're proud of it.
-                </p>
-              </div>
-              
-             
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
-                <p className="text-blue-800 dark:text-blue-200 text-center text-sm">
-                  <strong>Real talk:</strong> We're not trying to be the next big agency empire. We want to stay small, personal, and focused on getting you results. 
-                  When we hit 50 clients, we'll probably stop taking new ones to maintain quality.
-                </p>
-              </div>
-            </motion.div>
-          )}
+         
 
           <motion.div {...motionValues} className="text-center mt-16">
             <div>
