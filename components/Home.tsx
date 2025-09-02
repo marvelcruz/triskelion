@@ -431,16 +431,18 @@ const TriskelionAgency = () => {
                 
                 {/* Dark overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+
+                
                 
                 {/* Text Content Overlay - Top Left */}
-                <div className="absolute top-8 left-8 max-w-md p-6 text-left">
+                <div className="absolute top-8 left-8 right-8 p-6 text-left">
                   <motion.h2 
-                    className="text-lg md:text-xl lg:text-2xl font-bold mb-4 leading-tight text-white drop-shadow-2xl"
+                    className="text-lg md:text-xl lg:text-4xl font-bold mb-4 leading-tight text-white drop-shadow-2xl"
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
                   >
-                    We are a 360 social media creative marketing and lead generation company leveraging technology, community & content to design delightful experiences.
+                    A Connected Suite of Marketing Services
                   </motion.h2>
                   
                   <motion.p 
@@ -449,9 +451,9 @@ const TriskelionAgency = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                   >
-                    Every business we serve exists to help others.{' '}
+                    Tired of juggling fragmented marketing tactics and clunky processes? It's time to replace the chaos with a streamlined operating system that actually creates delightful experiences.{' '}
                     <span className="text-amber-400 font-black not-italic text-base md:text-lg lg:text-xl block mt-2">
-                      Our job is to help them.
+                      We are a 360 social media creative marketing and lead generation company leveraging technology, community & content to design systematic yet delightful experiences for your business.
                     </span>
                   </motion.p>
 

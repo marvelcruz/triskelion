@@ -140,7 +140,31 @@ const TriskelionAbout = () => {
     { number: "Small", label: "Dedicated Team", icon: "" },
     { number: "8-ish+", label: "Happy Clients", icon: "" },
     { number: "30+", label: "Projects Completed", icon: "" },
-    { number: "7", label: "Months in Business", icon: "" }
+    { number: "Since 2020", label: "Years in Business", icon: "" }
+  ];
+
+  // Team members
+  const teamMembers = [
+    { name: "Precious Adekunle", role: "Ui/Ux Designer and Ads Manager", photo: "/images/team/austin-johnson.jpg", points: ["", ""] },
+    { name: "kk.abisola", role: "Brand strategy and content strategist", photo: "/images/team/mackenzie-broekstra.jpg", points: ["", ""] },
+    { name: "Julius Olawoyin", role: "Graphic designer", photo: "/images/team/kevin-kamis.jpg", points: ["", ""] },
+    { name: "Adeolayemi Olabiran", role: "Social Media Manager and community manager", photo: "/images/team/daniel-bremmer.jpg", points: ["", ""] },
+    { name: "Marvellous Olabode", role: "Marketing Director and  Web Designer", photo: "/images/team/rachel-bolt.jpg", points: ["", ""] },
+  ];
+
+  // Our learnings
+  const situation = [
+    "People are proud of their business.",
+    "A genuine story beats trendy gimmicks.",
+    "Authentic photo and video content brings fulfillment.",
+    "Marketing agencies feel like smoke and mirrors."
+  ];
+
+  const solution = [
+    "Give businesses the opportunity to share their story.",
+    "Be authentic by focusing on the people within a business.",
+    "Consistency over time moves the needle.",
+    "Being organized allows you to find clarity and calmness."
   ];
 
   // What we actually do well
@@ -240,7 +264,7 @@ const TriskelionAbout = () => {
             
             <div className="space-y-8 max-w-3xl mx-auto text-center">
               <div>
-                <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-700 mb-4">Our Vision Forward</h2>
+                <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4">Our Vision Forward</h2>
                 <p className="text-lg text-slate-700 dark:text-slate-400 leading-relaxed">
                   We see business as a vehicle for delivering great user experiences.
                   We build relationships with the community around us by reinventing the way creative services are provided.
@@ -248,19 +272,23 @@ const TriskelionAbout = () => {
               </div>
               
               <div className="">
-              <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4">Our Purpose</h2>
-              <p className="text-lg font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
+                <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4">Our Purpose</h2>
+                <p className="text-lg font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
                   We give local businesses the chance to share their story.
                 </p>
               </div>
               
               <div>
-                 <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4"></h2>
-                 <ul className="">
-                  <li><strong></strong> </li>
-                 <li><strong></strong>  </li>
-                 <li><strong></strong>  </li>
-                </ul>
+                <h2 className="text-1.5xl font-bold text-slate-700 dark:text-slate-300 mb-4">Our Values</h2>
+                <div className="flex justify-center space-x-8 text-slate-700 dark:text-slate-300">
+                  <span className="font-medium">Clarity</span>
+                  <span className="font-medium">Communication</span>
+                  <span className="font-medium">Collaboration</span>
+                </div>
+              </div>
+              
+              <div className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                Based in Grand Rapids, Michigan
               </div>
             </div>
           </motion.div>
@@ -270,6 +298,7 @@ const TriskelionAbout = () => {
             <div className="bg-white dark:bg-slate-800 rounded-xl p-1 shadow-sm border border-slate-200 dark:border-slate-700">
               {[
                 { id: 'story', label: 'Our Story' },
+                { id: 'team', label: 'Meet the Team' },
                 { id: 'why', label: 'Why Us?' },
                 { id: 'stats', label: 'The Numbers' }
               ].map((tab) => (
@@ -323,7 +352,90 @@ const TriskelionAbout = () => {
             </motion.div>
           )}
 
-         
+          {/* Meet the Team Tab */}
+          {activeTab === 'team' && (
+            <motion.div
+              key="team"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200">
+                  Meet the Team
+                </h2>
+                <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                  Our in-house team works directly with clients to make an authentic connection and develop a deeper understanding of each business we partner with.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {teamMembers.map((member, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm text-center"
+                  >
+                    {/* Profile Image */}
+                    <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700 border-2 border-slate-300 dark:border-slate-600 relative">
+                      <img 
+                        src={member.photo} 
+                        alt={`${member.name} - ${member.role}`}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 text-slate-800 dark:text-slate-200">
+                      {member.name}
+                    </h3>
+                    <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-3">
+                      {member.role}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* What We've Learned Section */}
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-8 border border-slate-200 dark:border-slate-700">
+                <h3 className="text-xl font-bold text-center mb-8 text-slate-800 dark:text-slate-200">
+                  What We've Learned Over The Years
+                </h3>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-red-600 dark:text-red-400">
+                      The Situation
+                    </h4>
+                    <div className="space-y-3">
+                      {situation.map((point, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <span className="text-red-500 font-bold text-sm mt-1">{index + 1}.</span>
+                          <span className="text-slate-700 dark:text-slate-300 text-sm">{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-green-600 dark:text-green-400">
+                      Our Solution
+                    </h4>
+                    <div className="space-y-3">
+                      {solution.map((point, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <span className="text-green-500 font-bold text-sm mt-1">{index + 1}.</span>
+                          <span className="text-slate-700 dark:text-slate-300 text-sm">{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* Why Choose Us Tab */}
           {activeTab === 'why' && (
             <motion.div
