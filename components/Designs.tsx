@@ -95,8 +95,105 @@ const Designs = () => {
 
   // Sample project data - replace with your actual projects
   const projects: Project[] = [
-    {
+     {
       id: 1,
+      title: "BNI Alberta South – Region of the Year Award (2022)",
+      description: "Managed backend IT systems and LinkedIn presence for BNI Alberta South, overseeing 18+ chapter pages and supporting 1,900+ members. Coordinated content, analytics, and automation that contributed to BNI Alberta South being awarded 2022 Canadian Region of the Year.",
+      image: "/images/region.jpeg",
+      categories: ["Social Media", "IT Management", "Content Strategy"],
+      region: "Canada",
+      results: "",
+      caseStudyLink: "#",
+      fullCaseStudy: {
+        clientName: "BNI Alberta South",
+        industry: "Business Networking",
+        location: "Calgary, Alberta, Canada",
+       challenge: "BNI Alberta South needed consistent social media visibility and streamlined IT support across its 18+ chapters. Managing multiple LinkedIn company pages while maintaining brand alignment and digital engagement posed a major challenge, especially with limited in-house capacity.",
+        solution: "As IT & Social Media Manager, I oversaw LinkedIn management for all regional pages, created and scheduled branded campaigns, monitored analytics, and implemented backend IT solutions to automate workflows. This ensured consistent communication, professional visibility, and measurable growth across all BNI Alberta South platforms.",
+        results: [
+      "18+ LinkedIn company pages managed across Alberta chapters",
+      "1,900+ members supported with consistent digital visibility",
+      "Regional content strategy that boosted chapter engagement",
+      "Implemented backend IT solutions for automation and reporting",
+      "Contributed to BNI Alberta South winning 2022 Canadian Region of the Year"
+        ],
+        testimonial: "Behind the scenes in IT and social media was critical to BNI Alberta South’s success. His consistency and technical expertise helped us achieve recognition as Canadian Region of the Year.",
+        services: ["Social Media Strategy",  "Content Strategy", "IT Systems Management"],
+        duration: "5 YEARS",
+        images: [
+          "/images/region.jpeg",
+  
+        ]
+      }
+    },
+     {
+      id: 2,
+      title: "BNI Alberta South – LinkedIn Management & Growth Strategy",
+      description: "Comprehensive LinkedIn management for BNI Alberta South, transforming their professional network presence through strategic content creation, community engagement, and thought leadership positioning. We helped establish BNI as the premier business networking organization in Southern Alberta, driving member acquisition and strengthening their professional community through authentic business storytelling and valuable industry insights.",
+      image: "/images/Linkedin.png",
+      categories: ["LinkedIn Management", "B2B Marketing", "Professional Networking"],
+      region: "Canada",
+      results: "300% increase in page followers, 500% boost in post engagement, 25+ new member referrals",
+      caseStudyLink: "#",
+      fullCaseStudy: {
+        clientName: "BNI Alberta South",
+        industry: "Professional Business Networking",
+        location: "Canada",
+       challenge: "BNI Alberta South needed to establish a stronger digital presence to attract quality business professionals and showcase the value of their networking community. With limited LinkedIn engagement and inconsistent content strategy, they struggled to communicate their unique value proposition and attract new members who could benefit from structured business networking. The challenge was positioning BNI as the go-to networking organization while maintaining professionalism and authenticity.",
+        solution: "We developed a comprehensive LinkedIn strategy focusing on member success stories, business tips, networking insights, and community highlights. Our approach included regular posting schedules, professional graphic design, event promotion, and strategic engagement with Calgary's business community. We emphasized authentic relationship building and valuable business content that resonated with entrepreneurs and business leaders.",
+        results: [
+      "300% increase in LinkedIn page followers within 12 months",
+      "500% boost in average post engagement and reach",
+      "25+ new member referrals directly attributed to LinkedIn presence",
+      "Established thought leadership in Calgary business community",
+      "Featured in 5 local business publications through LinkedIn visibility",
+      "90% increase in event attendance through social promotion",
+      "Built engaged community of 1,200+ Calgary business professionals"
+        ],
+        testimonial: "",
+        services: ["LinkedIn Page Management", "Content Strategy", "Graphic Design", "Community Management", "B2B Marketing"],
+        duration: "2 YEARS",
+        images: [
+          "/images/Linkedin.png",
+        
+        ]
+      }
+    },
+     {
+      id: 3,
+      title: "BNI Alberta South – Facebook Community Management & Event Promotion",
+      description: "Strategic Facebook management for BNI Alberta South, focusing on community building, event promotion, and member engagement across Southern Alberta's business network. We transformed their Facebook presence into a thriving hub for business professionals, featuring member spotlights, networking events, and valuable business insights that strengthened their community and attracted quality new members.",
+      image: "/images/Facebook.png",
+      categories: ["Facebook Management", "Community Building", "Event Marketing"],
+      region: "Canada",
+      results: "250% increase in page likes, 400% boost in event attendance, 35+ member referrals",
+      caseStudyLink: "#",
+      fullCaseStudy: {
+        clientName: "BNI Alberta South",
+        industry: "Professional Business Networking",
+        location: "Southern Alberta, Canada",
+       challenge: "BNI Alberta South's Facebook page lacked consistent engagement and wasn't effectively promoting their networking events or showcasing member success stories. With sporadic posting and limited community interaction, they were missing opportunities to connect with potential members and strengthen relationships within their existing network. The challenge was creating a vibrant Facebook community that would drive event attendance and facilitate meaningful business connections.",
+        solution: "We developed a comprehensive Facebook strategy centered on community engagement, event promotion, and member success stories. Our approach included regular event promotion, live coverage of networking meetings, member testimonials, business tips, and interactive content that encouraged meaningful discussions among Calgary and Southern Alberta business professionals.",
+        results: [
+      "250% increase in Facebook page likes and followers",
+      "400% boost in networking event attendance through Facebook promotion",
+      "35+ new member referrals directly from Facebook engagement",
+      "Established active community with 800+ engaged local business professionals",
+      "90% increase in post reach and engagement rates",
+      "Featured member success stories reaching 10K+ professionals monthly",
+      "Created vibrant discussion forum for business networking and referrals"
+        ],
+        testimonial: "",
+        services: ["Facebook Page Management", "Event Promotion", "Community Engagement", "Content Creation", "Member Spotlights"],
+        duration: "2 YEARS",
+        images: [
+          "/images/Facebook.png",
+          
+        ]
+      }
+    },
+    {
+      id: 4,
       title: "Afrobeats Artist Brand Transformation",
       description: "Complete brand overhaul for emerging Nigerian artist DELA, growing Instagram followers by 1400% in 6 months through authentic storytelling and viral content strategy. We helped DELA transform from an unknown artist with less than 1K followers into a recognized voice in the Nigerian Afrobeats scene, building genuine fan connections and establishing her digital presence across all major social platforms.",
       image: "/images/Dela2.jpg",
@@ -130,7 +227,7 @@ const Designs = () => {
       }
     },
     {
-     id: 2,
+     id: 5,
 title: "Greengrub: Vegan Restaurant",
 description: "Green Grub is a vegan restaurant on a mission to change the way people see plant-based eating with a vibrant, bold visual identity that celebrates flavor, color, and joy.",
 image: "/images/Greencrub1.png",
@@ -164,7 +261,7 @@ fullCaseStudy: {
 }
     },
     {
-      id: 3,
+      id: 6,
       title: "Neat n Nailed: Nail Studio",
       description: "Neat n Nailed is a contemporary nail studio that celebrates clean lines, bold details, and self-expression through nail art with precision and creative edge.",
       image: "/images/Neat and Nail 3.png",
@@ -197,7 +294,7 @@ fullCaseStudy: {
       }
     },
     {
-      id: 4,
+      id: 7,
   title: "ToCH: Clothing Brand",
   description: "Visual identity and brand strategy for ToCH®, a clothing brand dedicated to comfort, simplicity, style, authenticity, and longevity with timeless and adaptable design.",
   image: "/images/Toch1.png",
@@ -231,7 +328,7 @@ fullCaseStudy: {
       }
     },
     {
-      id: 5,
+      id: 8,
   title: "Bozin: Interior Designer",
   description: "The goal was to craft a premium digital experience that reflects Bozin's high-end interior design expertise with luxurious, modern, and visually immersive design.",
   image: "/images/BOZEN 1.png",
@@ -264,7 +361,7 @@ fullCaseStudy: {
       }
     },
     {
-      id: 6,
+      id: 9,
   title: "Revolutionary Spot: Grill Kitchen",
   description: "Revo Spot—short for Revolutionary Spot, isn't just another grill kitchen. It's a full-blown experience built on creating an unforgettable go-to spot for shawarma, grilled meats, and bold flavors.",
   image: "/images/Revol 3.png",
@@ -297,7 +394,7 @@ fullCaseStudy: {
       }
       },
     {
-      id: 7,
+      id: 10,
   title: "Vyrux Solutions: Cybersecurity and Consulting Firm",
   description: "Vyrux Solutions is a cybersecurity and consulting firm focused on securing enterprise IT infrastructures and building a more resilient digital world.",
   image: "/images/Cybersecurity.png",
@@ -333,7 +430,7 @@ fullCaseStudy: {
         }
         },
         {
-      id: 8,
+      id: 11,
   title: "5 Dollar ($5DOLLAR Token)",
   description: "Revolutionary AI-powered fintech project combining artificial intelligence, community ownership, and next-generation financial tools. From zero to thriving Web3 community.",
   image: "/images/5dollar11.jpeg",
@@ -370,7 +467,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 9,
+      id: 12,
   title: "ArcTri Real Estate Brand Identity",
   description: "Architectural elegance meets sustainable innovation in this premium real estate branding system - balancing geometric precision with organic warmth.",
   image: "/images/Arictri1.png",
@@ -403,7 +500,7 @@ fullCaseStudy: {
         }
         },
         {
-      id: 10,
+      id: 13,
   title: "YELLOWFANG @YellowFangUSD1",
   description: "The crypto project that broke Twitter with AI-generated market predictions and a mascot that roasts other tokens. YELLOWFANG turned financial disruption into viral entertainment.",
   image: "/images/YELLOWFANG1.png",
@@ -437,7 +534,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 11,
+      id: 14,
   title: "Caffè Vivace Packaging Project",
   description: "Premium coffee brand packaging brought to life through meticulous execution.",
   image: "/images/Vivace11.png",
@@ -471,7 +568,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 12,
+      id: 15,
   title: "HydroSphere Eco Bottle Visualization",
   description: "Product visuals for HydroSphere's eco-friendly flasks",
   image: "/images/Hygro1.png",
@@ -504,7 +601,7 @@ fullCaseStudy: {
         }
         },
           {
-      id: 13,
+      id: 16,
   title: "Skin Glow Toner Bottle Design",
   description: "Elevating natural skincare through photorealistic packaging design - clean aesthetics meet ingredient transparency in Blender-rendered visuals.",
   image: "/images/Bootle.png",
@@ -538,7 +635,7 @@ fullCaseStudy: {
         }
         },
           {
-      id: 14,
+      id: 17,
   title: "Dorado Sauce Bottle Branding",
   description: "Culinary alchemy meets artistry - crafting a sauce brand's visual identity from bottle design to animated product.",
   image: "/images/Doroda1.png",
@@ -573,7 +670,7 @@ fullCaseStudy: {
         }
         },
          {
-      id: 15,
+      id: 18,
   title: "MYAKU-MYAKU",
   description: "When Japan's official World Expo 2025 mascot went rogue and launched its own meme coin. The cute red blob that conquered crypto Twitter with kawaii chaos.",
   image: "/images/MYAKU-MYAKU1.jpeg",
@@ -608,9 +705,9 @@ fullCaseStudy: {
         },
         
        {
-      id: 16,
+      id: 19,
   title: "FinAi Labs",
-  description: "Building the future of finance — in your hands. AI, memes, and ownership. 🚀 First project: $FAI live now!",
+  description: "Building the future of finance, in your hands. AI, memes, and ownership First project: $FAI live now!",
   image: "/images/Fai1.jpeg",
   categories: ["Branding", "Digital Ads", "Social Media", "Community Management", "Photography"],
   region: "United Kingdom",
@@ -724,16 +821,16 @@ fullCaseStudy: {
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id || project.iid}
-                className="bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 group cursor-pointer border border-gray-200 hover:border-blue-700"
+                className="bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-100 group cursor-pointer border border-gray-200 hover:border-blue-700 flex flex-col"
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden aspect-[4/3]">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-auto min-h-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                     <span className="text-white font-medium">Click to view details</span>
@@ -743,12 +840,12 @@ fullCaseStudy: {
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-100 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-100 text-sm mb-4 line-clamp-3 flex-1">
                     {project.description}
                   </p>
 
@@ -799,11 +896,13 @@ fullCaseStudy: {
                   <X size={24} />
                 </button>
                 
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-64 object-contain rounded-t-2xl"
-                />
+                <div className="aspect-video w-full bg-gray-800 flex items-center justify-center">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-contain rounded-t-2xl"
+                  />
+                </div>
               </div>
               
               <div className="p-8">
@@ -958,12 +1057,13 @@ fullCaseStudy: {
                       <h2 className="text-2xl font-bold text-white mb-4">Project Highlights</h2>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {selectedProject.fullCaseStudy.images.map((img, idx) => (
-                          <img 
-                            key={idx}
-                            src={img} 
-                            alt={`Project highlight ${idx + 1}`}
-                            className="w-full h-auto min-h-48 object-contain rounded-xl"
-                          />
+                          <div key={idx} className="aspect-[4/3] bg-gray-800 rounded-xl overflow-hidden">
+                            <img 
+                              src={img} 
+                              alt={`Project highlight ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                         ))}
                       </div>
                     </section>
