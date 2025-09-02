@@ -346,7 +346,6 @@ const TriskelionAbout = () => {
                 { id: 'story', label: 'Our Story' },
                 { id: 'team', label: 'Meet the Team' },
                 { id: 'why', label: 'Why Us?' },
-                { id: 'stats', label: 'The Numbers' }
               ].map((tab) => (
                 <button
                   key={tab.id}
