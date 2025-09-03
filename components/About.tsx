@@ -237,7 +237,7 @@ const TriskelionAbout = () => {
       color: "bg-green-100 text-green-600"
     },
     {
-      title: "Small Enough to Care", 
+      title: "We Care", 
       description: "You're not client #247. We know your name, your business, and what makes you tick.",
       icon: "",
       color: "bg-red-100 text-red-600"
