@@ -161,7 +161,7 @@ const TriskelionAbout = () => {
     },
     { 
       name: "Adeolayemi Olabiran", 
-      role: "Social Media Manager and Community Manager", 
+      role: "Social Media and Community Manager", 
       image: "/images/Dela2.jpg",
       bio: "Builds engaged communities and manages social media presence across platforms.",
       projects: [""]
