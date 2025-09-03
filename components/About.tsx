@@ -394,7 +394,7 @@ const TriskelionAbout = () => {
                   <div className="space-y-6 text-slate-700 dark:text-slate-300">
                     <div>
                       <p>
-                        <strong className="text-slate-800 dark:text-slate-200">Here's the truth:</strong> We're not the biggest agency. We don't have a fancy downtown office. We don't throw around buzzwords like "synergistic solutions" or "disruptive paradigms."
+                        <strong className="text-slate-800 dark:text-slate-200"></strong> 
                       </p>
                     </div>
                     <div className="relative">
@@ -407,11 +407,11 @@ const TriskelionAbout = () => {
                   </div>
                   
                   <p>
-                    What we do have is a small team that genuinely cares about your success. We answer emails. We hit deadlines. We track what actually matters to your business.
+                    
                   </p>
                   
                   <p>
-                    <strong className="text-slate-800 dark:text-slate-200">Our promise:</strong> Work with us for 3 months. That's how confident we are.
+                    <strong className="text-slate-800 dark:text-slate-200"></strong> 
                   </p>
                 </div>
               </div>
