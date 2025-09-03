@@ -140,9 +140,16 @@ const TriskelionAbout = () => {
   const teamMembers = [
     { 
       name: "Kafayat Kazeem", 
-      role: "Brand Strategy and Content Strategist", 
+      role: "Brand and Content Strategist", 
       image: "/images/Kaffi.jpeg",
       bio: "Develops authentic brand stories and content strategies that connect with audiences.",
+      projects: [""]
+    },
+    { 
+      name: "Marvellous Olabode", 
+      role: "Marketing Director and Web Designer", 
+      image: "/images/Marvel.jpeg",
+      bio: "Leads marketing strategy and creates responsive web experiences.",
       projects: [""]
     },
     { 
@@ -153,13 +160,6 @@ const TriskelionAbout = () => {
       projects: [""]
     },
     { 
-      name: "Julius Olawoyin", 
-      role: "Graphic Designer", 
-      image: "/images/Julius.jpeg",
-      bio: "Creates compelling visual identities and designs that capture brand essence.",
-      projects: [""]
-    },
-    { 
       name: "Adeolayemi Olabiran", 
       role: "Social Media Manager and Community Manager", 
       image: "/images/Dela2.jpg",
@@ -167,12 +167,13 @@ const TriskelionAbout = () => {
       projects: [""]
     },
     { 
-      name: "Marvellous Olabode", 
-      role: "Marketing Director and Web Designer", 
-      image: "/images/Marvel.jpeg",
-      bio: "Leads marketing strategy and creates responsive web experiences.",
+      name: "Julius Olawoyin", 
+      role: "Graphic Designer", 
+      image: "/images/Julius.jpeg",
+      bio: "Creates compelling visual identities and designs that capture brand essence.",
       projects: [""]
-    }
+    },
+    
   ];
 
   const showcaseProjects = [
