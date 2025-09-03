@@ -304,7 +304,7 @@ const TriskelionAbout = () => {
           
           {/* Hero Section */}
           <motion.div {...motionValues} className="text-center mb-16 relative">
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8">
+            <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-20">
               <TriskelionLogo size={120} glow />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800 dark:text-slate-200 mt-20">
@@ -497,7 +497,7 @@ const TriskelionAbout = () => {
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-semibold mb-4 text-black-600 dark:text-green-400">
+                    <h4 className="text-lg font-semibold mb-4 text-black-600 dark:text-black-400">
                       Our Solution
                     </h4>
                     <div className="space-y-3">
